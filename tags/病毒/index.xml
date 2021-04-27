@@ -1,0 +1,14 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>病毒 - 标签 - 我的全新 Hugo 网站</title>
+        <link>/tags/%E7%97%85%E6%AF%92/</link>
+        <description>病毒 - 标签 - 我的全新 Hugo 网站</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sat, 24 Apr 2021 20:37:11 &#43;0800</lastBuildDate><atom:link href="/tags/%E7%97%85%E6%AF%92/" rel="self" type="application/rss+xml" /><item>
+    <title>RAT病毒分析</title>
+    <link>/posts/rat/</link>
+    <pubDate>Sat, 24 Apr 2021 20:37:11 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>/posts/rat/</guid>
+    <description><![CDATA[样本来源 概述 好久没有分析练习了 PEID 应该是C/C++开发的，节表四个很正常 透明图标，大小136KB 139,264 字节 火绒剑 没有其他多余的操作,打开之后直接开]]></description>
+</item></channel>
+</rss>

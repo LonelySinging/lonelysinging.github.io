@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>[Python] 协程学习过程 - 我的全新 Hugo 网站</title><meta name="Description" content=""><meta property="og:title" content="[Python] 协程学习过程" />
+<meta property="og:description" content="开始 之前一直在做那个rProxy的项目，后来发现，服务端不用协程或者异步编程这样的手段是不行的，最主要的问题就是对于每个http请求都对应一" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/posts/2021/04/24/xiec/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-04-24T21:07:42&#43;08:00" />
+<meta property="article:modified_time" content="2021-04-24T21:07:42&#43;08:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="[Python] 协程学习过程"/>
+<meta name="twitter:description" content="开始 之前一直在做那个rProxy的项目，后来发现，服务端不用协程或者异步编程这样的手段是不行的，最主要的问题就是对于每个http请求都对应一"/>
+<meta name="application-name" content="我的全新 Hugo 网站">
+<meta name="apple-mobile-web-app-title" content="我的全新 Hugo 网站"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="/posts/2021/04/24/xiec/" /><link rel="prev" href="/posts/rat/" /><link rel="next" href="/posts/2021/04/25/testmd/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "[Python] 协程学习过程",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "\/posts\/2021\/04\/24\/xiec\/"
+        },"genre": "posts","wordcount":  1616 ,
+        "url": "\/posts\/2021\/04\/24\/xiec\/","datePublished": "2021-04-24T21:07:42+08:00","dateModified": "2021-04-24T21:07:42+08:00","publisher": {
+            "@type": "Organization",
+            "name": "作者"},"author": {
+                "@type": "Person",
+                "name": "作者"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="" header-mobile=""><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : '' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="我的全新 Hugo 网站">我的全新 Hugo 网站</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/about"> 关于 </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="我的全新 Hugo 网站">我的全新 Hugo 网站</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/about" title="">关于</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">[Python] 协程学习过程</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>作者</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-04-24">2021-04-24</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1616 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 4 分钟&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#asyncio">asyncio</a>
+      <ul>
+        <li><a href="#aiohttp">aiohttp</a></li>
+      </ul>
+    </li>
+    <li><a href="#gevent">gevent</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="开始">开始</h1>
+<p>之前一直在做那个<code>rProxy</code>的项目，后来发现，服务端不用协程或者异步编程这样的手段是不行的，最主要的问题就是对于每个http请求都对应一个线程，这个开销非常大。对于一个网页而言，四五十个http请求已经是非常常见的事情了，如果有很多个客户端，一下子线程数可能得有几百个。而Python的多线程众所周知的虚假。</p>
+<p>所以我就会考虑使用异步套接字来做。</p>
+<p>在异步套接字中会需要一个主循环用来管理套接字，手动管理比较麻烦，后来了解到了协程。发现这个就是非常适合做这个事情的啊。</p>
+<p>而Python的库就是<code>asyncio</code> 官方文档在这里</p>
+<p>&lt;<a href="https://docs.python.org/zh-cn/3/library/asyncio-task.html" target="_blank" rel="noopener noreffer">协程与任务 — Python 3.9.1 文档</a>&gt;</p>
+<p>不过后面又发现了一个更神奇的东西，就是<code>gevent</code>这个库，项目在这里</p>
+<p>&lt;<a href="https://github.com/gevent/gevent/" target="_blank" rel="noopener noreffer">GitHub - gevent/gevent: Coroutine-based concurrency library for Python</a>&gt;</p>
+<p>pip不能安装的话<code>whl包</code>在这里<a href="https://www.lfd.uci.edu/~gohlke/pythonlibs/" target="_blank" rel="noopener noreffer">Python Extension Packages for Windows - Christoph Gohlke (uci.edu)</a></p>
+<h1 id="协程">协程</h1>
+<p>线程的话，已经很熟悉了。对于需要大量IO操作的程序，基本上首选多线程。但是线程也有一些缺点，例如说需要考虑线程安全问题，线程间切换也会损耗性能。</p>
+<p>非常常见的现象就是，使用Python多线程写爬虫我的电脑大约80线程就已经是极限了，再增加线程也不会有什么速度上的加快了。</p>
+<p>此时，协程就出现了</p>
+<p>一个线程可以包含很多的协程，而协程之间的切换不需要经过系统，不需要进行内核态的切换。还有各种复杂的保存现场。</p>
+<h1 id="学习过程">学习过程</h1>
+<p>这里就记录一下对协程的学习过程，主要是两种。</p>
+<p>一个是以<code>asyncio</code>为主的协程</p>
+<p>另一个是以第三方库<code>gevent</code>为主的协程</p>
+<h2 id="asyncio">asyncio</h2>
+<p><code>asyncio</code>是最先了解到的技术，可以用于实现协程。一个简单的Demo如下。</p>
+<div class="highlight"><pre class="chroma"><code class="language-Python" data-lang="Python"><span class="kn">import</span> <span class="nn">asyncio</span> <span class="kn">as</span> <span class="nn">ayc</span>
+
+<span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="n">async</span> <span class="k">def</span> <span class="nf">p</span><span class="p">(</span><span class="n">c</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">i</span>
+    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="s2">&#34;t{c}: {i}&#34;</span><span class="p">)</span>
+        <span class="n">i</span><span class="o">+=</span><span class="mi">1</span>
+        <span class="n">await</span> <span class="n">ayc</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    
+<span class="n">async</span> <span class="k">def</span> <span class="nf">fun</span><span class="p">():</span>
+    <span class="n">t1</span> <span class="o">=</span> <span class="n">ayc</span><span class="o">.</span><span class="n">create_task</span><span class="p">(</span><span class="n">p</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+    <span class="n">t2</span> <span class="o">=</span> <span class="n">ayc</span><span class="o">.</span><span class="n">create_task</span><span class="p">(</span><span class="n">p</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+
+    <span class="n">await</span> <span class="n">t1</span>
+    <span class="n">await</span> <span class="n">t2</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">ayc</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">fun</span><span class="p">())</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&#34;__main__&#34;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+    
+</code></pre></div><p>这个例子只是对一个公共变量进行叠加，结果</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img2020.cnblogs.com/blog/1236187/202101/1236187-20210112224311186-2091985428.png"
+        data-srcset="https://img2020.cnblogs.com/blog/1236187/202101/1236187-20210112224311186-2091985428.png, https://img2020.cnblogs.com/blog/1236187/202101/1236187-20210112224311186-2091985428.png 1.5x, https://img2020.cnblogs.com/blog/1236187/202101/1236187-20210112224311186-2091985428.png 2x"
+        data-sizes="auto"
+        alt="https://img2020.cnblogs.com/blog/1236187/202101/1236187-20210112224311186-2091985428.png"
+        title="https://img2020.cnblogs.com/blog/1236187/202101/1236187-20210112224311186-2091985428.png" /></p>
+<p>运行之后能够看到数字递增，而且非常有序，t1,t2两个协程分工交替出现</p>
+<p>而多线程不加锁的情况下，很容易出现以下的情况。也就是出现t1 t2时间分配不均匀的情况，并且线程不安全 <code>89914</code>出现在了<code>89916</code>后面</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img2020.cnblogs.com/blog/1236187/202101/1236187-20210112224337464-696360677.png"
+        data-srcset="https://img2020.cnblogs.com/blog/1236187/202101/1236187-20210112224337464-696360677.png, https://img2020.cnblogs.com/blog/1236187/202101/1236187-20210112224337464-696360677.png 1.5x, https://img2020.cnblogs.com/blog/1236187/202101/1236187-20210112224337464-696360677.png 2x"
+        data-sizes="auto"
+        alt="https://img2020.cnblogs.com/blog/1236187/202101/1236187-20210112224337464-696360677.png"
+        title="https://img2020.cnblogs.com/blog/1236187/202101/1236187-20210112224337464-696360677.png" />
+多线程代码如下</p>
+<div class="highlight"><pre class="chroma"><code class="language-Python" data-lang="Python"><span class="kn">import</span> <span class="nn">threading</span>
+
+<span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">def</span> <span class="nf">fun</span><span class="p">(</span><span class="n">c</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">i</span>
+    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="s2">&#34;t{c}: {i}&#34;</span><span class="p">)</span>
+        <span class="n">i</span><span class="o">+=</span><span class="mi">1</span>
+    
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">fun</span><span class="p">,</span><span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,))</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+    <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">fun</span><span class="p">,</span><span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,))</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+    
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&#34;__main__&#34;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</code></pre></div><p>目前到这里就没有问题，但是等我实际写代码的时候，发现一个问题。</p>
+<p>也就是，如果一个IO操作阻塞，则整个线程卡死，导致协程不能正常切换。例如下面的代码</p>
+<div class="highlight"><pre class="chroma"><code class="language-Python" data-lang="Python"><span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">asyncio</span>
+<span class="kn">import</span> <span class="nn">time</span>
+
+<span class="n">urls</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&#34;https://www.baidu.com&#34;</span><span class="p">,</span><span class="s2">&#34;https://www.cnblogs.com/&#34;</span><span class="p">,</span><span class="s2">&#34;https://blog.csdn.net/&#34;</span><span class="p">]</span>
+
+<span class="n">async</span> <span class="k">def</span> <span class="nf">getHtml</span><span class="p">(</span><span class="n">url</span><span class="p">):</span>
+    <span class="n">stime</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="s2">&#34;{url}, {r.status_code}, {time.time() - stime}&#34;</span><span class="p">)</span>
+    
+<span class="n">async</span> <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">tasks</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">url</span> <span class="ow">in</span> <span class="n">urls</span><span class="p">:</span>
+        <span class="n">tasks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">asyncio</span><span class="o">.</span><span class="n">create_task</span><span class="p">(</span><span class="n">getHtml</span><span class="p">(</span><span class="n">url</span><span class="p">)))</span>
+    
+    <span class="n">stime</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+    <span class="n">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">wait</span><span class="p">(</span><span class="n">tasks</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="s2">&#34;Done, {time.time() - stime}&#34;</span><span class="p">)</span>
+    
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&#34;__main__&#34;</span><span class="p">:</span>
+    <span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">main</span><span class="p">())</span>
+</code></pre></div><p>代码作用是分别请求三个域名，记录响应时间以及总时间</p>
+<p>结果如下，注意，此时虽然用了协程，但是总时间却是三次请求时间之和。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img2020.cnblogs.com/blog/1236187/202101/1236187-20210112224515840-470165617.png"
+        data-srcset="https://img2020.cnblogs.com/blog/1236187/202101/1236187-20210112224515840-470165617.png, https://img2020.cnblogs.com/blog/1236187/202101/1236187-20210112224515840-470165617.png 1.5x, https://img2020.cnblogs.com/blog/1236187/202101/1236187-20210112224515840-470165617.png 2x"
+        data-sizes="auto"
+        alt="https://img2020.cnblogs.com/blog/1236187/202101/1236187-20210112224515840-470165617.png"
+        title="https://img2020.cnblogs.com/blog/1236187/202101/1236187-20210112224515840-470165617.png" /></p>
+<p>原因就是，直接使用<code>asyncio</code>实现协程并不会监听IO阻塞情况，也就是在<code>requests.get()</code>的时候，协程没有切换。导致整个线程阻塞。</p>
+<p>所以实际的执行流依旧是串行执行，那么协程就毫无意义。</p>
+<h3 id="aiohttp">aiohttp</h3>
+<p>而这个问题存在的原因就在于，<code>requests</code>这个库是<code>同步库</code>，底层是<code>同步socket</code>。对应的，另一个名为 <code>aiohttp</code>的第三方库是基于<code>asyncio</code>开发的http库可以解决这个问题。</p>
+<p><code>aiohttp</code>官方文档如下</p>
+<p>&lt;<a href="https://docs.aiohttp.org/en/stable/" target="_blank" rel="noopener noreffer">Welcome to AIOHTTP — aiohttp 3.7.3 documentation</a>&gt;</p>
+<p>一个Demo如下</p>
+<div class="highlight"><pre class="chroma"><code class="language-Python" data-lang="Python"><span class="kn">import</span> <span class="nn">aiohttp</span>
+<span class="kn">import</span> <span class="nn">asyncio</span>
+<span class="kn">import</span> <span class="nn">time</span>
+
+<span class="n">urls</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&#34;https://www.baidu.com&#34;</span><span class="p">,</span><span class="s2">&#34;https://www.cnblogs.com/&#34;</span><span class="p">,</span><span class="s2">&#34;https://blog.csdn.net/&#34;</span><span class="p">]</span>
+
+<span class="n">async</span> <span class="k">def</span> <span class="nf">getHtml</span><span class="p">(</span><span class="n">url</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="s2">&#34;请求: {url}&#34;</span><span class="p">)</span>
+    <span class="n">stime</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+    <span class="n">async</span> <span class="k">with</span> <span class="n">aiohttp</span><span class="o">.</span><span class="n">ClientSession</span><span class="p">()</span> <span class="k">as</span> <span class="n">session</span><span class="p">:</span>
+        <span class="n">async</span> <span class="k">with</span> <span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span> <span class="k">as</span> <span class="n">response</span><span class="p">:</span>
+            <span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="s2">&#34;status: {response.status}, {time.time() - stime}&#34;</span><span class="p">)</span>
+            <span class="c1"># html = await response.text()</span>
+            <span class="c1"># print(f&#34;Body: {html[:20]}&#34;)</span>
+          
+<span class="n">async</span> <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">tasks</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">url</span> <span class="ow">in</span> <span class="n">urls</span><span class="p">:</span>
+        <span class="n">tasks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">asyncio</span><span class="o">.</span><span class="n">create_task</span><span class="p">(</span><span class="n">getHtml</span><span class="p">(</span><span class="n">url</span><span class="p">)))</span>
+    <span class="n">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">wait</span><span class="p">(</span><span class="n">tasks</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&#34;Done&#34;</span><span class="p">)</span>
+
+<span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">main</span><span class="p">())</span>
+</code></pre></div><p>最后结果如下</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img2020.cnblogs.com/blog/1236187/202101/1236187-20210112224537300-171438382.png"
+        data-srcset="https://img2020.cnblogs.com/blog/1236187/202101/1236187-20210112224537300-171438382.png, https://img2020.cnblogs.com/blog/1236187/202101/1236187-20210112224537300-171438382.png 1.5x, https://img2020.cnblogs.com/blog/1236187/202101/1236187-20210112224537300-171438382.png 2x"
+        data-sizes="auto"
+        alt="https://img2020.cnblogs.com/blog/1236187/202101/1236187-20210112224537300-171438382.png"
+        title="https://img2020.cnblogs.com/blog/1236187/202101/1236187-20210112224537300-171438382.png" /></p>
+<p>可以看到总花费时间近似于最长请求时间。也就是完成了异步请求</p>
+<p>那么，到这里似乎就已经圆满了。但是，我还了解到了<code>gevent</code>这个库</p>
+<h2 id="gevent">gevent</h2>
+<p>直接贴代码</p>
+<div class="highlight"><pre class="chroma"><code class="language-Python" data-lang="Python"><span class="kn">from</span> <span class="nn">gevent</span> <span class="kn">import</span> <span class="n">monkey</span><span class="p">;</span> <span class="n">monkey</span><span class="o">.</span><span class="n">patch_all</span><span class="p">()</span>
+<span class="kn">import</span> <span class="nn">gevent</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">asyncio</span>
+<span class="kn">import</span> <span class="nn">time</span>
+
+<span class="n">urls</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&#34;https://www.baidu.com&#34;</span><span class="p">,</span><span class="s2">&#34;https://www.cnblogs.com/&#34;</span><span class="p">,</span><span class="s2">&#34;https://blog.csdn.net/&#34;</span><span class="p">]</span>
+
+<span class="k">def</span> <span class="nf">getHtml</span><span class="p">(</span><span class="n">url</span><span class="p">):</span>
+    <span class="n">stime</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="s2">&#34;{url}, {r.status_code}, {time.time() - stime}&#34;</span><span class="p">)</span>
+    
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">tasks</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">url</span> <span class="ow">in</span> <span class="n">urls</span><span class="p">:</span>
+        <span class="n">tasks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">gevent</span><span class="o">.</span><span class="n">spawn</span><span class="p">(</span><span class="n">getHtml</span><span class="p">,</span><span class="n">url</span><span class="p">))</span>
+    
+    <span class="n">stime</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+    <span class="n">gevent</span><span class="o">.</span><span class="n">joinall</span><span class="p">(</span><span class="n">tasks</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="s2">&#34;Done, {time.time() - stime}&#34;</span><span class="p">)</span>
+    
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&#34;__main__&#34;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</code></pre></div><p>结果如下
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img2020.cnblogs.com/blog/1236187/202101/1236187-20210112224554894-620598290.png"
+        data-srcset="https://img2020.cnblogs.com/blog/1236187/202101/1236187-20210112224554894-620598290.png, https://img2020.cnblogs.com/blog/1236187/202101/1236187-20210112224554894-620598290.png 1.5x, https://img2020.cnblogs.com/blog/1236187/202101/1236187-20210112224554894-620598290.png 2x"
+        data-sizes="auto"
+        alt="https://img2020.cnblogs.com/blog/1236187/202101/1236187-20210112224554894-620598290.png"
+        title="https://img2020.cnblogs.com/blog/1236187/202101/1236187-20210112224554894-620598290.png" /></p>
+<p>看到上面的结果和使用<code>aiohttp</code>库一样，并且依旧是用了<code>requests</code>这个库，而前面说过，requests是同步库。。。 是不是很神奇！是的，给我惊讶到了。</p>
+<p>然后原理也给了解了一下， &lt;<a href="https://www.zhihu.com/question/20703476/answer/15911452" target="_blank" rel="noopener noreffer">关于 python gevent 架框 作为 TCP服务器 的 代码问题 ， 每个 socket 的 消息 接收 是否有使用 事件监听回调的方法呢？ - 知乎 (zhihu.com)</a>&gt;</p>
+<p>总的来说，就是替换了Python自己的socket实现，把socket设置成了异步。绝了~</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2021-04-24</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/rat/" class="prev" rel="prev" title="RAT病毒分析"><i class="fas fa-angle-left fa-fw"></i>RAT病毒分析</a>
+            <a href="/posts/2021/04/25/testmd/" class="next" rel="next" title="markdown测试">markdown测试<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.82.1">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank"></a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>
