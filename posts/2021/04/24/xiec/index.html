@@ -142,21 +142,21 @@
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="http://qiniusave.5cser.com/img/1236187-20210112224311186-2091985428.png"
-        data-srcset="http://qiniusave.5cser.com/img/1236187-20210112224311186-2091985428.png, http://qiniusave.5cser.com/img/1236187-20210112224311186-2091985428.png 1.5x, http://qiniusave.5cser.com/img/1236187-20210112224311186-2091985428.png 2x"
+        data-src="https://raw.githubusercontent.com/LonelySinging/img/master/1236187-20210112224311186-2091985428.png"
+        data-srcset="https://raw.githubusercontent.com/LonelySinging/img/master/1236187-20210112224311186-2091985428.png, https://raw.githubusercontent.com/LonelySinging/img/master/1236187-20210112224311186-2091985428.png 1.5x, https://raw.githubusercontent.com/LonelySinging/img/master/1236187-20210112224311186-2091985428.png 2x"
         data-sizes="auto"
-        alt="http://qiniusave.5cser.com/img/1236187-20210112224311186-2091985428.png"
-        title="http://qiniusave.5cser.com/img/1236187-20210112224311186-2091985428.png" /></p>
+        alt="https://raw.githubusercontent.com/LonelySinging/img/master/1236187-20210112224311186-2091985428.png"
+        title="https://raw.githubusercontent.com/LonelySinging/img/master/1236187-20210112224311186-2091985428.png" /></p>
 <p>运行之后能够看到数字递增，而且非常有序，t1,t2两个协程分工交替出现</p>
 <p>而多线程不加锁的情况下，很容易出现以下的情况。也就是出现t1 t2时间分配不均匀的情况，并且线程不安全 <code>89914</code>出现在了<code>89916</code>后面</p>
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="http://qiniusave.5cser.com/img/1236187-20210112224337464-696360677.png"
-        data-srcset="http://qiniusave.5cser.com/img/1236187-20210112224337464-696360677.png, http://qiniusave.5cser.com/img/1236187-20210112224337464-696360677.png 1.5x, http://qiniusave.5cser.com/img/1236187-20210112224337464-696360677.png 2x"
+        data-src="https://raw.githubusercontent.com/LonelySinging/img/master/1236187-20210112224337464-696360677.png"
+        data-srcset="https://raw.githubusercontent.com/LonelySinging/img/master/1236187-20210112224337464-696360677.png, https://raw.githubusercontent.com/LonelySinging/img/master/1236187-20210112224337464-696360677.png 1.5x, https://raw.githubusercontent.com/LonelySinging/img/master/1236187-20210112224337464-696360677.png 2x"
         data-sizes="auto"
-        alt="http://qiniusave.5cser.com/img/1236187-20210112224337464-696360677.png"
-        title="http://qiniusave.5cser.com/img/1236187-20210112224337464-696360677.png" />
+        alt="https://raw.githubusercontent.com/LonelySinging/img/master/1236187-20210112224337464-696360677.png"
+        title="https://raw.githubusercontent.com/LonelySinging/img/master/1236187-20210112224337464-696360677.png" />
 多线程代码如下</p>
 <div class="highlight"><pre class="chroma"><code class="language-Python" data-lang="Python"><span class="kn">import</span> <span class="nn">threading</span>
 
@@ -203,11 +203,11 @@
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="http://qiniusave.5cser.com/img/1236187-20210112224515840-470165617.png"
-        data-srcset="http://qiniusave.5cser.com/img/1236187-20210112224515840-470165617.png, http://qiniusave.5cser.com/img/1236187-20210112224515840-470165617.png 1.5x, http://qiniusave.5cser.com/img/1236187-20210112224515840-470165617.png 2x"
+        data-src="https://raw.githubusercontent.com/LonelySinging/img/master/1236187-20210112224515840-470165617.png"
+        data-srcset="https://raw.githubusercontent.com/LonelySinging/img/master/1236187-20210112224515840-470165617.png, https://raw.githubusercontent.com/LonelySinging/img/master/1236187-20210112224515840-470165617.png 1.5x, https://raw.githubusercontent.com/LonelySinging/img/master/1236187-20210112224515840-470165617.png 2x"
         data-sizes="auto"
-        alt="http://qiniusave.5cser.com/img/1236187-20210112224515840-470165617.png"
-        title="http://qiniusave.5cser.com/img/1236187-20210112224515840-470165617.png" /></p>
+        alt="https://raw.githubusercontent.com/LonelySinging/img/master/1236187-20210112224515840-470165617.png"
+        title="https://raw.githubusercontent.com/LonelySinging/img/master/1236187-20210112224515840-470165617.png" /></p>
 <p>原因就是，直接使用<code>asyncio</code>实现协程并不会监听IO阻塞情况，也就是在<code>requests.get()</code>的时候，协程没有切换。导致整个线程阻塞。</p>
 <p>所以实际的执行流依旧是串行执行，那么协程就毫无意义。</p>
 <h3 id="aiohttp">aiohttp</h3>
@@ -242,11 +242,11 @@
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="http://qiniusave.5cser.com/img/1236187-20210112224537300-171438382.png"
-        data-srcset="http://qiniusave.5cser.com/img/1236187-20210112224537300-171438382.png, http://qiniusave.5cser.com/img/1236187-20210112224537300-171438382.png 1.5x, http://qiniusave.5cser.com/img/1236187-20210112224537300-171438382.png 2x"
+        data-src="https://raw.githubusercontent.com/LonelySinging/img/master/1236187-20210112224537300-171438382.png"
+        data-srcset="https://raw.githubusercontent.com/LonelySinging/img/master/1236187-20210112224537300-171438382.png, https://raw.githubusercontent.com/LonelySinging/img/master/1236187-20210112224537300-171438382.png 1.5x, https://raw.githubusercontent.com/LonelySinging/img/master/1236187-20210112224537300-171438382.png 2x"
         data-sizes="auto"
-        alt="http://qiniusave.5cser.com/img/1236187-20210112224537300-171438382.png"
-        title="http://qiniusave.5cser.com/img/1236187-20210112224537300-171438382.png" /></p>
+        alt="https://raw.githubusercontent.com/LonelySinging/img/master/1236187-20210112224537300-171438382.png"
+        title="https://raw.githubusercontent.com/LonelySinging/img/master/1236187-20210112224537300-171438382.png" /></p>
 <p>可以看到总花费时间近似于最长请求时间。也就是完成了异步请求</p>
 <p>那么，到这里似乎就已经圆满了。但是，我还了解到了<code>gevent</code>这个库</p>
 <h2 id="gevent">gevent</h2>
@@ -279,11 +279,11 @@
 <img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="http://qiniusave.5cser.com/img/1236187-20210112224554894-620598290.png"
-        data-srcset="http://qiniusave.5cser.com/img/1236187-20210112224554894-620598290.png, http://qiniusave.5cser.com/img/1236187-20210112224554894-620598290.png 1.5x, http://qiniusave.5cser.com/img/1236187-20210112224554894-620598290.png 2x"
+        data-src="https://raw.githubusercontent.com/LonelySinging/img/master/1236187-20210112224554894-620598290.png"
+        data-srcset="https://raw.githubusercontent.com/LonelySinging/img/master/1236187-20210112224554894-620598290.png, https://raw.githubusercontent.com/LonelySinging/img/master/1236187-20210112224554894-620598290.png 1.5x, https://raw.githubusercontent.com/LonelySinging/img/master/1236187-20210112224554894-620598290.png 2x"
         data-sizes="auto"
-        alt="http://qiniusave.5cser.com/img/1236187-20210112224554894-620598290.png"
-        title="http://qiniusave.5cser.com/img/1236187-20210112224554894-620598290.png" /></p>
+        alt="https://raw.githubusercontent.com/LonelySinging/img/master/1236187-20210112224554894-620598290.png"
+        title="https://raw.githubusercontent.com/LonelySinging/img/master/1236187-20210112224554894-620598290.png" /></p>
 <p>看到上面的结果和使用<code>aiohttp</code>库一样，并且依旧是用了<code>requests</code>这个库，而前面说过，requests是同步库。。。 是不是很神奇！是的，给我惊讶到了。</p>
 <p>然后原理也给了解了一下， &lt;<a href="https://www.zhihu.com/question/20703476/answer/15911452" target="_blank" rel="noopener noreffer">关于 python gevent 架框 作为 TCP服务器 的 代码问题 ， 每个 socket 的 消息 接收 是否有使用 事件监听回调的方法呢？ - 知乎 (zhihu.com)</a>&gt;</p>
 <p>总的来说，就是替换了Python自己的socket实现，把socket设置成了异步。绝了~</p>
