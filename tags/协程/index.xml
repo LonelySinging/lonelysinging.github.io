@@ -3,10 +3,10 @@
         <title>协程 - 标签 - 我的全新 Hugo 网站</title>
         <link>/tags/%E5%8D%8F%E7%A8%8B/</link>
         <description>协程 - 标签 - 我的全新 Hugo 网站</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sat, 24 Apr 2021 21:07:42 &#43;0800</lastBuildDate><atom:link href="/tags/%E5%8D%8F%E7%A8%8B/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Tue, 12 Jan 2021 21:07:42 &#43;0800</lastBuildDate><atom:link href="/tags/%E5%8D%8F%E7%A8%8B/" rel="self" type="application/rss+xml" /><item>
     <title>[Python] 协程学习过程</title>
     <link>/posts/2021/04/24/xiec/</link>
-    <pubDate>Sat, 24 Apr 2021 21:07:42 &#43;0800</pubDate>
+    <pubDate>Tue, 12 Jan 2021 21:07:42 &#43;0800</pubDate>
     <author>作者</author>
     <guid>/posts/2021/04/24/xiec/</guid>
     <description><![CDATA[开始 之前一直在做那个rProxy的项目，后来发现，服务端不用协程或者异步编程这样的手段是不行的，最主要的问题就是对于每个http请求都对应一]]></description>

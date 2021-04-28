@@ -1,0 +1,14 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>火绒剑 - 标签 - 我的全新 Hugo 网站</title>
+        <link>/tags/%E7%81%AB%E7%BB%92%E5%89%91/</link>
+        <description>火绒剑 - 标签 - 我的全新 Hugo 网站</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sun, 15 Mar 2020 22:14:22 &#43;0800</lastBuildDate><atom:link href="/tags/%E7%81%AB%E7%BB%92%E5%89%91/" rel="self" type="application/rss+xml" /><item>
+    <title>[逆向] 熊猫烧香病毒分析</title>
+    <link>/posts/2021/04/28/panda/</link>
+    <pubDate>Sun, 15 Mar 2020 22:14:22 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>/posts/2021/04/28/panda/</guid>
+    <description><![CDATA[概述 弄到了一个熊猫烧香的样本，Delphi程序，和前面的彩虹猫根本就不是一码事儿，这次只能完全看汇编代码了，不过伪代码可以帮忙分析循环条件什]]></description>
+</item></channel>
+</rss>
