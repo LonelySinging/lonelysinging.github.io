@@ -1,8 +1,8 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>病毒 - 标签 - 我的全新 Hugo 网站</title>
+        <title>病毒 - 标签 - 星途 · 小镇</title>
         <link>/tags/%E7%97%85%E6%AF%92/</link>
-        <description>病毒 - 标签 - 我的全新 Hugo 网站</description>
+        <description>病毒 - 标签 - 星途 · 小镇</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sun, 15 Mar 2020 22:14:22 &#43;0800</lastBuildDate><atom:link href="/tags/%E7%97%85%E6%AF%92/" rel="self" type="application/rss+xml" /><item>
     <title>[逆向] 熊猫烧香病毒分析</title>
     <link>/posts/2021/04/28/panda/</link>

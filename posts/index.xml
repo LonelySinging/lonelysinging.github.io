@@ -1,8 +1,8 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>所有文章 - 我的全新 Hugo 网站</title>
+        <title>所有文章 - 星途 · 小镇</title>
         <link>/posts/</link>
-        <description>所有文章 | 我的全新 Hugo 网站</description>
+        <description>所有文章 | 星途 · 小镇</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sun, 25 Apr 2021 19:35:51 &#43;0800</lastBuildDate><atom:link href="/posts/" rel="self" type="application/rss+xml" /><item>
     <title>markdown测试</title>
     <link>/posts/2021/04/25/testmd/</link>

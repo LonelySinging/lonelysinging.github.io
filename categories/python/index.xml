@@ -1,8 +1,8 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>Python - 分类 - 我的全新 Hugo 网站</title>
+        <title>Python - 分类 - 星途 · 小镇</title>
         <link>/categories/python/</link>
-        <description>Python - 分类 - 我的全新 Hugo 网站</description>
+        <description>Python - 分类 - 星途 · 小镇</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Tue, 12 Jan 2021 21:07:42 &#43;0800</lastBuildDate><atom:link href="/categories/python/" rel="self" type="application/rss+xml" /><item>
     <title>[Python] 协程学习过程</title>
     <link>/posts/2021/04/24/xiec/</link>
