@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
-        <title>[Python] 协程学习过程 - 星途 · 小镇</title><meta name="Description" content=""><meta property="og:title" content="[Python] 协程学习过程" />
+        <title>协程学习过程 - 星途 · 小镇</title><meta name="Description" content=""><meta property="og:title" content="协程学习过程" />
 <meta property="og:description" content="开始 之前一直在做那个rProxy的项目，后来发现，服务端不用协程或者异步编程这样的手段是不行的，最主要的问题就是对于每个http请求都对应一" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/posts/2021/04/24/xiec/" /><meta property="article:section" content="posts" />
@@ -13,21 +13,21 @@
 <meta property="article:modified_time" content="2021-01-12T21:07:42&#43;08:00" />
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="[Python] 协程学习过程"/>
+<meta name="twitter:title" content="协程学习过程"/>
 <meta name="twitter:description" content="开始 之前一直在做那个rProxy的项目，后来发现，服务端不用协程或者异步编程这样的手段是不行的，最主要的问题就是对于每个http请求都对应一"/>
 <meta name="application-name" content="星途 · 小镇">
 <meta name="apple-mobile-web-app-title" content="星途 · 小镇"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="/posts/2021/04/24/xiec/" /><link rel="prev" href="/posts/2021/04/28/panda/" /><link rel="next" href="/posts/2021/04/25/testmd/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="/posts/2021/04/24/xiec/" /><link rel="prev" href="/posts/2021/04/28/panda/" /><link rel="next" href="/posts/2021/05/07/typorasm/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "[Python] 协程学习过程",
+        "headline": "协程学习过程",
         "inLanguage": "zh-CN",
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "\/posts\/2021\/04\/24\/xiec\/"
-        },"genre": "posts","keywords": "Python, 网络, 协程","wordcount":  1616 ,
+        },"genre": "posts","keywords": "Python, 网络, 协程, 编程","wordcount":  1616 ,
         "url": "\/posts\/2021\/04\/24\/xiec\/","datePublished": "2021-01-12T21:07:42+08:00","dateModified": "2021-01-12T21:07:42+08:00","publisher": {
             "@type": "Organization",
             "name": "作者"},"author": {
@@ -75,7 +75,7 @@
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">目录</h2>
             <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animated flipInX">[Python] 协程学习过程</h1><div class="post-meta">
+        </div><article class="page single"><h1 class="single-title animated flipInX">协程学习过程</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>作者</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/python/"><i class="far fa-folder fa-fw"></i>Python</a></span></div>
             <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-01-12">2021-01-12</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1616 字&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 4 分钟&nbsp;</div>
@@ -304,14 +304,14 @@
     </div>
 
     <div class="post-info-more">
-        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/python/">Python</a>,&nbsp;<a href="/tags/%E7%BD%91%E7%BB%9C/">网络</a>,&nbsp;<a href="/tags/%E5%8D%8F%E7%A8%8B/">协程</a></section>
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/python/">Python</a>,&nbsp;<a href="/tags/%E7%BD%91%E7%BB%9C/">网络</a>,&nbsp;<a href="/tags/%E5%8D%8F%E7%A8%8B/">协程</a>,&nbsp;<a href="/tags/%E7%BC%96%E7%A8%8B/">编程</a></section>
         <section>
             <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
         </section>
     </div>
 
-    <div class="post-nav"><a href="/posts/2021/04/28/panda/" class="prev" rel="prev" title="[逆向] 熊猫烧香病毒分析"><i class="fas fa-angle-left fa-fw"></i>[逆向] 熊猫烧香病毒分析</a>
-            <a href="/posts/2021/04/25/testmd/" class="next" rel="next" title="markdown测试">markdown测试<i class="fas fa-angle-right fa-fw"></i></a></div>
+    <div class="post-nav"><a href="/posts/2021/04/28/panda/" class="prev" rel="prev" title="熊猫烧香病毒分析"><i class="fas fa-angle-left fa-fw"></i>熊猫烧香病毒分析</a>
+            <a href="/posts/2021/05/07/typorasm/" class="next" rel="next" title="typora文档复制到博客图片失效 SM.MS限制">typora文档复制到博客图片失效 SM.MS限制<i class="fas fa-angle-right fa-fw"></i></a></div>
 </div>
 </article></div>
             </main><footer class="footer">

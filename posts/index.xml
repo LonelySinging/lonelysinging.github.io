@@ -3,29 +3,29 @@
         <title>所有文章 - 星途 · 小镇</title>
         <link>/posts/</link>
         <description>所有文章 | 星途 · 小镇</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Fri, 07 May 2021 05:57:10 &#43;0800</lastBuildDate><atom:link href="/posts/" rel="self" type="application/rss+xml" /><item>
-    <title>[Python] typora文档复制到博客图片失效 SM.MS限制</title>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Fri, 07 May 2021 06:30:46 &#43;0800</lastBuildDate><atom:link href="/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>我为什么要写博客，以及搭建过程</title>
+    <link>/posts/2021/05/07/hugo/</link>
+    <pubDate>Fri, 07 May 2021 06:30:46 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>/posts/2021/05/07/hugo/</guid>
+    <description><![CDATA[开始 现在在博客园已经写了大概一百多个博客文章了，也是写了很久的文章。但是一直觉得博客不是自己的，只是在一个平台上面写文章。所以一直想要自己搭]]></description>
+</item><item>
+    <title>typora文档复制到博客图片失效 SM.MS限制</title>
     <link>/posts/2021/05/07/typorasm/</link>
     <pubDate>Fri, 07 May 2021 05:57:10 &#43;0800</pubDate>
     <author>作者</author>
     <guid>/posts/2021/05/07/typorasm/</guid>
     <description><![CDATA[开始 今天开始尝试使用 Typora 写markdown 然后复制到博客园，不过会有一个问题 那就是 typroa 插入的图片都是本地的，md文档复制到博客园之后，图片都失效]]></description>
 </item><item>
-    <title>markdown测试</title>
-    <link>/posts/2021/04/25/testmd/</link>
-    <pubDate>Sun, 25 Apr 2021 19:35:51 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>/posts/2021/04/25/testmd/</guid>
-    <description><![CDATA[一级标题 一句话 两句话 分成三句话 测试啦 两句话 分成三句话 测试啦 两句话 分成三句话 测试啦 两句话 分成三句话 测试啦 两句话 分成三句话 测试啦 两句话 分成三句话]]></description>
-</item><item>
-    <title>[Python] 协程学习过程</title>
+    <title>协程学习过程</title>
     <link>/posts/2021/04/24/xiec/</link>
     <pubDate>Tue, 12 Jan 2021 21:07:42 &#43;0800</pubDate>
     <author>作者</author>
     <guid>/posts/2021/04/24/xiec/</guid>
     <description><![CDATA[开始 之前一直在做那个rProxy的项目，后来发现，服务端不用协程或者异步编程这样的手段是不行的，最主要的问题就是对于每个http请求都对应一]]></description>
 </item><item>
-    <title>[逆向] 熊猫烧香病毒分析</title>
+    <title>熊猫烧香病毒分析</title>
     <link>/posts/2021/04/28/panda/</link>
     <pubDate>Sun, 15 Mar 2020 22:14:22 &#43;0800</pubDate>
     <author>作者</author>
