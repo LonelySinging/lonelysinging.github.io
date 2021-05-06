@@ -3,7 +3,14 @@
         <title>所有文章 - 星途 · 小镇</title>
         <link>/posts/</link>
         <description>所有文章 | 星途 · 小镇</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sun, 25 Apr 2021 19:35:51 &#43;0800</lastBuildDate><atom:link href="/posts/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Fri, 07 May 2021 05:57:10 &#43;0800</lastBuildDate><atom:link href="/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>[Python] typora文档复制到博客图片失效 SM.MS限制</title>
+    <link>/posts/2021/05/07/typorasm/</link>
+    <pubDate>Fri, 07 May 2021 05:57:10 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>/posts/2021/05/07/typorasm/</guid>
+    <description><![CDATA[开始 今天开始尝试使用 Typora 写markdown 然后复制到博客园，不过会有一个问题 那就是 typroa 插入的图片都是本地的，md文档复制到博客园之后，图片都失效]]></description>
+</item><item>
     <title>markdown测试</title>
     <link>/posts/2021/04/25/testmd/</link>
     <pubDate>Sun, 25 Apr 2021 19:35:51 &#43;0800</pubDate>
