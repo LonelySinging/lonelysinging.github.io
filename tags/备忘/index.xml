@@ -1,0 +1,14 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>备忘 - 标签 - 星途 · 小镇</title>
+        <link>/tags/%E5%A4%87%E5%BF%98/</link>
+        <description>备忘 - 标签 - 星途 · 小镇</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sun, 23 May 2021 20:55:26 &#43;0800</lastBuildDate><atom:link href="/tags/%E5%A4%87%E5%BF%98/" rel="self" type="application/rss+xml" /><item>
+    <title>Tools</title>
+    <link>/posts/2021/05/23/tools/</link>
+    <pubDate>Sun, 23 May 2021 20:55:26 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>/posts/2021/05/23/tools/</guid>
+    <description><![CDATA[有很多有用的工具，经常需要的时候忘记名字是什么了。所以特意写一个清单。 软件 scrcpy 使用 scrcpy 可以实现电脑手机同屏，MIUI+出来之前的备选项。当然，还]]></description>
+</item></channel>
+</rss>
