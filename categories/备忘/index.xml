@@ -3,7 +3,14 @@
         <title>备忘 - 分类 - 星途 · 小镇</title>
         <link>/categories/%E5%A4%87%E5%BF%98/</link>
         <description>备忘 - 分类 - 星途 · 小镇</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sun, 23 May 2021 20:55:26 &#43;0800</lastBuildDate><atom:link href="/categories/%E5%A4%87%E5%BF%98/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Thu, 27 May 2021 17:52:22 &#43;0800</lastBuildDate><atom:link href="/categories/%E5%A4%87%E5%BF%98/" rel="self" type="application/rss+xml" /><item>
+    <title>linux的登录脚本记录</title>
+    <link>/posts/2021/05/27/linux_profile/</link>
+    <pubDate>Thu, 27 May 2021 17:52:22 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>/posts/2021/05/27/linux_profile/</guid>
+    <description><![CDATA[通过在Linux的启动脚本中添加一些指令，可以实现一些简单的功能，此处记录一下 未来换设备的话能直接使用 打开core文件生成开关 ulimit -c unlimited 这样在程]]></description>
+</item><item>
     <title>工具集备忘</title>
     <link>/posts/2021/05/23/tools/</link>
     <pubDate>Sun, 23 May 2021 20:55:26 &#43;0800</pubDate>

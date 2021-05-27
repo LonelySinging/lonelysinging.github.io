@@ -18,7 +18,7 @@
 <meta name="application-name" content="星途 · 小镇">
 <meta name="apple-mobile-web-app-title" content="星途 · 小镇"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="/posts/2021/05/23/tools/" /><link rel="prev" href="/posts/2021/05/07/hugo/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="/posts/2021/05/23/tools/" /><link rel="prev" href="/posts/2021/05/07/hugo/" /><link rel="next" href="/posts/2021/05/27/linux_profile/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
@@ -27,10 +27,10 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "\/posts\/2021\/05\/23\/tools\/"
-        },"genre": "posts","keywords": "杂项, 工具, 备忘","wordcount":  753 ,
+        },"genre": "posts","keywords": "杂项, 工具, 备忘","wordcount":  1052 ,
         "url": "\/posts\/2021\/05\/23\/tools\/","datePublished": "2021-05-23T20:55:26+08:00","dateModified": "2021-05-23T20:55:26+08:00","publisher": {
             "@type": "Organization",
-            "name": "作者"},"author": {
+            "name": ""},"author": {
                 "@type": "Person",
                 "name": "作者"
             },"description": ""
@@ -74,11 +74,11 @@
 <main class="main">
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">目录</h2>
-            <div class="toc-content" id="toc-content-auto"></div>
+            <div class="toc-content always-active" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">工具集备忘</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>作者</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E5%A4%87%E5%BF%98/"><i class="far fa-folder fa-fw"></i>备忘</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-05-23">2021-05-23</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 753 字&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 2 分钟&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-05-23">2021-05-23</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1052 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 3 分钟&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
                     <span>目录</span>
@@ -86,63 +86,89 @@
                 </div>
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
   <ul>
-    <li><a href="#软件">软件</a>
-      <ul>
-        <li><a href="#scrcpy">scrcpy</a></li>
-        <li><a href="#netch">Netch</a></li>
-        <li><a href="#sstap">SSTAP</a></li>
-        <li><a href="#potplayer">PotPlayer</a></li>
-        <li><a href="#screen-to-gif">Screen to Gif</a></li>
-        <li><a href="#netassist">NetAssist</a></li>
-        <li><a href="#picgo">PicGo</a></li>
-        <li><a href="#typora">typora</a></li>
-        <li><a href="#securecrt-90">SecureCRT 9.0</a></li>
-        <li><a href="#xshell">XShell</a></li>
-      </ul>
-    </li>
+    <li><a href="#scrcpy">scrcpy</a></li>
+    <li><a href="#netch">Netch</a></li>
+    <li><a href="#sstap">SSTAP</a></li>
+    <li><a href="#potplayer">PotPlayer</a></li>
+    <li><a href="#screen-to-gif">Screen to Gif</a></li>
+    <li><a href="#netassist">NetAssist</a></li>
+    <li><a href="#picgo">PicGo</a></li>
+    <li><a href="#typora">typora</a></li>
+    <li><a href="#securecrt-90">SecureCRT 9.0</a></li>
+    <li><a href="#xshell">XShell</a></li>
+    <li><a href="#winget">winget</a></li>
   </ul>
 </nav></div>
             </div><div class="content" id="content"><blockquote>
 <p>有很多有用的工具，经常需要的时候忘记名字是什么了。所以特意写一个清单。</p>
 </blockquote>
-<h2 id="软件">软件</h2>
-<h3 id="scrcpy">scrcpy</h3>
+<h1 id="软件">软件</h1>
+<h2 id="scrcpy">scrcpy</h2>
 <p>使用 <code>scrcpy</code> 可以实现电脑手机同屏，MIUI+出来之前的备选项。当然，还有<code>虫洞</code>这个软件也可以实现手机电脑同屏，但是感觉这个开源项目更好一点。</p>
 <p>&lt;<a href="https://github.com/Genymobile/scrcpy" target="_blank" rel="noopener noreffer">Genymobile/scrcpy: Display and control your Android device (github.com)</a>&gt;</p>
-<h3 id="netch">Netch</h3>
+<h2 id="netch">Netch</h2>
 <p>这个工具是一个代理工具，可以和小飞机配合，实现代理游戏的功能，感觉和sstap很像，但是据说也不太一样。总之，如果需要代理工具的时候，就可以考虑它了。</p>
 <p>&lt;<a href="https://github.com/NetchX/Netch" target="_blank" rel="noopener noreffer">NetchX/Netch: A simple proxy client like SSTap (github.com)</a>&gt;</p>
-<h3 id="sstap">SSTAP</h3>
+<h2 id="sstap">SSTAP</h2>
 <p>虽然已经有了<code>Netch</code>这个工具，但是还是把这个列出来吧</p>
 <p>软件模拟了一个网卡，能够实现非常底层的流量代理</p>
 <p><a href="https://github.com/gzbenx/SSTap-beta-setup" target="_blank" rel="noopener noreffer">gzbenx/SSTap-beta-setup: 添加规则请看 (github.com)</a></p>
-<h3 id="potplayer">PotPlayer</h3>
+<h2 id="potplayer">PotPlayer</h2>
 <p>虽然我知道这个播放器的名字，但是这个清单作为一个汇总目录也是很好的。</p>
 <p><a href="https://potplayer.org/" target="_blank" rel="noopener noreffer">PotPlayer官网最新下载 中文,绿色版-PotPlayer播放器</a></p>
-<h3 id="screen-to-gif">Screen to Gif</h3>
+<h2 id="screen-to-gif">Screen to Gif</h2>
 <p>非常棒的gif录屏工具，能力超乎想象。如果没有录取声音的需求，这个非常适合用来录制教程。提供的几种压缩方式压缩效率都很高。</p>
 <p><a href="https://github.com/NickeManarin/ScreenToGif" target="_blank" rel="noopener noreffer">NickeManarin/ScreenToGif: 🎬 ScreenToGif allows you to record a selected area of your screen, edit and save it as a gif or video. (github.com)</a></p>
-<h3 id="netassist">NetAssist</h3>
+<h2 id="netassist">NetAssist</h2>
 <p>windows上面用来调试网络的不二之选</p>
 <p><a href="http://cmsoft.cn/software.html" target="_blank" rel="noopener noreffer">软件下载-野人家园-物联网技术专家平台 (cmsoft.cn)</a></p>
-<h3 id="picgo">PicGo</h3>
+<h2 id="picgo">PicGo</h2>
 <p>配置typora和七牛云能够很方便的 把md博客里面的图片上传上去</p>
 <p><a href="https://github.com/Molunerfinn/PicGo" target="_blank" rel="noopener noreffer">Typora — a markdown editor, markdown reader. (github.com)</a></p>
-<h3 id="typora">typora</h3>
+<h2 id="typora">typora</h2>
 <p>据说是最好用的md编辑工具，但是实际上我觉得它默认主题不好看。。。</p>
 <p><a href="https://www.typora.io/" target="_blank" rel="noopener noreffer">Typora — a markdown editor, markdown reader.</a></p>
 <p>带上一个很好用的皮肤</p>
 <p><a href="https://github.com/hliu202/typora-purple-theme/tree/v1.5.3" target="_blank" rel="noopener noreffer">hliu202/typora-purple-theme at v1.5.3 (github.com)</a></p>
-<h3 id="securecrt-90">SecureCRT 9.0</h3>
+<h2 id="securecrt-90">SecureCRT 9.0</h2>
 <p>是个不错的ssh客户端，功能很多。主要是公司使用这个，，，发现确实不错。</p>
 <p>之前还觉得这个很老气来着，，， (相比于比较新的软件，确实老气)</p>
 <p>而且好像没有中文唉。</p>
 <p><a href="https://www.jb51.net/softs/765110.html" target="_blank" rel="noopener noreffer">SecureCRT9.0破解版下载 SecureCRT and SecureFX 9.0.0 官方最新完整版(附破解补丁+安装教程) 32/64位 下载-脚本之家 (jb51.net)</a></p>
-<h3 id="xshell">XShell</h3>
+<h2 id="xshell">XShell</h2>
 <p>也是个很棒的ssh客户端，但是为什么要用CRT呢？</p>
 <p>当然是因为CRT有注册机。。。。</p>
 <p>虽然XShell有免费版，但是有不少限制，，，很麻烦</p>
 <p><a href="https://www.netsarang.com/zh/xshell/" target="_blank" rel="noopener noreffer">XSHELL - NetSarang Website</a></p>
+<h2 id="winget">winget</h2>
+<p>众所周知，在linux上面通过包管理工具，能够非常方便的安装软件。</p>
+<p>那么，<code>winget</code>就是windows上面的包管理器，使用非常方便。</p>
+<p>可惜没有正式版，只能手动安装。不过说起来，预览版的win10已经预装这个了。</p>
+<p>例子:</p>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">D:<span class="se">\S</span>t&gt;winget install git
+已找到 Git <span class="o">[</span>Git.Git<span class="o">]</span>
+此应用程序由其所有者授权给你。
+Microsoft 对第三方程序包概不负责，也不向第三方程序包授予任何许可证。
+Downloading https://github.com/git-for-windows/git/releases/download/v2.31.1.windows.1/Git-2.31.1-64-bit.exe
+  ██████████████████████████████  47.5 MB / 47.5 MB
+已成功验证安装程序哈希
+正在启动程序包安装...
+已成功安装
+</code></pre></div><p>然后，直接就安装好了，唯一的问题就是不能实现卸载&hellip; 只能自己手动卸载。不过好在也不是什么麻烦的事情。</p>
+<ul>
+<li>
+<p>github</p>
+<ul>
+<li><a href="https://github.com/microsoft/winget-cli/releases" target="_blank" rel="noopener noreffer">Releases · microsoft/winget-cli (github.com)</a></li>
+</ul>
+</li>
+<li>
+<p>应用商店 (浏览器打开)</p>
+<ul>
+<li>ms-windows-store://pdp/?productid=9nblggh4nns1</li>
+</ul>
+</li>
+</ul>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
@@ -154,7 +180,7 @@
         <div class="post-info-line">
             <div class="post-info-md"></div>
             <div class="post-info-share">
-                <span></span>
+                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="/posts/2021/05/23/tools/" data-title="工具集备忘" data-hashtags="杂项,工具,备忘"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="/posts/2021/05/23/tools/" data-hashtag="杂项"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="分享到 WhatsApp" data-sharer="whatsapp" data-url="/posts/2021/05/23/tools/" data-title="工具集备忘" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Line" data-sharer="line" data-url="/posts/2021/05/23/tools/" data-title="工具集备忘"><i data-svg-src="/lib/simple-icons/icons/line.min.svg"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="/posts/2021/05/23/tools/" data-title="工具集备忘"><i class="fab fa-weibo fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Myspace" data-sharer="myspace" data-url="/posts/2021/05/23/tools/" data-title="工具集备忘" data-description=""><i data-svg-src="/lib/simple-icons/icons/myspace.min.svg"></i></a><a href="javascript:void(0);" title="分享到 Blogger" data-sharer="blogger" data-url="/posts/2021/05/23/tools/" data-title="工具集备忘" data-description=""><i class="fab fa-blogger fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Evernote" data-sharer="evernote" data-url="/posts/2021/05/23/tools/" data-title="工具集备忘"><i class="fab fa-evernote fa-fw"></i></a></span>
             </div>
         </div>
     </div>
@@ -166,11 +192,14 @@
         </section>
     </div>
 
-    <div class="post-nav"><a href="/posts/2021/05/07/hugo/" class="prev" rel="prev" title="我为什么要写博客，以及搭建过程"><i class="fas fa-angle-left fa-fw"></i>我为什么要写博客，以及搭建过程</a></div>
+    <div class="post-nav"><a href="/posts/2021/05/07/hugo/" class="prev" rel="prev" title="我为什么要写博客，以及搭建过程"><i class="fas fa-angle-left fa-fw"></i>我为什么要写博客，以及搭建过程</a>
+            <a href="/posts/2021/05/27/linux_profile/" class="next" rel="next" title="linux的登录脚本记录">linux的登录脚本记录<i class="fas fa-angle-right fa-fw"></i></a></div>
 </div>
-</article></div>
+<div id="comments"><div id="utterances"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://utteranc.es/">Utterances</a>.
+            </noscript></div></article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.82.1">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.83.1">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
                 </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank"></a></span></div>
         </div>
     </footer></div>
@@ -180,5 +209,5 @@
             </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
                 <i class="fas fa-comment fa-fw"></i>
             </a>
-        </div><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{"utterances":{"darkTheme":"github-dark","issueTerm":"pathname","label":"","lightTheme":"github-light","repo":"LonelySinging/hugoblogtalks"}},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
 </html>
