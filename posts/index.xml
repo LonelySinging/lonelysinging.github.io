@@ -11,6 +11,13 @@
     <guid>/posts/2021/06/03/test_md/</guid>
     <description><![CDATA[一级标题 测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试]]></description>
 </item><item>
+    <title>Xposed初体验</title>
+    <link>/posts/2021/05/31/xposed/</link>
+    <pubDate>Mon, 31 May 2021 19:33:48 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>/posts/2021/05/31/xposed/</guid>
+    <description><![CDATA[Xposed 对于Xposed这个框架，在很早之前就已经了解到了，那时候是用它来实现自动抢红包这样的功能，总之是一个非常厉害的框架。不过这些年似乎热度正]]></description>
+</item><item>
     <title>使用Frida完成android的hook</title>
     <link>/posts/2021/05/28/frida_01/</link>
     <pubDate>Fri, 28 May 2021 16:13:23 &#43;0800</pubDate>
@@ -66,12 +73,5 @@
     <author>作者</author>
     <guid>/posts/2021/04/24/rat/</guid>
     <description><![CDATA[样本来源 概述 好久没有分析练习了 PEID 应该是C/C++开发的，节表四个很正常 透明图标，大小136KB 139,264 字节 火绒剑 没有其他多余的操作,打开之后直接开]]></description>
-</item><item>
-    <title>关于一次数学建模</title>
-    <link>/posts/2019/04/22/jianmo/</link>
-    <pubDate>Mon, 22 Apr 2019 16:11:36 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>/posts/2019/04/22/jianmo/</guid>
-    <description><![CDATA[这两天在参加一个数学建模的比赛，我觉得也许应该把这样的经历写下来，也许可以引发思考。 数学建模其实并不是计算机类的比赛，但是我觉得这个比赛还不]]></description>
 </item></channel>
 </rss>

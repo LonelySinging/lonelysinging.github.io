@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Xposed初体验 - 星途 · 小镇</title><meta name="Description" content=""><meta property="og:title" content="Xposed初体验" />
+<meta property="og:description" content="Xposed 对于Xposed这个框架，在很早之前就已经了解到了，那时候是用它来实现自动抢红包这样的功能，总之是一个非常厉害的框架。不过这些年似乎热度正" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/posts/2021/05/31/xposed/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-05-31T19:33:48&#43;08:00" />
+<meta property="article:modified_time" content="2021-05-31T19:33:48&#43;08:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Xposed初体验"/>
+<meta name="twitter:description" content="Xposed 对于Xposed这个框架，在很早之前就已经了解到了，那时候是用它来实现自动抢红包这样的功能，总之是一个非常厉害的框架。不过这些年似乎热度正"/>
+<meta name="application-name" content="星途 · 小镇">
+<meta name="apple-mobile-web-app-title" content="星途 · 小镇"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="/posts/2021/05/31/xposed/" /><link rel="prev" href="/posts/2021/05/28/frida_01/" /><link rel="next" href="/posts/2021/06/03/test_md/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Xposed初体验",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "\/posts\/2021\/05\/31\/xposed\/"
+        },"genre": "posts","keywords": "HOOK, Android, Xposed, 反编译","wordcount":  3356 ,
+        "url": "\/posts\/2021\/05\/31\/xposed\/","datePublished": "2021-05-31T19:33:48+08:00","dateModified": "2021-05-31T19:33:48+08:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "作者"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="" header-mobile=""><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : '' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="星途 · 小镇">星途 · 小镇</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/about"> 关于 </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="星途 · 小镇">星途 · 小镇</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/about" title="">关于</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content always-active" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">Xposed初体验</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>作者</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E9%80%86%E5%90%91%E5%88%86%E6%9E%90/"><i class="far fa-folder fa-fw"></i>逆向分析</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-05-31">2021-05-31</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 3356 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 7 分钟&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#配置开发环境">配置开发环境</a>
+      <ul>
+        <li><a href="#安装android-studio-as">安装Android Studio (AS)</a></li>
+        <li><a href="#创建项目">创建项目</a></li>
+        <li><a href="#添加新的">添加新的</a></li>
+        <li><a href="#导入模块所依赖的jar包">导入模块所依赖的<code>jar</code>包</a></li>
+        <li><a href="#创建用于hook的代码">创建用于<code>hook</code>的代码</a></li>
+      </ul>
+    </li>
+    <li><a href="#开始编写代码">开始编写代码</a>
+      <ul>
+        <li><a href="#代码">代码</a></li>
+        <li><a href="#解释">解释</a></li>
+        <li><a href="#指定入口类">指定入口类</a></li>
+      </ul>
+    </li>
+    <li><a href="#结果">结果</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="xposed">Xposed</h1>
+<p>对于<code>Xposed</code>这个框架，在很早之前就已经了解到了，那时候是用它来实现自动抢红包这样的功能，总之是一个非常厉害的框架。不过这些年似乎热度正逐渐被<code>Magisk</code>夺取，不过因为两者实现方式不同，所以在不同的场景下还是各有各的存在意义。比如说<code>Magisk</code>使用起来风险更低，因为它并没有真正修改系统文件，也就不会轻易出现系统崩溃，卡开机屏的问题。不过要说插件数量，据我所知还是老牌的<code>Xposed</code>比较多。</p>
+<p><code>Xposed</code>是通过劫持安卓系统最初始的进程<code>zygote</code>实现工作的，任意一个进程总是通过<code>fork zygote</code>产生的，所以，<code>Xposed</code>劫持了它之后，就能对其他进程做任何事情了。</p>
+<p>因为目前并不打算<code>root</code>手中的主力机，所以打算使用一部不用的手机<code>金立s5</code>来作为试验机，不过在我辛苦的<code>root</code>它之后，发现想要安装<code>Xposed</code>还真是麻烦。并且我也不想维护两个手机，并且我知道手机上会有虚拟机，它一般都会自带<code>Xposed</code>框架。由此，觉得<code>Xposed</code>会更方便。说起来，如果在主力机上面实现了一些实用的功能，使用起来也会很方便。</p>
+<p>我也尝试过安装<code>Magisk</code>，但是，并没有成功，在通过<code>fastboot</code>刷写<code>boot</code>的时候电脑一直找不到设备，不清楚是驱动问题，还是手机限制的问题，而且这部手机网上能找到的资料很少，所以不方便折腾。于是就完全放弃了使用<code>s5</code>作为试验机的想法。</p>
+<h1 id="环境搭建">环境搭建</h1>
+<p>目前手持主力机<code>红米K30U</code>，联发科的SOC使得这个手机像是后娘养的一样，啥东西都赶不上热乎的，希望未来随着滥发可机型变多小米能够对其有更多的优化。不过好在并不影响我的使用。</p>
+<p>现在的设想是通过安装<code>VMOS</code>这个虚拟机软件在手机上面运行一个系统，免费版本的是<code>Android 5.1.1</code>，里面带了<code>ROOT</code>还有<code>Xposed</code>并且能够很方便的打开<code>网络adb</code>方便使用笔记本对其操作，实际上这也是安装软件和传输文件最方便的方式了，尤其是能够和<code>Android Studio</code>无缝协作。</p>
+<h2 id="配置开发环境">配置开发环境</h2>
+<h3 id="安装android-studio-as">安装Android Studio (AS)</h3>
+<p>下载链接在此https://developer.android.google.cn/studio/</p>
+<p>此时有需要说明的是，网络上讲关于<code>Xposed</code>模块开发的教程都会提到关闭<code>AS</code>的<code>Instant Run</code>，但是我下载最新版本之后，在设置中并没有找到这个的设置项。让我困惑了很久，直到无意间了解到这个功能在<code>3.5</code>版本的时候就被谷歌&quot;优化&quot;掉了。被新的<code>Alpply Change</code>功能替代了。但是不清楚这个新的功能是否会导致出现教程中说到的异常，我是用的是<code>Android Studio 3.2.1</code>好在官网能够下载到。</p>
+<p>安装之后，国内可能需要设置代理才能够愉快的下载<code>SDK</code>以及相关<code>jar</code>依赖库，毕竟是谷歌的服务，被墙了也是毫不意外的事情。</p>
+<p>之后，需要下载<code>SDK</code>，建议下载<code>7.1.1 (API 25)</code>、<code>5.1.1 (API 22)</code>，这两个是最多的版本了，另外，对于<code>Android Studio 3.2.1</code>来说，<code>SDK 10 (API 29)</code>似乎是必须安装的，对于<code>Android Studio 4.2</code>来说，必须安装<code>SDK 11 (API 30)</code>，总共下载大小似乎还没有超过一个G。所以梯子流量不多的人也不用担心。</p>
+<h3 id="创建项目">创建项目</h3>
+<p>再然后，创建一个项目，可以是没有<code>MainActivity</code>的项目，不过我选择了一个<code>Empty MainActivity</code>的项目，目的是为了好看 : P  (实际上是为了方便观察<code>apk</code>是否真的安装成功了)</p>
+<h3 id="添加新的">添加新的</h3>
+<p>需要在项目的<code>AndroidManifest.xml</code>中添加 (具体参看网上很多的教程，这部分是没有问题的)</p>
+<div class="highlight"><pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;meta-data</span>
+    <span class="na">android:name=</span><span class="s">&#34;xposedmodule&#34;</span>
+    <span class="na">android:value=</span><span class="s">&#34;true&#34;</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;meta-data</span>
+    <span class="na">android:name=</span><span class="s">&#34;xposeddescription&#34;</span>
+    <span class="na">android:value=</span><span class="s">&#34;我是一个Xposed例程&#34;</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;meta-data</span>
+    <span class="na">android:name=</span><span class="s">&#34;xposedminversion&#34;</span>
+    <span class="na">android:value=</span><span class="s">&#34;53&#34;</span> <span class="nt">/&gt;</span>
+</code></pre></div><p>添加这三个条目的原因是为了能让<code>Xposed Manager</code>认识开发的模块。此时编译安装之后，<code>Xposeed Manger</code>就能看到这个模块了</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="http://qiniusave.5cser.com/img/image-20210606141722656.png"
+        data-srcset="http://qiniusave.5cser.com/img/image-20210606141722656.png, http://qiniusave.5cser.com/img/image-20210606141722656.png 1.5x, http://qiniusave.5cser.com/img/image-20210606141722656.png 2x"
+        data-sizes="auto"
+        alt="http://qiniusave.5cser.com/img/image-20210606141722656.png"
+        title="image-20210606141722656" /></p>
+<p>需要说明的是，如果一开始创建项目的时候没有<code>Activity</code>，格式可能和我图片中的不一样，所以这也是我创建了一个带<code>Activity</code>的项目</p>
+<h3 id="导入模块所依赖的jar包">导入模块所依赖的<code>jar</code>包</h3>
+<p>需要添加以下内容</p>
+<div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="err">repositories</span> <span class="p">{</span>
+    <span class="err">jcenter()</span>
+<span class="p">}</span>
+<span class="err">provided</span>  <span class="err">&#39;de.robv.android.xposed:api:</span><span class="mi">82</span><span class="err">&#39;</span>
+<span class="err">provided</span>  <span class="err">&#39;de.robv.android.xposed:api:</span><span class="mi">82</span><span class="err">:sources&#39;</span>
+</code></pre></div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="http://qiniusave.5cser.com/img/image-20210606141342040.png"
+        data-srcset="http://qiniusave.5cser.com/img/image-20210606141342040.png, http://qiniusave.5cser.com/img/image-20210606141342040.png 1.5x, http://qiniusave.5cser.com/img/image-20210606141342040.png 2x"
+        data-sizes="auto"
+        alt="http://qiniusave.5cser.com/img/image-20210606141342040.png"
+        title="image-20210606141342040" /></p>
+<p>添加完毕之后，<code>Android studio</code>会提示你<code>Sync</code>，点击之后，就会自动从仓库下载对应的<code>jar</code>到项目中，很是方便。(但愿你开了代理)</p>
+<blockquote>
+<p><em>provided 的作用是 在打包apk时不包含依赖包</em></p>
+<p>一开始自作聪明的认为<code>82</code>指的是版本号，我安装的是<code>89</code>版本，所以修改成了<code>89</code>结果失败了，真是自作聪明</p>
+<p><a href="https://blog.csdn.net/u014418171/article/details/52911715" target="_blank" rel="noopener noreffer">Xposed模块开发教程(二) 第一个Xposed模块应用-在手机状态栏增加显示cpu温度_没错, 我是东芝-CSDN博客_com.android.systemui.statusbar.policy.clock</a></p>
+</blockquote>
+<h3 id="创建用于hook的代码">创建用于<code>hook</code>的代码</h3>
+<p>新建代码文件，此处我在<code>入口类同级目录</code>创建了一个类文件，取名<code>HookTest</code>，它是继承于<code>IXposedHookLoadPackage</code>接口的，这部分代码和可以从网上教程中复制(指导入的库名称以及<code>IXposedHookLoadPackage</code>这个很长的接口名称)</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="http://qiniusave.5cser.com/img/image-20210606141916216.png"
+        data-srcset="http://qiniusave.5cser.com/img/image-20210606141916216.png, http://qiniusave.5cser.com/img/image-20210606141916216.png 1.5x, http://qiniusave.5cser.com/img/image-20210606141916216.png 2x"
+        data-sizes="auto"
+        alt="http://qiniusave.5cser.com/img/image-20210606141916216.png"
+        title="image-20210606141916216" /></p>
+<p>上图的最终代码我会提供到最后，并且做出解释</p>
+<h2 id="开始编写代码">开始编写代码</h2>
+<p>对于此次任务，依旧是获取<code>Shaft</code>这个软件的图片链接，对于这部分内容直接参看之前的文章</p>
+<p><a href="https://lonelysinging.github.io/posts/2021/05/28/frida_01/" target="_blank" rel="noopener noreffer">使用Frida完成android的hook - 星途 · 小镇 (lonelysinging.github.io)</a></p>
+<p>通过反编译，得到我们需要<code>hook</code>的方法，当然，如果有源码当然是最好的了，不过如果是这样的话，直接修改源码岂不是更快？</p>
+<p>现在假设你根据上面的文章得到了需要<code>hook</code>的方法</p>
+<h3 id="代码">代码</h3>
+<p>那么我的代码是下面这样的</p>
+<div class="highlight"><pre class="chroma"><code class="language-Java" data-lang="Java"><span class="kn">package</span> <span class="nn">com.example.startu.myapplication233</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">android.os.Environment</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.io.File</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.FileOutputStream</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">de.robv.android.xposed.IXposedHookLoadPackage</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">de.robv.android.xposed.XC_MethodHook</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">de.robv.android.xposed.XposedBridge</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">de.robv.android.xposed.XposedHelpers</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">de.robv.android.xposed.callbacks.XC_LoadPackage.LoadPackageParam</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">HookTest</span> <span class="kd">implements</span> <span class="n">IXposedHookLoadPackage</span> <span class="o">{</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">writefile</span><span class="o">(</span><span class="n">String</span> <span class="n">str</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Throwable</span><span class="o">{</span>
+        <span class="n">String</span> <span class="n">sdCardDir</span> <span class="o">=</span><span class="n">Environment</span><span class="o">.</span><span class="na">getExternalStorageDirectory</span><span class="o">().</span><span class="na">getAbsolutePath</span><span class="o">();</span>
+        <span class="n">File</span> <span class="n">saveFile</span> <span class="o">=</span> <span class="k">new</span> <span class="n">File</span><span class="o">(</span><span class="n">sdCardDir</span><span class="o">,</span> <span class="s">&#34;aaaa.txt&#34;</span><span class="o">);</span>
+        <span class="n">FileOutputStream</span> <span class="n">outStream</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FileOutputStream</span><span class="o">(</span><span class="n">saveFile</span><span class="o">,</span><span class="kc">true</span><span class="o">);</span>
+        <span class="n">outStream</span><span class="o">.</span><span class="na">write</span><span class="o">((</span><span class="n">str</span><span class="o">+</span><span class="s">&#34;\n&#34;</span><span class="o">).</span><span class="na">getBytes</span><span class="o">());</span>
+        <span class="n">outStream</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">handleLoadPackage</span><span class="o">(</span><span class="kd">final</span> <span class="n">LoadPackageParam</span> <span class="n">loadPackageParam</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Throwable</span> <span class="o">{</span>
+        <span class="n">XposedBridge</span><span class="o">.</span><span class="na">log</span><span class="o">(</span><span class="s">&#34;Loaded app: &#34;</span> <span class="o">+</span> <span class="n">loadPackageParam</span><span class="o">.</span><span class="na">packageName</span><span class="o">);</span>
+        <span class="n">writefile</span><span class="o">(</span><span class="s">&#34;启动包: &#34;</span><span class="o">+</span><span class="n">loadPackageParam</span><span class="o">.</span><span class="na">packageName</span><span class="o">);</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">loadPackageParam</span><span class="o">.</span><span class="na">packageName</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">&#34;ceui.lisa.pixiv&#34;</span><span class="o">))</span> <span class="o">{</span>
+            <span class="n">writefile</span><span class="o">(</span><span class="s">&#34;发现目标: &#34;</span><span class="o">+</span><span class="n">loadPackageParam</span><span class="o">.</span><span class="na">packageName</span><span class="o">);</span>
+            <span class="n">Class</span><span class="o">&lt;?&gt;</span> <span class="n">clazz</span> <span class="o">=</span> <span class="n">XposedHelpers</span><span class="o">.</span><span class="na">findClass</span><span class="o">(</span><span class="s">&#34;ceui.lisa.models.ImageUrlsBean&#34;</span><span class="o">,</span> <span class="n">loadPackageParam</span><span class="o">.</span><span class="na">classLoader</span><span class="o">);</span>
+            <span class="n">XposedHelpers</span><span class="o">.</span><span class="na">findAndHookMethod</span><span class="o">(</span><span class="n">clazz</span><span class="o">,</span> <span class="s">&#34;getMedium&#34;</span><span class="o">,</span> <span class="k">new</span> <span class="n">XC_MethodHook</span><span class="o">()</span> <span class="o">{</span>
+                <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">beforeHookedMethod</span><span class="o">(</span><span class="n">XC_MethodHook</span><span class="o">.</span><span class="na">MethodHookParam</span> <span class="n">param</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Throwable</span> <span class="o">{</span>
+                    <span class="kd">super</span><span class="o">.</span><span class="na">beforeHookedMethod</span><span class="o">(</span><span class="n">param</span><span class="o">);</span>
+                <span class="o">}</span>
+
+                <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">afterHookedMethod</span><span class="o">(</span><span class="n">MethodHookParam</span> <span class="n">param</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Throwable</span> <span class="o">{</span>
+                    <span class="c1">// param.setResult(&#34;你已被劫持&#34;);
+</span><span class="c1"></span>                    <span class="n">writefile</span><span class="o">(</span><span class="s">&#34;新的图片:&#34;</span><span class="o">);</span>
+                    <span class="n">writefile</span><span class="o">((</span><span class="n">String</span><span class="o">)</span><span class="n">param</span><span class="o">.</span><span class="na">getResult</span><span class="o">()+</span><span class="s">&#34;\n&#34;</span><span class="o">);</span>
+                <span class="o">}</span>
+            <span class="o">});</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div><h3 id="解释">解释</h3>
+<p>作为<code>Xposed</code>的模块，当然是以回调的方式被调用。而需要编写的回调函数就是<code>handleLoadPackage</code>函数，这个函数将会在每次系统创建进程的时候被调用。通过<code>if (loadPackageParam.packageName.equals(&quot;ceui.lisa.pixiv&quot;))</code>过找到需要<code>hook</code>的进程，接着找到类和方法。实际上如果会<code>Java</code>的话，对于上面的代码应该一眼就看懂了。唯一需要补充的是，<code>beforeHookedMethod</code>和<code>afterHookedMethod</code>这两个方法，他们分别在执行原函数之前和执行原函数之后被调用，前者你可以修改其参数，后者可以修改其返回值。这样会让原函数很没有尊严。。。</p>
+<blockquote>
+<p>另外需要解释，我为什么会写一个<code>writefile</code>函数，为什么不用框架自带的<code>log</code>系统。原因是因为我发现在手机安装的虚拟机中，<code>Xposed</code>的日志系统会失效，显示不出来日志。我曾一度以为模块没有正常工作，为此我换了各种虚拟机，各种版本。折腾了一下午，最后想到可能是日志系统出问题了？最后抱着试一试的心态写了一个<code>writefile</code>函数，没想到工作正常，当时就气哭了 (</p>
+<p>实际上，框架在<code>夜神模拟器 (Android 5版本)</code>上工作完全正常，不过它的<code>Android 7</code>版本并没有自带<code>Xposed</code>框架，应用商场的是<code>Android 5</code>的，如果安装了会导致卡开机屏幕</p>
+</blockquote>
+<h3 id="指定入口类">指定入口类</h3>
+<p><code>Xposed</code>模块在会从入口配置<code>xposed_init</code>文件里找入口类，在<code>assets</code>创建一个<code>xposed_init</code>文件，如果没有<code>assets</code>文件夹，则自行创建</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="http://qiniusave.5cser.com/img/image-20210606145459689.png"
+        data-srcset="http://qiniusave.5cser.com/img/image-20210606145459689.png, http://qiniusave.5cser.com/img/image-20210606145459689.png 1.5x, http://qiniusave.5cser.com/img/image-20210606145459689.png 2x"
+        data-sizes="auto"
+        alt="http://qiniusave.5cser.com/img/image-20210606145459689.png"
+        title="image-20210606145459689" /></p>
+<p>其内容是上面编写的<code>Hook</code>类</p>
+<h2 id="结果">结果</h2>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="http://qiniusave.5cser.com/img/image-20210606150735724.png"
+        data-srcset="http://qiniusave.5cser.com/img/image-20210606150735724.png, http://qiniusave.5cser.com/img/image-20210606150735724.png 1.5x, http://qiniusave.5cser.com/img/image-20210606150735724.png 2x"
+        data-sizes="auto"
+        alt="http://qiniusave.5cser.com/img/image-20210606150735724.png"
+        title="image-20210606150735724" /></p>
+<p>在<code>储存目录</code>下能看到命名为<code>aaaa.txt</code>的文件，其中有所有启动的进程，以及<code>Shaft</code>得到的所有图片的链接</p>
+<p>通过<code>Xposed</code>和<code>Frida</code>都能实现这样的功能，但是也能看出他们的区别，一般来说<code>Frida</code>需要电脑配合(通过手机安装<code>Termux</code>之类的软件应该可以免电脑)，但是<code>Xposed</code>则不需要，而且适合长期修改。<code>Frida</code>方便用于解密，或者用于破解认证一类不需要长久<code>hook</code>的需要。</p>
+<p><strong>参考 无敌的网友</strong></p>
+<p><a href="https://www.cnblogs.com/leigq/p/13406599.html#" target="_blank" rel="noopener noreffer">Xposed模块开发教程整理 - leigq - 博客园 (cnblogs.com)</a></p>
+<p><a href="https://www.52pojie.cn/thread-688466-1-1.html" target="_blank" rel="noopener noreffer">【Xposed模块开发入门】真·第一课 - 『移动安全区』 - 吾爱破解 - LCG - LSG |安卓破解|病毒分析|www.52pojie.cn</a></p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2021-05-31</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="/posts/2021/05/31/xposed/" data-title="Xposed初体验" data-hashtags="HOOK,Android,Xposed,反编译"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="/posts/2021/05/31/xposed/" data-hashtag="HOOK"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="分享到 WhatsApp" data-sharer="whatsapp" data-url="/posts/2021/05/31/xposed/" data-title="Xposed初体验" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Line" data-sharer="line" data-url="/posts/2021/05/31/xposed/" data-title="Xposed初体验"><i data-svg-src="/lib/simple-icons/icons/line.min.svg"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="/posts/2021/05/31/xposed/" data-title="Xposed初体验"><i class="fab fa-weibo fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Myspace" data-sharer="myspace" data-url="/posts/2021/05/31/xposed/" data-title="Xposed初体验" data-description=""><i data-svg-src="/lib/simple-icons/icons/myspace.min.svg"></i></a><a href="javascript:void(0);" title="分享到 Blogger" data-sharer="blogger" data-url="/posts/2021/05/31/xposed/" data-title="Xposed初体验" data-description=""><i class="fab fa-blogger fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Evernote" data-sharer="evernote" data-url="/posts/2021/05/31/xposed/" data-title="Xposed初体验"><i class="fab fa-evernote fa-fw"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/hook/">HOOK</a>,&nbsp;<a href="/tags/android/">Android</a>,&nbsp;<a href="/tags/xposed/">Xposed</a>,&nbsp;<a href="/tags/%E5%8F%8D%E7%BC%96%E8%AF%91/">反编译</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/2021/05/28/frida_01/" class="prev" rel="prev" title="使用Frida完成android的hook"><i class="fas fa-angle-left fa-fw"></i>使用Frida完成android的hook</a>
+            <a href="/posts/2021/06/03/test_md/" class="next" rel="next" title="md测试文档">md测试文档<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"><div id="utterances"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://utteranc.es/">Utterances</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.82.1">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank"></a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{"utterances":{"darkTheme":"github-dark","issueTerm":"pathname","label":"","lightTheme":"github-light","repo":"LonelySinging/hugoblogtalks"}},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

@@ -1,0 +1,21 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Android - 标签 - 星途 · 小镇</title>
+        <link>/tags/android/</link>
+        <description>Android - 标签 - 星途 · 小镇</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Mon, 31 May 2021 19:33:48 &#43;0800</lastBuildDate><atom:link href="/tags/android/" rel="self" type="application/rss+xml" /><item>
+    <title>Xposed初体验</title>
+    <link>/posts/2021/05/31/xposed/</link>
+    <pubDate>Mon, 31 May 2021 19:33:48 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>/posts/2021/05/31/xposed/</guid>
+    <description><![CDATA[Xposed 对于Xposed这个框架，在很早之前就已经了解到了，那时候是用它来实现自动抢红包这样的功能，总之是一个非常厉害的框架。不过这些年似乎热度正]]></description>
+</item><item>
+    <title>使用Frida完成android的hook</title>
+    <link>/posts/2021/05/28/frida_01/</link>
+    <pubDate>Fri, 28 May 2021 16:13:23 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>/posts/2021/05/28/frida_01/</guid>
+    <description><![CDATA[Frida 先喊一句 Frida牛逼再开始后面的内容 一次偶然在别人的博客注意到了Frida这个工具，是一个android的hook工具。发现用它可以实现]]></description>
+</item></channel>
+</rss>
