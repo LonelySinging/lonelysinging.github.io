@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>破解一个极难的软件 - 星途 · 小镇</title><meta name="Description" content=""><meta property="og:title" content="破解一个极难的软件" />
+<meta property="og:description" content="芜湖 喜大普奔，终于是成功破解这个软件。说是破解但是实际上这是个免费软件，但是软件不提供下载功能。以前的老版本软件是有下载功能的，但是没有收藏" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/posts/2021/06/09/ck_mmzztt/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-06-09T22:01:49&#43;08:00" />
+<meta property="article:modified_time" content="2021-06-09T22:01:49&#43;08:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="破解一个极难的软件"/>
+<meta name="twitter:description" content="芜湖 喜大普奔，终于是成功破解这个软件。说是破解但是实际上这是个免费软件，但是软件不提供下载功能。以前的老版本软件是有下载功能的，但是没有收藏"/>
+<meta name="application-name" content="星途 · 小镇">
+<meta name="apple-mobile-web-app-title" content="星途 · 小镇"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="/posts/2021/06/09/ck_mmzztt/" /><link rel="prev" href="/posts/2021/05/31/xposed/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "破解一个极难的软件",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "\/posts\/2021\/06\/09\/ck_mmzztt\/"
+        },"genre": "posts","keywords": "HOOK, Android, Xposed, 反编译, frida, objection","wordcount":  8810 ,
+        "url": "\/posts\/2021\/06\/09\/ck_mmzztt\/","datePublished": "2021-06-09T22:01:49+08:00","dateModified": "2021-06-09T22:01:49+08:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "作者"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="" header-mobile=""><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : '' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="星途 · 小镇">星途 · 小镇</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/about"> 关于 </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="星途 · 小镇">星途 · 小镇</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/about" title="">关于</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content always-active" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">破解一个极难的软件</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>作者</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E9%80%86%E5%90%91%E5%88%86%E6%9E%90/"><i class="far fa-folder fa-fw"></i>逆向分析</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-06-09">2021-06-09</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 8810 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 18 分钟&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#初次尝试">初次尝试</a></li>
+    <li><a href="#思路">思路</a></li>
+    <li><a href="#配置基本环境">配置基本环境</a>
+      <ul>
+        <li><a href="#配置frida">配置<code>frida</code></a></li>
+        <li><a href="#安装objection">安装<code>objection</code></a></li>
+        <li><a href="#dump出dex"><code>dump</code>出dex</a></li>
+        <li><a href="#jadx">jadx</a></li>
+      </ul>
+    </li>
+    <li><a href="#分析代码">分析代码</a>
+      <ul>
+        <li><a href="#相关目录分析">相关目录分析</a></li>
+        <li><a href="#找有价值的函数">找有价值的函数</a></li>
+        <li><a href="#获取url列表">获取url列表</a></li>
+        <li><a href="#确定当前图片索引">确定当前图片索引</a></li>
+      </ul>
+    </li>
+    <li><a href="#找到双击操作">找到双击操作</a></li>
+    <li><a href="#升级功能的屏蔽">升级功能的屏蔽</a></li>
+    <li><a href="#xposed模块">xposed模块</a>
+      <ul>
+        <li><a href="#代码">代码</a></li>
+        <li><a href="#弹出toast">弹出toast</a></li>
+        <li><a href="#关于复制文件">关于复制文件</a></li>
+      </ul>
+    </li>
+    <li><a href="#操作过程中可能需要的操作">操作过程中可能需要的操作</a>
+      <ul>
+        <li><a href="#启用adb网络调试">启用ADB网络调试</a></li>
+        <li><a href="#禁用-selinux">禁用 SELinux</a></li>
+        <li><a href="#apktool">apktool</a></li>
+        <li><a href="#busybox">BusyBox</a></li>
+        <li><a href="#添加库">添加库</a></li>
+        <li><a href="#新项目需要添加的">新项目需要添加的</a></li>
+        <li><a href="#旧版本下载地址">旧版本下载地址</a></li>
+        <li><a href="#遇到的问题">遇到的问题</a></li>
+      </ul>
+    </li>
+    <li><a href="#操作过程的一些记录">操作过程的一些记录</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="芜湖">芜湖</h1>
+<p>喜大普奔，终于是成功破解这个软件。说是破解但是实际上这是个免费软件，但是软件不提供下载功能。以前的老版本软件是有下载功能的，但是没有收藏功能，很不好用，但是现在新版本有了收藏功能，但是没有了下载功能。。。并不知道是怎么想的，而且很多图片都没有了，好在我都给爬下来了~~</p>
+<p>这次逆向过程非常不顺利，不过好在经过两个星期的空余时间，总算是解决掉了。现在记录一下整个过程。</p>
+<p>有问题下方留言哈~</p>
+<h2 id="初次尝试">初次尝试</h2>
+<p>最开始的时候大概流程是先改安装包的后缀名，改成<code>.zip</code>然后解压出来，得到<code>.dex</code>文件，然后通过<code>dex2jar</code>工具转换成为<code>jar</code>包，接着通过<code>jd-gui</code>工具看到代码。</p>
+<p>不过此时发现软件是加固的，想来也是，现在很多软件都会加固，所以我也了解一下常见的去壳方式。对于安卓来说，最稳妥的办法就是<code>dump</code>内存。以前脱壳的时候使用的是一个<code>xposed</code>模块，在虚拟机上面脱壳，我记得好像过程很顺利，但是最后得到的代码并不是很好看。看上去像是被混淆了一样。</p>
+<p>考虑到加固技术发展的很快，我没有使用过去的老工具，直接去找了新的<code>dump</code>工具，<code>drizzleDumper</code>。通过<code>adb</code>传输到模拟器上面，运行软件，开启<code>drizzleDumper</code>，结果它突然发疯了，一直输出信息。首次使用这个工具，我也不知道是不是正常情况，所以我等了一会儿。觉得差不多了，就通过<code>Ctrl+C</code>终止了程序运行。此时<code>dump</code>了很多<code>.dex</code>文件，但是似乎只有两个大小。一个是<code>198kb</code>另一个是<code>2028kb</code>。</p>
+<p>看上去可能是遇到反<code>dump</code>技术。但是不重要，既然已经得到了<code>dex</code>文件，就来看看里面都是什么吧。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://qiniusave.xint.top/img/image-20210621215940455.png"
+        data-srcset="https://qiniusave.xint.top/img/image-20210621215940455.png, https://qiniusave.xint.top/img/image-20210621215940455.png 1.5x, https://qiniusave.xint.top/img/image-20210621215940455.png 2x"
+        data-sizes="auto"
+        alt="https://qiniusave.xint.top/img/image-20210621215940455.png"
+        title="image-20210621215940455" /></p>
+<p>小的<code>dex</code>里面是这个，明显是<code>360</code>的加固，老朋友了，第一次破的壳就是<code>360</code>的，但是失败了。那是在两年前。现在就再次挑战它。</p>
+<p>重要的代码显然不在这里，所以看另一个<code>dex</code></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://qiniusave.xint.top/img/image-20210621220138398.png"
+        data-srcset="https://qiniusave.xint.top/img/image-20210621220138398.png, https://qiniusave.xint.top/img/image-20210621220138398.png 1.5x, https://qiniusave.xint.top/img/image-20210621220138398.png 2x"
+        data-sizes="auto"
+        alt="https://qiniusave.xint.top/img/image-20210621220138398.png"
+        title="image-20210621220138398" /></p>
+<p>好家伙，看上去好像不太对。首先，并没有看到类似<code>入口</code>的代码，其次代码文件的命名全都变成<code>字母</code>了。另外有些代码并没有反编译出来。这个看上去就很棘手了。对于命名全都变成字母的问题，我一开始认为这个应该是代码经过了<code>混淆</code>。所以，也就继续去分析它的代码。</p>
+<p>通过分析，发现软件用了<code>chromium</code>，可能是一个内建的浏览器？但是说实话，使用软件的过程并没有觉得它像是一个浏览器外壳。所以并不知道这个项目在这里的用处是什么。然后就是<code>android.support</code>这个包。此时看到这个包，我以为是安卓开发的公共代码。因为我在别的<code>apk</code>中也见过它，所以直接忽略了它。接下来，就是下面经过&quot;混淆&quot;的代码了。</p>
+<p>好在虽然符号名被混淆了，但是内容基本上都反编译出来了。首先进行第一轮筛查，找出了代码文件比较大的。其次通过代码文件<code>import</code>的包，推测他是做什么的。最后筛查出来几个比较有价值的类(诸如<code>Js.class</code>)。</p>
+<p>接着通过<code>frida</code>下钩子。结果<code>frida</code>一直提示找不到类，但是通过<code>jd-gui</code>看到类确实在那里。</p>
+<p>接着翻阅<code>frida</code>的官方文档，找到了枚举所有类的方法，重定向到文件里面。确实发现了很多字母命名的类，并且也找到了对应的类。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://qiniusave.xint.top/img/image-20210622222510434.png"
+        data-srcset="https://qiniusave.xint.top/img/image-20210622222510434.png, https://qiniusave.xint.top/img/image-20210622222510434.png 1.5x, https://qiniusave.xint.top/img/image-20210622222510434.png 2x"
+        data-sizes="auto"
+        alt="https://qiniusave.xint.top/img/image-20210622222510434.png"
+        title="image-20210622222510434" /></p>
+<p>但是通过<code>frida</code>确确实实找不到类，此时就觉得很奇怪。后来留意了一下字母类的数量发现，<code>frida</code>只导出了<code>500+</code>个类，但是<code>jd-gui</code>却有足足<code>2500+</code>个类。此时觉得不对劲了。所以考虑是不是<code>dex</code>出了问题，于是考虑使用别的方法<code>dump</code>内存。</p>
+<p>后来发现了<code>objection</code>工具，其中有个插件叫做<a href="https://github.com/hluwa/FRIDA-DEXDump" target="_blank" rel="noopener noreffer">FRIDA-DEXDump</a></p>
+<p><a href="http://strivemario.work/archives/8eec80c3.html" target="_blank" rel="noopener noreffer">objection - 基于frida的命令行hook工具食用手册 | Mario (strivemario.work)</a></p>
+<p>使用这个工具得到了完全不同的结果</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://qiniusave.xint.top/img/image-20210622223049545.png"
+        data-srcset="https://qiniusave.xint.top/img/image-20210622223049545.png, https://qiniusave.xint.top/img/image-20210622223049545.png 1.5x, https://qiniusave.xint.top/img/image-20210622223049545.png 2x"
+        data-sizes="auto"
+        alt="https://qiniusave.xint.top/img/image-20210622223049545.png"
+        title="image-20210622223049545" /></p>
+<p>看起来很靠谱的样子，使用新的反编译工具<code>jadx</code>工具，打开了<code>dex</code>文件，突然发现之前的操作都是白给。。。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://qiniusave.xint.top/img/image-20210622223222755.png"
+        data-srcset="https://qiniusave.xint.top/img/image-20210622223222755.png, https://qiniusave.xint.top/img/image-20210622223222755.png 1.5x, https://qiniusave.xint.top/img/image-20210622223222755.png 2x"
+        data-sizes="auto"
+        alt="https://qiniusave.xint.top/img/image-20210622223222755.png"
+        title="image-20210622223222755" /></p>
+<p>得到的代码非常完整，并且原本看到的字母命名的类已经全都没有了，此时突然醒悟过来。那个字母命名的类应该是反编译器确实找不到类的名字，然后自己给它命名了。通过<code>dex2jar</code>转成<code>jar</code>之后再用<code>jd-gui</code>打开，也是完整的代码。由此可见，这个锅必须由<code>drizzleDumper</code>来背。西内！</p>
+<p>说起来，之前<code>drizzleDumper</code>也是个好伙计，只不过技术发展太快了，有名气的技术很快就会被针对。</p>
+<h2 id="思路">思路</h2>
+<p>既然已经拿到了真正的代码，就可以开始正常的步骤了，接下来就是一通操作分析了。</p>
+<p>基本思路就是先搭建好<code>frida</code>环境，为了方便，这次使用了<code>objection</code>工具，这样就能通过命令行快速验证目标函数是不是需要<code>hook</code>的了。如此一来肯定是很省时间了。通过<code>adb</code>连接夜神安卓模拟器调试软件，找到需要<code>hook</code>的关键函数，并且验证正确与否。</p>
+<p>接着开发出相应的<code>xposed</code>模块，就可以开始修改软件了。</p>
+<p>不过这地方有坑，两点</p>
+<ul>
+<li>夜神模拟器有两个版本，一个是<code>Android5</code>一个是<code>Android7</code>，其中前者自带<code>xposed</code>框架，但是后者没有。只有<code>root</code>权限，尝试给后者安装<code>xposed</code>结果失败了，索性不折腾了。决定最终模块运行在我手机的<code>vmos</code>虚拟机中。不过<code>frida</code>调试则还是在夜神模拟器中。</li>
+<li>连接<code>adb</code>的时候，建议找一个低版本的<code>adb</code>，否则会因为版本不匹配的关系不让使用<code>adb</code>，高版本可以连接<code>Android7</code>但是尝试连接<code>Android5</code>会失败。我使用的是<code>r24.0.4</code>版本。</li>
+</ul>
+<h2 id="配置基本环境">配置基本环境</h2>
+<h3 id="配置frida">配置<code>frida</code></h3>
+<p>这部分请看之前写的文章<a href="https://lonelysinging.github.io/posts/2021/05/28/frida_01/" target="_blank" rel="noopener noreffer">使用Frida完成android的hook - 星途 · 小镇 (lonelysinging.github.io)</a>或者看别的教程，此处不再赘述了</p>
+<p>使用<code>adb</code>连接虚拟机，并且设置端口转发</p>
+<div class="highlight"><pre class="chroma"><code class="language-Shell" data-lang="Shell">adb connect 127.0.0.1:62001
+adb forward tcp:27042 tcp:27042
+adb forward tcp:27043 tcp:27043
+</code></pre></div><p>夜神模拟器<code>adb</code>端口默认是<code>62001</code>，如果是<code>Android5</code>的那个，好像是<code>52001</code>这个不确定，需要自行查询一下。</p>
+<p>执行<code>frida-ps -U</code>命令能够正确获得进程列表表示<code>frida</code>已经配置完成了。</p>
+<h3 id="安装objection">安装<code>objection</code></h3>
+<p>这步可以参考这个博客<a href="http://strivemario.work/archives/8eec80c3.html" target="_blank" rel="noopener noreffer">objection - 基于frida的命令行hook工具食用手册 | Mario (strivemario.work)</a>写的比较好。如果英文水平足够，当然是直接建议去官网比较稳妥。</p>
+<ul>
+<li>
+<p>安装</p>
+<p><code>pip install objection</code></p>
+<p>安装时间非常长，不清楚是不是我网络的问题。另外，如果电脑同时安装了<code>python2</code>和<code>python3</code>的话，需要注意区分<code>pip</code>的版本，我用的是<code>python3</code>并且只安装了这一个。所以直接执行<code>pip</code>是没有问题的。</p>
+</li>
+<li>
+<p>指定被操作的进程</p>
+<p><code>objection -g com.mmzztt.app explore</code></p>
+</li>
+<li>
+<p>列出所有activity</p>
+<p><code>android hooking list activities</code></p>
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="n">com</span><span class="o">.</span><span class="na">apicloud</span><span class="o">.</span><span class="na">tencentads</span><span class="o">.</span><span class="na">SplashActivity</span>
+<span class="n">com</span><span class="o">.</span><span class="na">qq</span><span class="o">.</span><span class="na">e</span><span class="o">.</span><span class="na">ads</span><span class="o">.</span><span class="na">ADActivity</span>
+<span class="n">com</span><span class="o">.</span><span class="na">qq</span><span class="o">.</span><span class="na">e</span><span class="o">.</span><span class="na">ads</span><span class="o">.</span><span class="na">LandscapeADActivity</span>
+<span class="n">com</span><span class="o">.</span><span class="na">qq</span><span class="o">.</span><span class="na">e</span><span class="o">.</span><span class="na">ads</span><span class="o">.</span><span class="na">PortraitADActivity</span>
+<span class="n">com</span><span class="o">.</span><span class="na">qq</span><span class="o">.</span><span class="na">e</span><span class="o">.</span><span class="na">ads</span><span class="o">.</span><span class="na">RewardvideoLandscapeADActivity</span>
+<span class="n">com</span><span class="o">.</span><span class="na">qq</span><span class="o">.</span><span class="na">e</span><span class="o">.</span><span class="na">ads</span><span class="o">.</span><span class="na">RewardvideoPortraitADActivity</span>
+<span class="c1">// 上面的似乎都是和广告相关的东西
+</span><span class="c1"></span><span class="n">com</span><span class="o">.</span><span class="na">uzmap</span><span class="o">.</span><span class="na">pkg</span><span class="o">.</span><span class="na">EntranceActivity</span>	<span class="c1">// 看起来是什么入口？
+</span><span class="c1"></span><span class="n">com</span><span class="o">.</span><span class="na">uzmap</span><span class="o">.</span><span class="na">pkg</span><span class="o">.</span><span class="na">LauncherUI</span>	<span class="c1">// 似乎是入口相关的
+</span></code></pre></div><p>这里看<code>com.uzmap</code>前缀可能有什么戏</p>
+</li>
+</ul>
+<p>见到上面的结果，就证明<code>frida</code>和<code>objection</code>都已经安装完成了</p>
+<h3 id="dump出dex"><code>dump</code>出dex</h3>
+<p>虽然前面说了怎么<code>dump</code>出dex，但是还是补充上如何操作。</p>
+<ul>
+<li>
+<p>安装</p>
+<p><code>pip install frida-dexdump</code></p>
+</li>
+<li>
+<p>在虚拟机里面运行目标程序</p>
+</li>
+<li>
+<p>命令行直接运行<code>frida-dexdump</code>等待结束</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://qiniusave.xint.top/img/image-20210614210601035.png"
+        data-srcset="https://qiniusave.xint.top/img/image-20210614210601035.png, https://qiniusave.xint.top/img/image-20210614210601035.png 1.5x, https://qiniusave.xint.top/img/image-20210614210601035.png 2x"
+        data-sizes="auto"
+        alt="https://qiniusave.xint.top/img/image-20210614210601035.png"
+        title="image-20210614210601035" /></p>
+<p>好像不是很成功的样子，出现了一些错误。但是好像不是很重要。</p>
+</li>
+<li>
+<p>此时根据上图结果就能看到他把<code>dex</code>文件放到了用户目录下，使用<code>包名</code>命名的文件夹中了。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://qiniusave.xint.top/img/image-20210622223049545.png"
+        data-srcset="https://qiniusave.xint.top/img/image-20210622223049545.png, https://qiniusave.xint.top/img/image-20210622223049545.png 1.5x, https://qiniusave.xint.top/img/image-20210622223049545.png 2x"
+        data-sizes="auto"
+        alt="https://qiniusave.xint.top/img/image-20210622223049545.png"
+        title="image-20210622223049545" /></p>
+<p>看起来比较顺利</p>
+</li>
+</ul>
+<h3 id="jadx">jadx</h3>
+<p>这是个新鲜的工具，在这里下载<a href="https://github.com/skylot/jadx" target="_blank" rel="noopener noreffer">skylot/jadx: Dex to Java decompiler (github.com)</a></p>
+<p>这个通过这个软件可以直接打开<code>dex</code>文件，不需要通过<code>dex2jar</code>工具转换了。真的是非常省事儿~</p>
+<h2 id="分析代码">分析代码</h2>
+<p>分析代码之前，需要先想清楚需求是什么。此次想要修改的软件是一个看图的软件，但是我不准备直接给出软件名称，如果想知道是什么软件，请聪明的读者思考一下安卓包名的命名规则是什么~</p>
+<p>这个软件就是一个看写真图片的软件，现在我想修改软件，使之可以实现双击下载功能。并且能够关闭掉讨厌的更新提示。</p>
+<p>现在明确了目标，所以接下来需要关注的部分就是软件下载图片的部分，以及双击会执行的代码。至于自动更新，一开始是没啥头绪的，软件的入口并不是很明确，所以我不准备按照执行流程分析了。</p>
+<h3 id="相关目录分析">相关目录分析</h3>
+<p>我一般在具体分析软件之前，会先去看看它的缓存目录，或者配置文件什么的地方，有时候能够发现非常有用的线索。如何发现相关目录呢？一般来说，重要的目录就是<code>Android/data/包名/</code>这样的目录，如果目标软件在<code>/sdcard/</code>下面也建立的文件夹的话，也可以看看。如果有<code>root</code>权限的话，可以去软件的<code>/data/data/包名</code>底下看看，有时候可以看到配置文件什么的。能够提供相关线索。</p>
+<p>而通过<code>objection</code>很方便就能得到相关目录。啥都有了，此时通过<code>ES文件浏览器</code>什么的去转一圈，总能发现好玩的。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://qiniusave.xint.top/img/image-20210624222217118.png"
+        data-srcset="https://qiniusave.xint.top/img/image-20210624222217118.png, https://qiniusave.xint.top/img/image-20210624222217118.png 1.5x, https://qiniusave.xint.top/img/image-20210624222217118.png 2x"
+        data-sizes="auto"
+        alt="https://qiniusave.xint.top/img/image-20210624222217118.png"
+        title="image-20210624222217118" /></p>
+<p>尤其是这次，直接找到了软件缓存文件的地方，就是<code>Android/data/包名/</code>下</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://qiniusave.xint.top/img/image-20210624221641554.png"
+        data-srcset="https://qiniusave.xint.top/img/image-20210624221641554.png, https://qiniusave.xint.top/img/image-20210624221641554.png 1.5x, https://qiniusave.xint.top/img/image-20210624221641554.png 2x"
+        data-sizes="auto"
+        alt="https://qiniusave.xint.top/img/image-20210624221641554.png"
+        title="image-20210624221641554" /></p>
+<p>看到这个文件名和大小，就已经瞬间明白这个是什么了。通过图片的方式打开，果不其然就是缓存的图片。而其文件的命名，不用看也能知道是<code>32</code>位的<code>md5</code>。对这个东西已经太熟悉了。</p>
+<p>所以，接下来，就不需要考虑自己下载了，只需要通过代码找到操作缓存文件的地方即可，然后直接复制缓存文件，重命名即可得到&quot;下载&quot;的文件。</p>
+<h3 id="找有价值的函数">找有价值的函数</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://qiniusave.xint.top/img/image-20210624220518576.png"
+        data-srcset="https://qiniusave.xint.top/img/image-20210624220518576.png, https://qiniusave.xint.top/img/image-20210624220518576.png 1.5x, https://qiniusave.xint.top/img/image-20210624220518576.png 2x"
+        data-sizes="auto"
+        alt="https://qiniusave.xint.top/img/image-20210624220518576.png"
+        title="image-20210624220518576" /></p>
+<p>没什么好说的，基本上反编译工具已经把类名和函数名反编译过来了，所以基本上把大概代码浏览一遍，发现这样明显的类了，接下来主要是验证类和函数了。基本思路就是通过<code>objection</code>对整个类的所有函数都下<code>hook</code>，然后再操作软件，看看会调用到哪个函数。确定函数价值。</p>
+<p>例如通过以下命令操作</p>
+<div class="highlight"><pre class="chroma"><code class="language-Shell" data-lang="Shell"><span class="c1"># 列出类的所有函数</span>
+android hooking list class_methods com.uzmap.pkg.uzmodules.photoBrowserSu.PhotoBrowser
+
+<span class="c1"># hook方法，列出其参数和返回值，还有堆栈</span>
+android hooking watch class_method com.uzmap.pkg.uzmodules.photoBrowserSu.ImageBrowserAdapter.<span class="nv">$init</span> --dump-args --dump-backtrace --dump-return
+
+<span class="c1"># hook整个类的所有方法</span>
+android hooking watch class android.support.v4.view.PagerAdapter
+</code></pre></div><p>列出类的所有函数，对比和<code>jadx</code>的结果，确保找到的类和方法是正确的，别像我一样傻乎乎的对着一堆不存在的方法下<code>hook</code>。</p>
+<p><code>hook</code>方法的话，则能看到方法的返回值、参数、以及调用堆栈。前面两者肯定不用考虑非常重要，而对于堆栈，如果是想要分析软件类和方法的调用关系，则是非常好用的信息。能够帮你理清谁调用谁，通过这些信息，也能进一步推测反编译不出类名的类是干什么的。如果想要实现复杂的功能，可能确实需要明白目标软件是怎么工作的。</p>
+<p>而<code>hook</code>整个类的话，看不到方法的参数和返回值。但是能够帮忙确定类中哪个方法被调用了，也是非常重要的。能够一次性筛查出重要的类。</p>
+<h3 id="获取url列表">获取url列表</h3>
+<p>经过一番查找，发现软件工作原理是有一个缓存管理类。需要这张图片的话，就会问这个缓存管理类要，如果已经有缓存的图的话，直接返回路径，然后载入。否则的话，才会下载。但是经过简单看代码之后，并没有发现一个保存取<code>md5</code>文件名的数组，但是发现了这个</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://qiniusave.xint.top/img/image-20210624230628010.png"
+        data-srcset="https://qiniusave.xint.top/img/image-20210624230628010.png, https://qiniusave.xint.top/img/image-20210624230628010.png 1.5x, https://qiniusave.xint.top/img/image-20210624230628010.png 2x"
+        data-sizes="auto"
+        alt="https://qiniusave.xint.top/img/image-20210624230628010.png"
+        title="image-20210624230628010" /></p>
+<p>这个构造函数有一个参数是一个<code>ArrayList</code>通过<code>hook</code>这个函数，能够发现里面存的是原始的<code>url</code>。比较麻烦，但是咱们上面已经发现了文件名就是什么东西取了<code>md5</code>，是不是就是<code>url</code>取<code>md5</code>之后直接做文件名呢？</p>
+<p><code>hook</code>函数之后，可以直接看到参数，对于<code>java</code>自带的类型，<code>objection</code>可以直接看到其内容。拿到第一个元素，取<code>md5</code>之后，对比其缓存的文件，确实发现了同名文件。所以，只需要对这个数组中的元素取<code>md5</code>就能在缓存目录找到对应的文件，之后复制走，加个后缀就能作为正常图片打开了。</p>
+<h3 id="确定当前图片索引">确定当前图片索引</h3>
+<p>接下来就是要知道现在看的是哪张图片，首先引入眼帘的就是浏览界面的进度。但是该怎么找到它呢？</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://qiniusave.xint.top/img/image-20210624231324273.png"
+        data-srcset="https://qiniusave.xint.top/img/image-20210624231324273.png, https://qiniusave.xint.top/img/image-20210624231324273.png 1.5x, https://qiniusave.xint.top/img/image-20210624231324273.png 2x"
+        data-sizes="auto"
+        alt="https://qiniusave.xint.top/img/image-20210624231324273.png"
+        title="image-20210624231324273" /></p>
+<p>最快速的办法，就是通过布局文件找。</p>
+<p>通过<code>apktool</code>解包<code>apk</code>文件，之后得到了布局文件</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://qiniusave.xint.top/img/image-20210624231515528.png"
+        data-srcset="https://qiniusave.xint.top/img/image-20210624231515528.png, https://qiniusave.xint.top/img/image-20210624231515528.png 1.5x, https://qiniusave.xint.top/img/image-20210624231515528.png 2x"
+        data-sizes="auto"
+        alt="https://qiniusave.xint.top/img/image-20210624231515528.png"
+        title="image-20210624231515528" /></p>
+<p>结果如您所见，似乎并没有相关的布局数据。所以，考虑这部分可能是动态产生的布局。所以，没办法，还是得继续找代码。其实如果顺利的话，通过布局文件里面的<code>id</code>属性，能够直接找到对应的类，这样对这个类中的方法下<code>hook</code>就能直接获取到当前图片的索引了。</p>
+<p>依旧是上面的老办法，继续对可疑的类下钩子。最后发现了一个有用的方法</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://qiniusave.xint.top/img/image-20210624231855129.png"
+        data-srcset="https://qiniusave.xint.top/img/image-20210624231855129.png, https://qiniusave.xint.top/img/image-20210624231855129.png 1.5x, https://qiniusave.xint.top/img/image-20210624231855129.png 2x"
+        data-sizes="auto"
+        alt="https://qiniusave.xint.top/img/image-20210624231855129.png"
+        title="image-20210624231855129" /></p>
+<p>从名字上看，就能知道这个可能是用来设定当前看的这张图的索引的。第二个参数<code>position</code>，应该就是当前图片索引。对这个函数下断点</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://qiniusave.xint.top/img/image-20210624232142901.png"
+        data-srcset="https://qiniusave.xint.top/img/image-20210624232142901.png, https://qiniusave.xint.top/img/image-20210624232142901.png 1.5x, https://qiniusave.xint.top/img/image-20210624232142901.png 2x"
+        data-sizes="auto"
+        alt="https://qiniusave.xint.top/img/image-20210624232142901.png"
+        title="image-20210624232142901" /></p>
+<p>能够看到这个参数就是当前看到的图片的索引减一。那么它的值应该对应的就是数组的下标了。</p>
+<h2 id="找到双击操作">找到双击操作</h2>
+<p>既然收集到了需要的数据，接下来只需要找到一个触发函数，把相关的复制文件的逻辑放进去，就完成了这个目标。找双击函数的思路，就是看<code>photobrower</code>这个类，因为软件可以双击放大。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://qiniusave.xint.top/img/image-20210624232855877.png"
+        data-srcset="https://qiniusave.xint.top/img/image-20210624232855877.png, https://qiniusave.xint.top/img/image-20210624232855877.png 1.5x, https://qiniusave.xint.top/img/image-20210624232855877.png 2x"
+        data-sizes="auto"
+        alt="https://qiniusave.xint.top/img/image-20210624232855877.png"
+        title="image-20210624232855877" /></p>
+<p>找到了这个函数<code>onDoubleTap()</code>，但是，这个函数是一个匿名对象里面方法。并且我没有找到对应的<code>hook</code>方法，所以只能走偏方了。我注意到它几乎一定会执行<code>smoothScale()</code>函数，我只需要<code>hook</code>它就行了。</p>
+<p>至此，就通过<code>objection</code>找到了所有需要的函数，于是就可以开始写<code>xposed</code>模块了。</p>
+<h2 id="升级功能的屏蔽">升级功能的屏蔽</h2>
+<p>对于这个，通过字符串搜索，确实找到了对应的配置类。但是下的钩子并没有被触发，因为软件是平台生成的，所以代码不被使用也很正常。后面分析发现，更新相关的方法名反编译失败了。也就是说，即使找到了对应的逻辑也不能正确的<code>hook</code>，这样的话就没有意义了。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://qiniusave.xint.top/img/image-20210624233906344.png"
+        data-srcset="https://qiniusave.xint.top/img/image-20210624233906344.png, https://qiniusave.xint.top/img/image-20210624233906344.png 1.5x, https://qiniusave.xint.top/img/image-20210624233906344.png 2x"
+        data-sizes="auto"
+        alt="https://qiniusave.xint.top/img/image-20210624233906344.png"
+        title="image-20210624233906344" /></p>
+<p>但是也并不是没有办法了，观察这个升级框，点击返回什么的都不能关闭它，只能点击立即更新，之后就能继续使用软件了。但是会后台下载安装包，之后更新。不过在下载的时候也可以正常使用软件。所以，另一个思路就是让这个弹窗弹不出来。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://qiniusave.xint.top/img/image-20210624233935129.png"
+        data-srcset="https://qiniusave.xint.top/img/image-20210624233935129.png, https://qiniusave.xint.top/img/image-20210624233935129.png 1.5x, https://qiniusave.xint.top/img/image-20210624233935129.png 2x"
+        data-sizes="auto"
+        alt="https://qiniusave.xint.top/img/image-20210624233935129.png"
+        title="image-20210624233935129" /></p>
+<p>通过分析布局文件，依旧是没找到对应的布局，也就找不到对应的类了。这样的话，只能通过别的方法了。考虑到动态的布局，最终也会是一个布局文件。所以，是否有办法把运行的界面布局<code>dump</code>出来呢？其实这个是最近使用<code>Autojs</code>软件的时候知道的功能。去百度了如何<code>dump</code>布局，果然通过<code>adb</code>是可以<code>dump</code>布局的。(实际上，<code>Android Studio</code>是有这样的功能的，但是一直失败，不清楚是为什么)</p>
+<p>下面两个命令需要进去<code>adb shell</code></p>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">uiautomator dump /sdcard/ui.xml
+<span class="c1"># 获取顶层的布局</span>
+
+dumpsys window <span class="p">|</span> grep  mCurrentFocus
+<span class="c1"># 获取顶层的Activity</span>
+</code></pre></div><p>后者只有一开始发现的<code>com.uzmap.pkg.LauncherUI</code> 显然也是没什么用的。但是前者，其中发现了一些<code>id</code>，</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://qiniusave.xint.top/img/image-20210624234943313.png"
+        data-srcset="https://qiniusave.xint.top/img/image-20210624234943313.png, https://qiniusave.xint.top/img/image-20210624234943313.png 1.5x, https://qiniusave.xint.top/img/image-20210624234943313.png 2x"
+        data-sizes="auto"
+        alt="https://qiniusave.xint.top/img/image-20210624234943313.png"
+        title="image-20210624234943313" /></p>
+<p>众所周知，这个<code>id</code>是注册在<code>public.xml</code>这样的文件中的，找到了如下图这样的东西。后面的<code>id</code>是十六进制，转换成十进制，然后搜索<code>R.java</code>文件，就能找到具体是那里使用了这个布局。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://qiniusave.xint.top/img/image-20210624235036862.png"
+        data-srcset="https://qiniusave.xint.top/img/image-20210624235036862.png, https://qiniusave.xint.top/img/image-20210624235036862.png 1.5x, https://qiniusave.xint.top/img/image-20210624235036862.png 2x"
+        data-sizes="auto"
+        alt="https://qiniusave.xint.top/img/image-20210624235036862.png"
+        title="image-20210624235036862" /></p>
+<p>最终发现，直接搜索<code>id</code>就能直接找到代码。。。转换进制什么的完全没有必要。。。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://qiniusave.xint.top/img/image-20210624235433486.png"
+        data-srcset="https://qiniusave.xint.top/img/image-20210624235433486.png, https://qiniusave.xint.top/img/image-20210624235433486.png 1.5x, https://qiniusave.xint.top/img/image-20210624235433486.png 2x"
+        data-sizes="auto"
+        alt="https://qiniusave.xint.top/img/image-20210624235433486.png"
+        title="image-20210624235433486" /></p>
+<p>然后最终在附近的类中看到了下面这个方法</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://qiniusave.xint.top/img/image-20210620113953432.png"
+        data-srcset="https://qiniusave.xint.top/img/image-20210620113953432.png, https://qiniusave.xint.top/img/image-20210620113953432.png 1.5x, https://qiniusave.xint.top/img/image-20210620113953432.png 2x"
+        data-sizes="auto"
+        alt="https://qiniusave.xint.top/img/image-20210620113953432.png"
+        title="image-20210620113953432" /></p>
+<p><code>hook</code>了之后，确定了这个就是弹出更新弹窗的方法。接下来，就可以开始正式开发<code>xposed</code>模块了</p>
+<h2 id="xposed模块">xposed模块</h2>
+<p>直接贴出代码，若是对<code>java</code>没有一些了解，大概完全不用考虑学习编写模块了。但是如果会<code>java</code>的话，下面的代码应该能够直接看懂。</p>
+<p>对于<code>xposed</code>框架代码的编写，主要就是用到了<code>java</code>的反射。我理解的反射就是把类的信息给映射成一个对象，通过这个对象可以得到对应的类信息。由此，可以得到类的结构。</p>
+<p>另外，在比较重要的一点就是，如果代码是加固的，那就稍微麻烦一点。需要拿到加固的类加载器，具体看这里<a href="https://www.jianshu.com/p/8324ad8860d2?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=seo_notes&amp;utm_source=recommendation" target="_blank" rel="noopener noreffer">使用xposed来hook使用360加固的应用 - 简书 (jianshu.com)</a></p>
+<p>还有，就是在手机上的<code>vmos</code>虚拟机，<code>xposed</code>的日志不能正常工作，所以我写了一个<code>writefile()</code>方法，用来做日志输出。</p>
+<p>除此之外，没有什么值得注意的了。</p>
+<h3 id="代码">代码</h3>
+<div class="highlight"><pre class="chroma"><code class="language-Java" data-lang="Java"><span class="kn">package</span> <span class="nn">com.example.startu.myapplication233</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">android.app.Application</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.content.Context</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.os.Environment</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.view.View</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.widget.Toast</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.io.File</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.FileOutputStream</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.UnsupportedEncodingException</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.lang.reflect.Field</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.lang.reflect.Modifier</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.security.MessageDigest</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.security.NoSuchAlgorithmException</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.ArrayList</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">de.robv.android.xposed.IXposedHookLoadPackage</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">de.robv.android.xposed.XC_MethodHook</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">de.robv.android.xposed.XC_MethodReplacement</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">de.robv.android.xposed.XposedBridge</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">de.robv.android.xposed.XposedHelpers</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">de.robv.android.xposed.callbacks.XC_LoadPackage.LoadPackageParam</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">HookTest</span> <span class="kd">implements</span> <span class="n">IXposedHookLoadPackage</span> <span class="o">{</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">writefile</span><span class="o">(</span><span class="n">String</span> <span class="n">str</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Throwable</span><span class="o">{</span>
+        <span class="n">String</span> <span class="n">sdCardDir</span> <span class="o">=</span><span class="n">Environment</span><span class="o">.</span><span class="na">getExternalStorageDirectory</span><span class="o">().</span><span class="na">getAbsolutePath</span><span class="o">();</span>
+        <span class="n">File</span> <span class="n">saveFile</span> <span class="o">=</span> <span class="k">new</span> <span class="n">File</span><span class="o">(</span><span class="n">sdCardDir</span><span class="o">,</span> <span class="s">&#34;aaaa.txt&#34;</span><span class="o">);</span>
+        <span class="n">FileOutputStream</span> <span class="n">outStream</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FileOutputStream</span><span class="o">(</span><span class="n">saveFile</span><span class="o">,</span><span class="kc">true</span><span class="o">);</span>
+        <span class="n">outStream</span><span class="o">.</span><span class="na">write</span><span class="o">((</span><span class="n">str</span><span class="o">+</span><span class="s">&#34;\n&#34;</span><span class="o">).</span><span class="na">getBytes</span><span class="o">());</span>
+        <span class="n">outStream</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+    <span class="o">}</span>
+	<span class="c1">// 这地方没有去找软件里面的方法，觉得太麻烦了。所以直接去网络上找到代码复制过来了
+</span><span class="c1"></span>    <span class="kd">private</span> <span class="kd">static</span> <span class="n">String</span> <span class="nf">getMD5</span><span class="o">(</span><span class="n">String</span> <span class="n">info</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">try</span> <span class="o">{</span>
+            <span class="c1">//获取 MessageDigest 对象，参数为 MD5 字符串，表示这是一个 MD5 算法（其他还有 SHA1 算法等）：
+</span><span class="c1"></span>            <span class="n">MessageDigest</span> <span class="n">md5</span> <span class="o">=</span> <span class="n">MessageDigest</span><span class="o">.</span><span class="na">getInstance</span><span class="o">(</span><span class="s">&#34;MD5&#34;</span><span class="o">);</span>
+            <span class="c1">//update(byte[])方法，输入原数据
+</span><span class="c1"></span>            <span class="c1">//类似StringBuilder对象的append()方法，追加模式，属于一个累计更改的过程
+</span><span class="c1"></span>            <span class="n">md5</span><span class="o">.</span><span class="na">update</span><span class="o">(</span><span class="n">info</span><span class="o">.</span><span class="na">getBytes</span><span class="o">(</span><span class="s">&#34;UTF-8&#34;</span><span class="o">));</span>
+            <span class="c1">//digest()被调用后,MessageDigest对象就被重置，即不能连续再次调用该方法计算原数据的MD5值。可以手动调用reset()方法重置输入源。
+</span><span class="c1"></span>            <span class="c1">//digest()返回值16位长度的哈希值，由byte[]承接
+</span><span class="c1"></span>            <span class="kt">byte</span><span class="o">[]</span> <span class="n">md5Array</span> <span class="o">=</span> <span class="n">md5</span><span class="o">.</span><span class="na">digest</span><span class="o">();</span>
+            <span class="c1">//byte[]通常我们会转化为十六进制的32位长度的字符串来使用,本文会介绍三种常用的转换方法
+</span><span class="c1"></span>            <span class="k">return</span> <span class="n">bytesToHex1</span><span class="o">(</span><span class="n">md5Array</span><span class="o">);</span>
+        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">NoSuchAlgorithmException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">return</span> <span class="s">&#34;&#34;</span><span class="o">;</span>
+        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">UnsupportedEncodingException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">return</span> <span class="s">&#34;&#34;</span><span class="o">;</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+
+    <span class="kd">private</span> <span class="kd">static</span> <span class="n">String</span> <span class="nf">bytesToHex1</span><span class="o">(</span><span class="kt">byte</span><span class="o">[]</span> <span class="n">md5Array</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">StringBuilder</span> <span class="n">strBuilder</span> <span class="o">=</span> <span class="k">new</span> <span class="n">StringBuilder</span><span class="o">();</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">md5Array</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="kt">int</span> <span class="n">temp</span> <span class="o">=</span> <span class="n">0xff</span> <span class="o">&amp;</span> <span class="n">md5Array</span><span class="o">[</span><span class="n">i</span><span class="o">];</span><span class="c1">//TODO:此处为什么添加 0xff &amp; ？
+</span><span class="c1"></span>            <span class="n">String</span> <span class="n">hexString</span> <span class="o">=</span> <span class="n">Integer</span><span class="o">.</span><span class="na">toHexString</span><span class="o">(</span><span class="n">temp</span><span class="o">);</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">hexString</span><span class="o">.</span><span class="na">length</span><span class="o">()</span> <span class="o">==</span> <span class="n">1</span><span class="o">)</span> <span class="o">{</span><span class="c1">//如果是十六进制的0f，默认只显示f，此时要补上0
+</span><span class="c1"></span>                <span class="n">strBuilder</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">&#34;0&#34;</span><span class="o">).</span><span class="na">append</span><span class="o">(</span><span class="n">hexString</span><span class="o">);</span>
+            <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+                <span class="n">strBuilder</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="n">hexString</span><span class="o">);</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="n">strBuilder</span><span class="o">.</span><span class="na">toString</span><span class="o">();</span>
+    <span class="o">}</span>
+
+   	<span class="c1">// 依旧不想使用软件里面的复制方法，直接复制网上的代码了。但是可能在Android11上面出现问题，具体看下面说明
+</span><span class="c1"></span>    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">copyfile</span><span class="o">(</span><span class="n">File</span> <span class="n">fromFile</span><span class="o">,</span> <span class="n">File</span> <span class="n">toFile</span><span class="o">,</span><span class="n">Boolean</span> <span class="n">rewrite</span> <span class="o">)</span> <span class="kd">throws</span> <span class="n">Throwable</span>
+    <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(!</span><span class="n">fromFile</span><span class="o">.</span><span class="na">exists</span><span class="o">())</span> <span class="o">{</span>
+            <span class="k">return</span><span class="o">;</span>
+        <span class="o">}</span>
+        <span class="k">if</span> <span class="o">(!</span><span class="n">fromFile</span><span class="o">.</span><span class="na">isFile</span><span class="o">())</span> <span class="o">{</span>
+            <span class="k">return</span> <span class="o">;</span>
+        <span class="o">}</span>
+        <span class="k">if</span> <span class="o">(!</span><span class="n">fromFile</span><span class="o">.</span><span class="na">canRead</span><span class="o">())</span> <span class="o">{</span>
+            <span class="k">return</span> <span class="o">;</span>
+        <span class="o">}</span>
+        <span class="k">if</span> <span class="o">(!</span><span class="n">toFile</span><span class="o">.</span><span class="na">getParentFile</span><span class="o">().</span><span class="na">exists</span><span class="o">())</span> <span class="o">{</span>
+            <span class="n">toFile</span><span class="o">.</span><span class="na">getParentFile</span><span class="o">().</span><span class="na">mkdirs</span><span class="o">();</span>
+        <span class="o">}</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">toFile</span><span class="o">.</span><span class="na">exists</span><span class="o">()</span> <span class="o">&amp;&amp;</span> <span class="n">rewrite</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">toFile</span><span class="o">.</span><span class="na">delete</span><span class="o">();</span>
+        <span class="o">}</span>
+
+        <span class="k">try</span> <span class="o">{</span>
+            <span class="n">java</span><span class="o">.</span><span class="na">io</span><span class="o">.</span><span class="na">FileInputStream</span> <span class="n">fosfrom</span> <span class="o">=</span> <span class="k">new</span> <span class="n">java</span><span class="o">.</span><span class="na">io</span><span class="o">.</span><span class="na">FileInputStream</span><span class="o">(</span><span class="n">fromFile</span><span class="o">);</span>
+            <span class="n">java</span><span class="o">.</span><span class="na">io</span><span class="o">.</span><span class="na">FileOutputStream</span> <span class="n">fosto</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FileOutputStream</span><span class="o">(</span><span class="n">toFile</span><span class="o">);</span>
+            <span class="kt">byte</span> <span class="n">bt</span><span class="o">[]</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">byte</span><span class="o">[</span><span class="n">1024</span><span class="o">];</span>
+            <span class="kt">int</span> <span class="n">c</span><span class="o">;</span>
+            <span class="k">while</span> <span class="o">((</span><span class="n">c</span> <span class="o">=</span> <span class="n">fosfrom</span><span class="o">.</span><span class="na">read</span><span class="o">(</span><span class="n">bt</span><span class="o">))</span> <span class="o">&gt;</span> <span class="n">0</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">fosto</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">bt</span><span class="o">,</span> <span class="n">0</span><span class="o">,</span> <span class="n">c</span><span class="o">);</span> <span class="c1">//将内容写到新文件当中
+</span><span class="c1"></span>            <span class="o">}</span>
+            <span class="n">fosfrom</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+            <span class="n">fosto</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+
+        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">Exception</span> <span class="n">ex</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">writefile</span><span class="o">(</span><span class="n">ex</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">handleLoadPackage</span><span class="o">(</span><span class="kd">final</span> <span class="n">LoadPackageParam</span> <span class="n">loadPackageParam</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Throwable</span> <span class="o">{</span>
+        <span class="n">XposedBridge</span><span class="o">.</span><span class="na">log</span><span class="o">(</span><span class="s">&#34;Loaded app: &#34;</span> <span class="o">+</span> <span class="n">loadPackageParam</span><span class="o">.</span><span class="na">packageName</span><span class="o">);</span>
+        <span class="c1">// writefile(&#34;启动包: &#34;+loadPackageParam.packageName);
+</span><span class="c1"></span>        <span class="k">if</span> <span class="o">(</span><span class="n">loadPackageParam</span><span class="o">.</span><span class="na">packageName</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">&#34;com.mmzztt.app&#34;</span><span class="o">))</span> <span class="o">{</span>
+            <span class="n">writefile</span><span class="o">(</span><span class="s">&#34;发现目标: &#34;</span><span class="o">+</span><span class="n">loadPackageParam</span><span class="o">.</span><span class="na">packageName</span><span class="o">);</span>
+            <span class="n">Class</span><span class="o">&lt;?&gt;</span> <span class="n">clazz</span> <span class="o">=</span> <span class="n">XposedHelpers</span><span class="o">.</span><span class="na">findClass</span><span class="o">(</span><span class="s">&#34;com.stub.StubApp&#34;</span><span class="o">,</span> <span class="n">loadPackageParam</span><span class="o">.</span><span class="na">classLoader</span><span class="o">);</span>
+            <span class="c1">// Class clazz = loadPackageParam.classLoader.loadClass(&#34;ceui.lisa.download.IllustDownload&#34;);
+</span><span class="c1"></span>            <span class="n">XposedHelpers</span><span class="o">.</span><span class="na">findAndHookMethod</span><span class="o">(</span><span class="n">clazz</span><span class="o">,</span> <span class="s">&#34;interface7&#34;</span><span class="o">,</span><span class="n">Application</span><span class="o">.</span><span class="na">class</span><span class="o">,</span><span class="n">Context</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="k">new</span> <span class="n">XC_MethodHook</span><span class="o">()</span> <span class="o">{</span>
+                <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">beforeHookedMethod</span><span class="o">(</span><span class="n">XC_MethodHook</span><span class="o">.</span><span class="na">MethodHookParam</span> <span class="n">param</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Throwable</span> <span class="o">{</span>
+                    <span class="kd">super</span><span class="o">.</span><span class="na">beforeHookedMethod</span><span class="o">(</span><span class="n">param</span><span class="o">);</span>
+                    <span class="n">writefile</span><span class="o">(</span><span class="s">&#34;进入函数: &#34;</span><span class="o">);</span>
+                    <span class="n">Context</span> <span class="n">context</span> <span class="o">=</span> <span class="o">(</span><span class="n">Context</span><span class="o">)</span> <span class="n">param</span><span class="o">.</span><span class="na">args</span><span class="o">[</span><span class="n">1</span><span class="o">];</span>
+                    <span class="c1">//获取classloader，之后hook加固后的就使用这个classloader
+</span><span class="c1"></span>                    <span class="n">ClassLoader</span> <span class="n">realClassLoader</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="na">getClassLoader</span><span class="o">();</span>
+                    <span class="n">hookCheckoutXposed</span><span class="o">(</span><span class="n">realClassLoader</span><span class="o">,</span><span class="n">loadPackageParam</span><span class="o">);</span>
+                    <span class="n">writefile</span><span class="o">(</span><span class="s">&#34;hook结束&#34;</span><span class="o">);</span>
+                <span class="o">}</span>
+
+                <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">afterHookedMethod</span><span class="o">(</span><span class="n">MethodHookParam</span> <span class="n">param</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Throwable</span> <span class="o">{</span>
+                    <span class="c1">// param.setResult(&#34;你已被劫持&#34;);
+</span><span class="c1"></span>                    <span class="c1">// writefile(&#34;新的图片:&#34;);
+</span><span class="c1"></span>                <span class="o">}</span>
+            <span class="o">});</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+
+    <span class="kd">private</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">mImagePaths</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">pos</span><span class="o">;</span>
+    <span class="kd">private</span>  <span class="n">String</span> <span class="n">cache_files</span><span class="o">=</span><span class="s">&#34;/sdcard/Android/data/com.mmzztt.app/cache/UIPhotoViewer/&#34;</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="n">String</span> <span class="n">mmttzz_files</span> <span class="o">=</span> <span class="s">&#34;/sdcard/mmzztt/&#34;</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kt">boolean</span> <span class="n">is_copy</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
+    <span class="n">Context</span> <span class="n">context</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">hookCheckoutXposed</span><span class="o">(</span><span class="n">ClassLoader</span> <span class="n">classLoader</span><span class="o">,</span><span class="kd">final</span> <span class="n">LoadPackageParam</span> <span class="n">loadPackageParam</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Throwable</span> <span class="o">{</span>
+        <span class="n">writefile</span><span class="o">(</span><span class="s">&#34;进入hook函数&#34;</span><span class="o">);</span>
+
+        <span class="n">Class</span> <span class="n">Context_c</span> <span class="o">=</span> <span class="n">loadPackageParam</span><span class="o">.</span><span class="na">classLoader</span><span class="o">.</span><span class="na">loadClass</span><span class="o">(</span><span class="s">&#34;android.content.Context&#34;</span><span class="o">);</span>
+
+        <span class="c1">// 获取 Context
+</span><span class="c1"></span>        <span class="n">XposedHelpers</span><span class="o">.</span><span class="na">findAndHookMethod</span><span class="o">(</span><span class="s">&#34;com.uzmap.pkg.uzcore.uzmodule.UZModule&#34;</span><span class="o">,</span> <span class="n">classLoader</span><span class="o">,</span> <span class="s">&#34;initPlatform&#34;</span><span class="o">,</span> <span class="n">Context_c</span><span class="o">,</span> <span class="k">new</span> <span class="n">XC_MethodHook</span><span class="o">()</span> <span class="o">{</span>
+            <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">beforeHookedMethod</span><span class="o">(</span><span class="n">MethodHookParam</span> <span class="n">param</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Throwable</span> <span class="o">{</span>
+                <span class="k">if</span><span class="o">(</span><span class="n">param</span><span class="o">.</span><span class="na">args</span><span class="o">[</span><span class="n">0</span><span class="o">]</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+                    <span class="n">context</span> <span class="o">=</span> <span class="o">(</span><span class="n">Context</span><span class="o">)</span><span class="n">param</span><span class="o">.</span><span class="na">args</span><span class="o">[</span><span class="n">0</span><span class="o">];</span>
+                    <span class="n">cache_files</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="na">getExternalCacheDir</span><span class="o">().</span><span class="na">getAbsolutePath</span><span class="o">()</span> <span class="o">+</span> <span class="s">&#34;/UIPhotoViewer/&#34;</span><span class="o">;</span>
+                    <span class="n">writefile</span><span class="o">(</span><span class="s">&#34;cache_files: &#34;</span><span class="o">+</span><span class="n">cache_files</span><span class="o">);</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+        <span class="o">});</span>
+
+        <span class="n">XposedHelpers</span><span class="o">.</span><span class="na">findAndHookMethod</span><span class="o">(</span><span class="s">&#34;android.support.v4.view.PagerAdapter&#34;</span><span class="o">,</span> <span class="n">classLoader</span><span class="o">,</span> <span class="s">&#34;setPrimaryItem&#34;</span><span class="o">,</span> <span class="n">View</span><span class="o">.</span><span class="na">class</span><span class="o">,</span><span class="kt">int</span><span class="o">.</span><span class="na">class</span><span class="o">,</span><span class="n">Object</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="k">new</span> <span class="n">XC_MethodHook</span><span class="o">()</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">afterHookedMethod</span><span class="o">(</span><span class="n">MethodHookParam</span> <span class="n">param</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Throwable</span> <span class="o">{</span>
+                <span class="k">if</span><span class="o">(</span><span class="n">param</span><span class="o">.</span><span class="na">args</span><span class="o">[</span><span class="n">1</span><span class="o">]</span> <span class="o">==</span> <span class="kc">null</span><span class="o">){</span>
+                    <span class="n">pos</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span>
+                <span class="o">}</span><span class="k">else</span><span class="o">{</span>
+                    <span class="n">pos</span> <span class="o">=</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span><span class="n">param</span><span class="o">.</span><span class="na">args</span><span class="o">[</span><span class="n">1</span><span class="o">];</span>
+                <span class="o">}</span>
+                <span class="n">is_copy</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
+
+            <span class="o">}</span>
+        <span class="o">});</span>
+
+        <span class="n">XposedHelpers</span><span class="o">.</span><span class="na">findAndHookMethod</span><span class="o">(</span><span class="s">&#34;com.uzmap.pkg.uzmodules.photoBrowserSu.view.largeImage.LargeImageView&#34;</span><span class="o">,</span> <span class="n">classLoader</span><span class="o">,</span> <span class="s">&#34;smoothScale&#34;</span><span class="o">,</span> <span class="kt">float</span><span class="o">.</span><span class="na">class</span><span class="o">,</span><span class="kt">int</span><span class="o">.</span><span class="na">class</span><span class="o">,</span><span class="kt">int</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="k">new</span> <span class="n">XC_MethodHook</span><span class="o">()</span> <span class="o">{</span>
+            <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">afterHookedMethod</span><span class="o">(</span><span class="n">MethodHookParam</span> <span class="n">param</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Throwable</span> <span class="o">{</span>
+                <span class="n">writefile</span><span class="o">(</span><span class="s">&#34;双击了&#34;</span><span class="o">);</span>
+
+                <span class="n">String</span> <span class="n">url</span> <span class="o">=</span> <span class="n">mImagePaths</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">pos</span><span class="o">);</span>
+                <span class="k">if</span><span class="o">(</span><span class="n">url</span> <span class="o">==</span> <span class="kc">null</span><span class="o">){</span>
+                    <span class="n">Toast</span><span class="o">.</span><span class="na">makeText</span><span class="o">(</span><span class="n">context</span><span class="o">,</span><span class="s">&#34;获取图片url失败&#34;</span><span class="o">,</span><span class="n">Toast</span><span class="o">.</span><span class="na">LENGTH_SHORT</span><span class="o">).</span><span class="na">show</span><span class="o">();</span>
+                    <span class="k">return</span> <span class="o">;</span>
+                <span class="o">}</span>
+                <span class="n">String</span> <span class="n">md5_string</span> <span class="o">=</span> <span class="n">getMD5</span><span class="o">(</span><span class="n">url</span><span class="o">);</span>
+                <span class="n">String</span> <span class="n">md5_name</span> <span class="o">=</span> <span class="n">md5_string</span><span class="o">+</span><span class="s">&#34;.jpg&#34;</span><span class="o">;</span>
+                <span class="n">String</span> <span class="n">file_name</span> <span class="o">=</span> <span class="n">md5_name</span><span class="o">;</span>
+
+                <span class="n">writefile</span><span class="o">(</span><span class="s">&#34;定位&#34;</span><span class="o">+</span><span class="n">pos</span><span class="o">+</span><span class="s">&#34;, 内容: &#34;</span> <span class="o">+</span> <span class="n">url</span> <span class="o">+</span> <span class="s">&#34;, md5: &#34;</span><span class="o">+</span><span class="n">md5_string</span><span class="o">);</span>
+
+                <span class="n">String</span><span class="o">[]</span> <span class="n">l_list</span> <span class="o">=</span> <span class="n">url</span><span class="o">.</span><span class="na">split</span><span class="o">(</span><span class="s">&#34;/&#34;</span><span class="o">);</span>
+                <span class="k">if</span><span class="o">(</span><span class="n">l_list</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">){</span>
+                    <span class="n">file_name</span> <span class="o">=</span> <span class="n">l_list</span><span class="o">[</span><span class="n">l_list</span><span class="o">.</span><span class="na">length</span><span class="o">-</span><span class="n">1</span><span class="o">];</span>
+                <span class="o">}</span>
+                <span class="n">writefile</span><span class="o">(</span><span class="s">&#34;file_name: &#34;</span><span class="o">+</span><span class="n">file_name</span><span class="o">+</span><span class="s">&#34;, l_list.length: &#34;</span><span class="o">+</span><span class="n">l_list</span><span class="o">.</span><span class="na">length</span><span class="o">);</span>
+                <span class="k">if</span><span class="o">(!</span><span class="n">is_copy</span><span class="o">)</span> <span class="o">{</span>
+                    <span class="n">copyfile</span><span class="o">(</span><span class="k">new</span> <span class="n">File</span><span class="o">(</span><span class="n">cache_files</span> <span class="o">+</span> <span class="n">md5_string</span><span class="o">),</span> <span class="k">new</span> <span class="n">File</span><span class="o">(</span><span class="n">mmttzz_files</span> <span class="o">+</span> <span class="n">file_name</span><span class="o">),</span> <span class="kc">true</span><span class="o">);</span>
+                    <span class="n">Toast</span><span class="o">.</span><span class="na">makeText</span><span class="o">(</span><span class="n">context</span><span class="o">,</span><span class="s">&#34;保存图片&#34;</span><span class="o">+</span><span class="n">file_name</span><span class="o">,</span><span class="n">Toast</span><span class="o">.</span><span class="na">LENGTH_SHORT</span><span class="o">).</span><span class="na">show</span><span class="o">();</span>
+                    <span class="n">is_copy</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+        <span class="o">});</span>
+
+        <span class="n">Class</span> <span class="n">UZModuleContext_c</span> <span class="o">=</span> <span class="n">loadPackageParam</span><span class="o">.</span><span class="na">classLoader</span><span class="o">.</span><span class="na">loadClass</span><span class="o">(</span><span class="s">&#34;com.uzmap.pkg.uzcore.uzmodule.UZModuleContext&#34;</span><span class="o">);</span>
+        <span class="n">XposedHelpers</span><span class="o">.</span><span class="na">findAndHookMethod</span><span class="o">(</span><span class="s">&#34;com.apicloud.dialogBox.DialogBox&#34;</span><span class="o">,</span> <span class="n">classLoader</span><span class="o">,</span> <span class="s">&#34;jsmethod_alert&#34;</span><span class="o">,</span><span class="n">UZModuleContext_c</span><span class="o">,</span> <span class="k">new</span> <span class="n">XC_MethodReplacement</span><span class="o">()</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">protected</span> <span class="n">Object</span> <span class="nf">replaceHookedMethod</span><span class="o">(</span><span class="n">MethodHookParam</span> <span class="n">param</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Throwable</span> <span class="o">{</span>
+                <span class="n">writefile</span><span class="o">(</span><span class="s">&#34;禁止一个 alert弹窗&#34;</span><span class="o">);</span>
+                <span class="n">Toast</span><span class="o">.</span><span class="na">makeText</span><span class="o">(</span><span class="n">context</span><span class="o">,</span><span class="s">&#34;你是真的想更新嘛？&#34;</span><span class="o">,</span><span class="n">Toast</span><span class="o">.</span><span class="na">LENGTH_SHORT</span><span class="o">).</span><span class="na">show</span><span class="o">();</span>
+                <span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
+            <span class="o">}</span>
+        <span class="o">});</span>
+
+        <span class="n">Class</span> <span class="n">ImageLoader_c</span> <span class="o">=</span> <span class="n">loadPackageParam</span><span class="o">.</span><span class="na">classLoader</span><span class="o">.</span><span class="na">loadClass</span><span class="o">(</span><span class="s">&#34;com.uzmap.pkg.uzmodules.photoBrowserSu.ImageLoader&#34;</span><span class="o">);</span>
+        <span class="n">Class</span> <span class="n">ImageBrowserAdapter_c</span> <span class="o">=</span> <span class="n">loadPackageParam</span><span class="o">.</span><span class="na">classLoader</span><span class="o">.</span><span class="na">loadClass</span><span class="o">(</span><span class="s">&#34;com.uzmap.pkg.uzmodules.photoBrowserSu.ImageBrowserAdapter&#34;</span><span class="o">);</span>
+
+        <span class="n">XposedHelpers</span><span class="o">.</span><span class="na">findAndHookConstructor</span><span class="o">(</span><span class="n">ImageBrowserAdapter_c</span><span class="o">,</span> <span class="n">Context_c</span><span class="o">,</span><span class="n">UZModuleContext_c</span><span class="o">,</span><span class="n">ArrayList</span><span class="o">.</span><span class="na">class</span><span class="o">,</span><span class="n">ImageLoader_c</span><span class="o">,</span><span class="n">String</span><span class="o">.</span><span class="na">class</span><span class="o">,</span>  <span class="k">new</span> <span class="n">XC_MethodHook</span><span class="o">()</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">beforeHookedMethod</span><span class="o">(</span><span class="n">MethodHookParam</span> <span class="n">param</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Throwable</span> <span class="o">{</span>
+                <span class="n">writefile</span><span class="o">(</span><span class="s">&#34;进入 ImageBrowserAdapter 的构造函数了&#34;</span><span class="o">);</span>
+                <span class="k">try</span> <span class="o">{</span>
+                    <span class="n">mImagePaths</span> <span class="o">=</span> <span class="o">(</span><span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;)</span> <span class="n">param</span><span class="o">.</span><span class="na">args</span><span class="o">[</span><span class="n">2</span><span class="o">];</span>
+<span class="c1">//                    for(int i=0;i&lt;mImagePaths.size();i++){
+</span><span class="c1">//                        writefile(mImagePaths.get(i));
+</span><span class="c1">//                    }
+</span><span class="c1"></span>                    <span class="n">writefile</span><span class="o">(</span><span class="s">&#34;数组长度: &#34;</span> <span class="o">+</span> <span class="n">mImagePaths</span><span class="o">.</span><span class="na">size</span><span class="o">());</span>
+                <span class="o">}</span><span class="k">catch</span> <span class="o">(</span><span class="n">Exception</span> <span class="n">e</span><span class="o">){</span>
+                    <span class="n">writefile</span><span class="o">(</span><span class="n">e</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+        <span class="o">});</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+</code></pre></div><h3 id="弹出toast">弹出toast</h3>
+<p>这部分需要获取目标软件的<code>Context</code>，这个需要分析代码，一般来说，没有加固的代码，在入口类中就能找到。但是如果是加固之后的，可能需要找加固方案的代码了。具体看上面的代码，找到什么方法参数是<code>Context</code>的就能获取到，当然是不是任意一个<code>Context</code>都行我就不清楚了。</p>
+<h3 id="关于复制文件">关于复制文件</h3>
+<p>手机更新<code>Android 11</code>之后，对应用就不能随意访问<code>Adnroid/data/</code>目录了，所以上面的代码可能会复制文件失败，因为模块并不是目标软件，所以可能会有权限问题，当然只是猜测。遇到这种情况，可以试试<code>hook</code>目标软件自己的复制文件方法。或者拿到<code>url</code>自己下载，或者直接拿到输出流写到自己的目录。</p>
+<h2 id="操作过程中可能需要的操作">操作过程中可能需要的操作</h2>
+<h3 id="启用adb网络调试">启用ADB网络调试</h3>
+<div class="highlight"><pre class="chroma"><code class="language-Shell" data-lang="Shell">TCP/IP方式：
+setprop service.adb.tcp.port <span class="m">5555</span>
+stop adbd
+start adbd
+ 
+usb方式：
+setprop service.adb.tcp.port -1
+stop adbd
+start adbd
+</code></pre></div><p>from:<a href="https://blog.csdn.net/shawnkong/article/details/8923933" target="_blank" rel="noopener noreffer">(2条消息) Android 网络调试 adb tcpip 开启方法_Shawn Kong的专栏-CSDN博客</a></p>
+<h3 id="禁用-selinux">禁用 SELinux</h3>
+<div class="highlight"><pre class="chroma"><code class="language-Shell" data-lang="Shell">setenforce <span class="m">0</span>
+</code></pre></div><ul>
+<li>级别0：表示Permissive模式。</li>
+<li>级别1：表示Enforcing模式。</li>
+<li>至于disabled模式和其他模式的切换只能修改配置文件,命令不起作用。其次,修改完成之后,必须重启系统才能够生效。</li>
+</ul>
+<p>from: <a href="https://www.jianshu.com/p/27b69ba08aac" target="_blank" rel="noopener noreffer">Android查看SELinux状态及关闭SELinux - 简书 (jianshu.com)</a></p>
+<h3 id="apktool">apktool</h3>
+<h4 id="解包">解包</h4>
+<div class="highlight"><pre class="chroma"><code class="language-Shell" data-lang="Shell">apktool.jar d Shaft_3.1.5.apk -o Sha
+</code></pre></div><p>打包</p>
+<div class="highlight"><pre class="chroma"><code class="language-Shell" data-lang="Shell">apktool.bat b <span class="o">[</span>资源文件夹<span class="o">]</span> <span class="o">[</span>打包生成的apk文件<span class="o">]</span> 
+</code></pre></div><p>from:<a href="https://blog.csdn.net/qq_27292113/article/details/79931268" target="_blank" rel="noopener noreffer">(2条消息) 使用ApkTool_一起进步的博客-CSDN博客_apktool</a></p>
+<h3 id="busybox">BusyBox</h3>
+<p><a href="https://github.com/meefik/busybox" target="_blank" rel="noopener noreffer">meefik/busybox: BusyBox for Android (github.com)</a></p>
+<h3 id="添加库">添加库</h3>
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="n">repositories</span> <span class="o">{</span>
+    <span class="n">jcenter</span><span class="o">()</span>
+<span class="o">}</span>
+
+<span class="n">compileOnly</span> <span class="err">&#39;</span><span class="n">de</span><span class="o">.</span><span class="na">robv</span><span class="o">.</span><span class="na">android</span><span class="o">.</span><span class="na">xposed</span><span class="o">:</span><span class="n">api</span><span class="o">:</span><span class="n">82</span><span class="err">&#39;</span>
+<span class="n">compileOnly</span> <span class="err">&#39;</span><span class="n">de</span><span class="o">.</span><span class="na">robv</span><span class="o">.</span><span class="na">android</span><span class="o">.</span><span class="na">xposed</span><span class="o">:</span><span class="n">api</span><span class="o">:</span><span class="n">82</span><span class="o">:</span><span class="n">sources</span><span class="err">&#39;</span>
+</code></pre></div><h3 id="新项目需要添加的">新项目需要添加的</h3>
+<div class="highlight"><pre class="chroma"><code class="language-xml" data-lang="xml">        <span class="nt">&lt;meta-data</span>
+            <span class="na">android:name=</span><span class="s">&#34;xposedmodule&#34;</span>
+            <span class="na">android:value=</span><span class="s">&#34;true&#34;</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;meta-data</span>
+            <span class="na">android:name=</span><span class="s">&#34;xposeddescription&#34;</span>
+            <span class="na">android:value=</span><span class="s">&#34;模块描述&#34;</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;meta-data</span>
+            <span class="na">android:name=</span><span class="s">&#34;xposedminversion&#34;</span>
+            <span class="na">android:value=</span><span class="s">&#34;54&#34;</span> <span class="nt">/&gt;</span>
+</code></pre></div><h3 id="旧版本下载地址">旧版本下载地址</h3>
+<p><a href="https://developer.android.google.cn/studio/archive" target="_blank" rel="noopener noreffer">Android Studio 下载文件归档  | Android 开发者  | Android Developers (google.cn)</a></p>
+<p>3.2.1版本</p>
+<h3 id="遇到的问题">遇到的问题</h3>
+<p>使用旧版本 初始化项目的时候就会出错</p>
+<p><a href="https://blog.csdn.net/qq_35427437/article/details/79835673" target="_blank" rel="noopener noreffer">Unable to resolve dependency for ‘:app@debug/compileClasspath‘: Could not resolve com.android.suppor_达帮主-CSDN博客</a></p>
+<h2 id="操作过程的一些记录">操作过程的一些记录</h2>
+<ul>
+<li>
+<p>安装</p>
+<p><code>pip install frida-dexdump</code></p>
+</li>
+<li>
+<p>dump dex</p>
+<p><code>frida-dexdump</code></p>
+</li>
+<li>
+<p>通过<code>jafx-gui</code>打开dex</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://qiniusave.xint.top/img/image-20210614212913273.png"
+        data-srcset="https://qiniusave.xint.top/img/image-20210614212913273.png, https://qiniusave.xint.top/img/image-20210614212913273.png 1.5x, https://qiniusave.xint.top/img/image-20210614212913273.png 2x"
+        data-sizes="auto"
+        alt="https://qiniusave.xint.top/img/image-20210614212913273.png"
+        title="image-20210614212913273" /></p>
+<p>绝了，这个软件的反反编译能力我觉得挺强的</p>
+</li>
+<li>
+<p>终于找到了关键方法</p>
+<p><code>com.uzmap.pkg.uzmodules.photoBrowserSu.ImageDownLoader.saveFile(java.io.InputStream, java.lang.String)</code></p>
+</li>
+<li>
+<p>通过分析xml，找到了菜单</p>
+</li>
+<li>
+<p>找到了取消按钮的点击事件</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://qiniusave.xint.top/img/image-20210614233042906.png"
+        data-srcset="https://qiniusave.xint.top/img/image-20210614233042906.png, https://qiniusave.xint.top/img/image-20210614233042906.png 1.5x, https://qiniusave.xint.top/img/image-20210614233042906.png 2x"
+        data-sizes="auto"
+        alt="https://qiniusave.xint.top/img/image-20210614233042906.png"
+        title="image-20210614233042906" /></p>
+<p>但是通过这个方法并不能得到什么有用的信息，好像拿不到需要的图片。所以考虑别的方法。</p>
+<p>我有注意到似乎有双击操作。。。</p>
+</li>
+<li>
+<p>使用前面的xposed模板，写入类名和方法，一次成功</p>
+</li>
+<li>
+<p><a href="https://www.jianshu.com/p/c730b5e0c150" target="_blank" rel="noopener noreffer">Xposed第一课(微信篇) hook含有多个参数的方法 - 简书 (jianshu.com)</a></p>
+</li>
+<li>
+<p>通过xposed成功拿到双击会触发的方法，感觉快看到胜利的曙光了</p>
+</li>
+<li>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://qiniusave.xint.top/img/image-20210615233012378.png"
+        data-srcset="https://qiniusave.xint.top/img/image-20210615233012378.png, https://qiniusave.xint.top/img/image-20210615233012378.png 1.5x, https://qiniusave.xint.top/img/image-20210615233012378.png 2x"
+        data-sizes="auto"
+        alt="https://qiniusave.xint.top/img/image-20210615233012378.png"
+        title="image-20210615233012378" /></p>
+</li>
+<li>
+<p>上一步找到了双击，接下来就要获取到当前正在看的图片了</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://qiniusave.xint.top/img/image-20210616230425945.png"
+        data-srcset="https://qiniusave.xint.top/img/image-20210616230425945.png, https://qiniusave.xint.top/img/image-20210616230425945.png 1.5x, https://qiniusave.xint.top/img/image-20210616230425945.png 2x"
+        data-sizes="auto"
+        alt="https://qiniusave.xint.top/img/image-20210616230425945.png"
+        title="image-20210616230425945" /></p>
+<p>此处找到了在载入图片完成之后会调用的方法了，但是这个方法并不好用</p>
+<p>于是找到了更好用的办法</p>
+<p>android.support.v4.view.ViewPager;</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://qiniusave.xint.top/img/image-20210616235043719.png"
+        data-srcset="https://qiniusave.xint.top/img/image-20210616235043719.png, https://qiniusave.xint.top/img/image-20210616235043719.png 1.5x, https://qiniusave.xint.top/img/image-20210616235043719.png 2x"
+        data-sizes="auto"
+        alt="https://qiniusave.xint.top/img/image-20210616235043719.png"
+        title="image-20210616235043719" /></p>
+<p>这两个是加载和预加载，通过这两个可以得到加载的具体的具体图片</p>
+</li>
+<li>
+<p>ImageBrowserAdapter 构造函数可以获得列表，但是其中都是url需要取md5</p>
+</li>
+<li>
+<p><code>uiautomator dump /sdcard/ui.xml</code> 命令可以得到当前最顶层的布局</p>
+</li>
+<li>
+<p><code>dumpsys window | grep  mCurrentFocus</code> 命令可以得到最顶层的<code>Activity</code></p>
+</li>
+<li>
+<p>禁止弹窗</p>
+</li>
+</ul>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2021-06-09</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="/posts/2021/06/09/ck_mmzztt/" data-title="破解一个极难的软件" data-hashtags="HOOK,Android,Xposed,反编译,frida,objection"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="/posts/2021/06/09/ck_mmzztt/" data-hashtag="HOOK"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="分享到 WhatsApp" data-sharer="whatsapp" data-url="/posts/2021/06/09/ck_mmzztt/" data-title="破解一个极难的软件" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Line" data-sharer="line" data-url="/posts/2021/06/09/ck_mmzztt/" data-title="破解一个极难的软件"><i data-svg-src="/lib/simple-icons/icons/line.min.svg"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="/posts/2021/06/09/ck_mmzztt/" data-title="破解一个极难的软件"><i class="fab fa-weibo fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Myspace" data-sharer="myspace" data-url="/posts/2021/06/09/ck_mmzztt/" data-title="破解一个极难的软件" data-description=""><i data-svg-src="/lib/simple-icons/icons/myspace.min.svg"></i></a><a href="javascript:void(0);" title="分享到 Blogger" data-sharer="blogger" data-url="/posts/2021/06/09/ck_mmzztt/" data-title="破解一个极难的软件" data-description=""><i class="fab fa-blogger fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Evernote" data-sharer="evernote" data-url="/posts/2021/06/09/ck_mmzztt/" data-title="破解一个极难的软件"><i class="fab fa-evernote fa-fw"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/hook/">HOOK</a>,&nbsp;<a href="/tags/android/">Android</a>,&nbsp;<a href="/tags/xposed/">Xposed</a>,&nbsp;<a href="/tags/%E5%8F%8D%E7%BC%96%E8%AF%91/">反编译</a>,&nbsp;<a href="/tags/frida/">Frida</a>,&nbsp;<a href="/tags/objection/">objection</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/2021/05/31/xposed/" class="prev" rel="prev" title="Xposed初体验"><i class="fas fa-angle-left fa-fw"></i>Xposed初体验</a></div>
+</div>
+<div id="comments"><div id="utterances"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://utteranc.es/">Utterances</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.83.1">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank"></a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{"utterances":{"darkTheme":"github-dark","issueTerm":"pathname","label":"","lightTheme":"github-light","repo":"LonelySinging/hugoblogtalks"}},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>
