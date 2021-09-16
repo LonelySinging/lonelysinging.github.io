@@ -3,7 +3,14 @@
         <title>所有文章 - 星途 · 小镇</title>
         <link>/posts/</link>
         <description>所有文章 | 星途 · 小镇</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Wed, 09 Jun 2021 22:01:49 &#43;0800</lastBuildDate><atom:link href="/posts/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Tue, 14 Sep 2021 08:29:14 &#43;0800</lastBuildDate><atom:link href="/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>Kconnect使用sftp windows自定义协议</title>
+    <link>/posts/2021/09/14/register_sftp/</link>
+    <pubDate>Tue, 14 Sep 2021 08:29:14 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>/posts/2021/09/14/register_sftp/</guid>
+    <description><![CDATA[终于有时间写点东西了，上次写东西已经是三个月之前了。自从出现了觉得一个月写一篇文章也没关系的想法之后就已经完全忘记有这回事儿了。一直觉得没有]]></description>
+</item><item>
     <title>破解一个极难的软件</title>
     <link>/posts/2021/06/09/ck_mmzztt/</link>
     <pubDate>Wed, 09 Jun 2021 22:01:49 &#43;0800</pubDate>
@@ -66,12 +73,5 @@
     <author>作者</author>
     <guid>/posts/2021/04/28/panda/</guid>
     <description><![CDATA[概述 弄到了一个熊猫烧香的样本，Delphi程序，和前面的彩虹猫根本就不是一码事儿，这次只能完全看汇编代码了，不过伪代码可以帮忙分析循环条件什]]></description>
-</item><item>
-    <title>RAT病毒分析</title>
-    <link>/posts/2021/04/24/rat/</link>
-    <pubDate>Fri, 02 Aug 2019 20:37:11 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>/posts/2021/04/24/rat/</guid>
-    <description><![CDATA[样本来源 概述 好久没有分析练习了 PEID 应该是C/C++开发的，节表四个很正常 透明图标，大小136KB 139,264 字节 火绒剑 没有其他多余的操作,打开之后直接开]]></description>
 </item></channel>
 </rss>
