@@ -3,7 +3,14 @@
         <title>Categories - 分类 - 星途 · 小镇</title>
         <link>/categories/</link>
         <description>Categories - 分类 - 星途 · 小镇</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Wed, 09 Jun 2021 22:01:49 &#43;0800</lastBuildDate><atom:link href="/categories/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Tue, 14 Sep 2021 08:29:14 &#43;0800</lastBuildDate><atom:link href="/categories/" rel="self" type="application/rss+xml" /><item>
+    <title>折腾</title>
+    <link>/categories/%E6%8A%98%E8%85%BE/</link>
+    <pubDate>Tue, 14 Sep 2021 08:29:14 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>/categories/%E6%8A%98%E8%85%BE/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
     <title>逆向分析</title>
     <link>/categories/%E9%80%86%E5%90%91%E5%88%86%E6%9E%90/</link>
     <pubDate>Wed, 09 Jun 2021 22:01:49 &#43;0800</pubDate>

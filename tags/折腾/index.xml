@@ -3,7 +3,14 @@
         <title>折腾 - 标签 - 星途 · 小镇</title>
         <link>/tags/%E6%8A%98%E8%85%BE/</link>
         <description>折腾 - 标签 - 星途 · 小镇</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Fri, 07 May 2021 06:30:46 &#43;0800</lastBuildDate><atom:link href="/tags/%E6%8A%98%E8%85%BE/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Tue, 14 Sep 2021 08:29:14 &#43;0800</lastBuildDate><atom:link href="/tags/%E6%8A%98%E8%85%BE/" rel="self" type="application/rss+xml" /><item>
+    <title>Kconnect使用sftp windows自定义协议</title>
+    <link>/posts/2021/09/14/register_sftp/</link>
+    <pubDate>Tue, 14 Sep 2021 08:29:14 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>/posts/2021/09/14/register_sftp/</guid>
+    <description><![CDATA[终于有时间写点东西了，上次写东西已经是三个月之前了。自从出现了觉得一个月写一篇文章也没关系的想法之后就已经完全忘记有这回事儿了。一直觉得没有]]></description>
+</item><item>
     <title>我为什么要写博客，以及搭建过程</title>
     <link>/posts/2021/05/07/hugo/</link>
     <pubDate>Fri, 07 May 2021 06:30:46 &#43;0800</pubDate>
