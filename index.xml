@@ -3,9 +3,16 @@
         <title>星途 · 小镇</title>
         <link>/</link>
         <description>星途 · 小镇</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Tue, 14 Sep 2021 08:29:14 &#43;0800</lastBuildDate>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Mon, 11 Oct 2021 08:41:32 &#43;0800</lastBuildDate>
             <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>ffmpeg 使用记录</title>
+    <link>/posts/2021/10/11/ffmpeg_args/</link>
+    <pubDate>Mon, 11 Oct 2021 08:41:32 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>/posts/2021/10/11/ffmpeg_args/</guid>
+    <description><![CDATA[这周周末尝试把我硬盘上面的视频文件压缩了一下，但是效果并不理想。其中主要有两个原因， 视频本来就是h264的编码，再重新编码也没啥用，因为限制]]></description>
+</item><item>
     <title>Kconnect使用sftp windows自定义协议</title>
     <link>/posts/2021/09/14/register_sftp/</link>
     <pubDate>Tue, 14 Sep 2021 08:29:14 &#43;0800</pubDate>
@@ -68,12 +75,5 @@
     <author>作者</author>
     <guid>/posts/2021/04/24/xiec/</guid>
     <description><![CDATA[开始 之前一直在做那个rProxy的项目，后来发现，服务端不用协程或者异步编程这样的手段是不行的，最主要的问题就是对于每个http请求都对应一]]></description>
-</item><item>
-    <title>熊猫烧香病毒分析</title>
-    <link>/posts/2021/04/28/panda/</link>
-    <pubDate>Sun, 15 Mar 2020 22:14:22 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>/posts/2021/04/28/panda/</guid>
-    <description><![CDATA[概述 弄到了一个熊猫烧香的样本，Delphi程序，和前面的彩虹猫根本就不是一码事儿，这次只能完全看汇编代码了，不过伪代码可以帮忙分析循环条件什]]></description>
 </item></channel>
 </rss>
