@@ -26,7 +26,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "\/posts\/2021\/05\/27\/linux_profile\/"
-        },"genre": "posts","keywords": "杂项, linux, 备忘","wordcount":  1223 ,
+        },"genre": "posts","keywords": "杂项, linux, 备忘","wordcount":  1235 ,
         "url": "\/posts\/2021\/05\/27\/linux_profile\/","datePublished": "2021-05-27T17:52:22+08:00","dateModified": "2021-05-27T17:52:22+08:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -76,7 +76,7 @@
             <div class="toc-content always-active" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">linux的登录脚本记录</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>作者</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E5%A4%87%E5%BF%98/"><i class="far fa-folder fa-fw"></i>备忘</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-05-27">2021-05-27</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1223 字&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-05-27">2021-05-27</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1235 字&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 3 分钟&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
@@ -103,6 +103,7 @@
     </li>
     <li><a href="#仅查看自己的进程">仅查看自己的进程</a></li>
     <li><a href="#查看当前目录下文件夹大小">查看当前目录下文件夹大小</a></li>
+    <li><a href="#ps1">PS1</a></li>
   </ul>
 </nav></div>
             </div><div class="content" id="content"><blockquote>
@@ -162,6 +163,17 @@
 <h2 id="查看当前目录下文件夹大小">查看当前目录下文件夹大小</h2>
 <p><code>du -h --max-depth=0 *</code>可以弥补<code>ps</code>没有不能直接看到所有文件夹占用大小的问题</p>
 <p>另外，通过<code>du -sh ~</code> 可以看到自己的<code>home</code>目录占用了多少空间</p>
+<h2 id="ps1">PS1</h2>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">export</span> <span class="nv">PS1</span><span class="o">=</span><span class="s2">&#34;\[\e[31;1m\][\u@\[\e[32;1m\]\h \[\e[32;1m\]\W]\$ \[\e[0m\]&#34;</span>
+</code></pre></div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://qiniusave.xint.top/mdimage-20210629125123739.png"
+        data-srcset="https://qiniusave.xint.top/mdimage-20210629125123739.png, https://qiniusave.xint.top/mdimage-20210629125123739.png 1.5x, https://qiniusave.xint.top/mdimage-20210629125123739.png 2x"
+        data-sizes="auto"
+        alt="https://qiniusave.xint.top/mdimage-20210629125123739.png"
+        title="image-20210629125123739" /></p>
+<p>效果如上图所示</p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">

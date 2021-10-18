@@ -230,23 +230,23 @@
 
 <span class="k">def</span> <span class="nf">getJsonString</span><span class="p">(</span><span class="n">strFileName</span><span class="p">):</span>
     <span class="n">strCmd</span> <span class="o">=</span>  <span class="s1">&#39;ffprobe.exe -v quiet -print_format json -show_format -show_streams -i &#34;&#39;</span> <span class="o">+</span>  <span class="n">strFileName</span>  <span class="o">+</span> <span class="s1">&#39;&#34;&#39;</span>  
-    <span class="c1"># print (strFileName)</span>
+    <span class="c1"># print (strFileName)</span>
     <span class="n">cmd</span> <span class="o">=</span> <span class="n">shlex</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">strCmd</span><span class="p">)</span>
     <span class="n">p</span> <span class="o">=</span> <span class="n">Popen</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span> <span class="n">stdout</span><span class="o">=</span><span class="n">PIPE</span><span class="p">,</span> <span class="n">stderr</span><span class="o">=</span><span class="n">PIPE</span><span class="p">)</span>
     <span class="n">o</span><span class="p">,</span> <span class="n">e</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">communicate</span><span class="p">()</span>
-    <span class="c1"># print(o.decode(&#34;utf-8&#34;))</span>
+    <span class="c1"># print(o.decode(&#34;utf-8&#34;))</span>
     
     <span class="n">mystring</span> <span class="o">=</span> <span class="n">o</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&#34;utf-8&#34;</span><span class="p">)</span>
-    <span class="c1"># mystring = os.popen(strCmd).read().encode(&#39;gbk&#39;)</span>
-    <span class="c1"># mystring = os.popen(strCmd).read().decode(&#39;gbk&#39;)</span>
-    <span class="c1"># mystring = os.popen(strCmd).buffer.read().decode(encoding=&#39;utf-8&#39;)</span>
+    <span class="c1"># mystring = os.popen(strCmd).read().encode(&#39;gbk&#39;)</span>
+    <span class="c1"># mystring = os.popen(strCmd).read().decode(&#39;gbk&#39;)</span>
+    <span class="c1"># mystring = os.popen(strCmd).buffer.read().decode(encoding=&#39;utf-8&#39;)</span>
     
     <span class="k">return</span>  <span class="n">mystring</span>
     
 <span class="k">def</span> <span class="nf">get_rate</span><span class="p">(</span><span class="n">file_name</span><span class="p">):</span>
     <span class="n">info</span> <span class="o">=</span> <span class="n">getJsonString</span><span class="p">(</span><span class="n">file_name</span><span class="p">)</span>
     <span class="n">info</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">info</span><span class="p">)</span>
-    <span class="c1"># print (info[&#34;format&#34;][&#34;bit_rate&#34;])</span>
+    <span class="c1"># print (info[&#34;format&#34;][&#34;bit_rate&#34;])</span>
     <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">info</span><span class="p">[</span><span class="s2">&#34;format&#34;</span><span class="p">][</span><span class="s2">&#34;bit_rate&#34;</span><span class="p">])</span>
 
 <span class="k">print</span><span class="p">(</span><span class="n">get_rate</span><span class="p">(</span><span class="sa">r</span><span class="s2">&#34;C:\Users\Administrator\Documents\1\视频\001.mp4&#34;</span><span class="p">))</span>
