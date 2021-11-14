@@ -3,7 +3,28 @@
         <title>Tags - 标签 - 星途 · 小镇</title>
         <link>/tags/</link>
         <description>Tags - 标签 - 星途 · 小镇</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Mon, 11 Oct 2021 08:41:32 &#43;0800</lastBuildDate><atom:link href="/tags/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sun, 07 Nov 2021 17:17:15 &#43;0800</lastBuildDate><atom:link href="/tags/" rel="self" type="application/rss+xml" /><item>
+    <title>docker</title>
+    <link>/tags/docker/</link>
+    <pubDate>Sun, 07 Nov 2021 17:17:15 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>/tags/docker/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
+    <title>工具</title>
+    <link>/tags/%E5%B7%A5%E5%85%B7/</link>
+    <pubDate>Sun, 07 Nov 2021 17:17:15 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>/tags/%E5%B7%A5%E5%85%B7/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
+    <title>折腾</title>
+    <link>/tags/%E6%8A%98%E8%85%BE/</link>
+    <pubDate>Sun, 07 Nov 2021 17:17:15 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>/tags/%E6%8A%98%E8%85%BE/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
     <title>ffmpeg</title>
     <link>/tags/ffmpeg/</link>
     <pubDate>Mon, 11 Oct 2021 08:41:32 &#43;0800</pubDate>
@@ -46,32 +67,11 @@
     <guid>/tags/%E5%B1%80%E5%9F%9F%E7%BD%91/</guid>
     <description><![CDATA[]]></description>
 </item><item>
-    <title>折腾</title>
-    <link>/tags/%E6%8A%98%E8%85%BE/</link>
-    <pubDate>Tue, 14 Sep 2021 08:29:14 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>/tags/%E6%8A%98%E8%85%BE/</guid>
-    <description><![CDATA[]]></description>
-</item><item>
     <title>Frida</title>
     <link>/tags/frida/</link>
     <pubDate>Wed, 09 Jun 2021 22:01:49 &#43;0800</pubDate>
     <author>作者</author>
     <guid>/tags/frida/</guid>
-    <description><![CDATA[]]></description>
-</item><item>
-    <title>HOOK</title>
-    <link>/tags/hook/</link>
-    <pubDate>Wed, 09 Jun 2021 22:01:49 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>/tags/hook/</guid>
-    <description><![CDATA[]]></description>
-</item><item>
-    <title>objection</title>
-    <link>/tags/objection/</link>
-    <pubDate>Wed, 09 Jun 2021 22:01:49 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>/tags/objection/</guid>
     <description><![CDATA[]]></description>
 </item></channel>
 </rss>

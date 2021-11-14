@@ -3,7 +3,14 @@
         <title>折腾 - 标签 - 星途 · 小镇</title>
         <link>/tags/%E6%8A%98%E8%85%BE/</link>
         <description>折腾 - 标签 - 星途 · 小镇</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Tue, 14 Sep 2021 08:29:14 &#43;0800</lastBuildDate><atom:link href="/tags/%E6%8A%98%E8%85%BE/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sun, 07 Nov 2021 17:17:15 &#43;0800</lastBuildDate><atom:link href="/tags/%E6%8A%98%E8%85%BE/" rel="self" type="application/rss+xml" /><item>
+    <title>Docker的使用记录</title>
+    <link>/posts/2021/11/07/getstart_docker/</link>
+    <pubDate>Sun, 07 Nov 2021 17:17:15 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>/posts/2021/11/07/getstart_docker/</guid>
+    <description><![CDATA[开始 这是第一个尝试在Leanote上面编写文章，我觉得最重要的事情就是能够保证md文件是能够移植的，否则如果这个软件不靠谱的话，我还能把文章]]></description>
+</item><item>
     <title>Kconnect使用sftp windows自定义协议</title>
     <link>/posts/2021/09/14/register_sftp/</link>
     <pubDate>Tue, 14 Sep 2021 08:29:14 &#43;0800</pubDate>
