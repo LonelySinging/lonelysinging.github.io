@@ -120,10 +120,10 @@
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="https://qiniusave.5cser.com/mdimage-20210528162754720.png"
-        data-srcset="https://qiniusave.5cser.com/mdimage-20210528162754720.png, https://qiniusave.5cser.com/mdimage-20210528162754720.png 1.5x, https://qiniusave.5cser.com/mdimage-20210528162754720.png 2x"
+        data-src="https://qiniusave.xint.top/mdimage-20210528162754720.png"
+        data-srcset="https://qiniusave.xint.top/mdimage-20210528162754720.png, https://qiniusave.xint.top/mdimage-20210528162754720.png 1.5x, https://qiniusave.xint.top/mdimage-20210528162754720.png 2x"
         data-sizes="auto"
-        alt="https://qiniusave.5cser.com/mdimage-20210528162754720.png"
+        alt="https://qiniusave.xint.top/mdimage-20210528162754720.png"
         title="image-20210528162754720" /></p>
 <p>可以看到解压之后有classes.dex文件，dex文件就是apk文件真正的可执行文件，具体的代码逻辑都在这个里面，其他的不是此次的重点。另外提一嘴，如果想要得到apk的AndroidManifest.xml文件，需要使用apktool工具，通过查看这个文件可以得到apk需要的权限，以及入口类在哪里。不过直接解压得到的AndroidManifest.xml文件是加密的，这时候就可以使用apktool工具解包apk，能够得到AndroidManifest.xml明文，并且apktool直接把dex反编译成了smali文件(相当于java的汇编)。但是实际上，我认为这是一个令人智熄的操作。因为已经有了更好的解决方法</p>
 <p><a href="https://ibotpeaches.github.io/Apktool/" target="_blank" rel="noopener noreffer">Apktool - A tool for reverse engineering 3rd party, closed, binary Android apps. (ibotpeaches.github.io)</a></p>
@@ -133,10 +133,10 @@
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="https://qiniusave.5cser.com/mdimage-20210528165200296.png"
-        data-srcset="https://qiniusave.5cser.com/mdimage-20210528165200296.png, https://qiniusave.5cser.com/mdimage-20210528165200296.png 1.5x, https://qiniusave.5cser.com/mdimage-20210528165200296.png 2x"
+        data-src="https://qiniusave.xint.top/mdimage-20210528165200296.png"
+        data-srcset="https://qiniusave.xint.top/mdimage-20210528165200296.png, https://qiniusave.xint.top/mdimage-20210528165200296.png 1.5x, https://qiniusave.xint.top/mdimage-20210528165200296.png 2x"
         data-sizes="auto"
-        alt="https://qiniusave.5cser.com/mdimage-20210528165200296.png"
+        alt="https://qiniusave.xint.top/mdimage-20210528165200296.png"
         title="image-20210528165200296" /></p>
 <p>只需要把dex文件拖到dex2jar.bat文件上，就能得到类似于<code>classes-dex2jar.jar</code>这样的jar包了</p>
 <p>不过这个过程不会很顺利，有时候也会生成一个错误文件，这时候就是反编译出错了。可以尝试更新最新的版本解决这个问题，但是我这次更新完了之后也还是不行。但是好在需要的代码都成功反编译出来了</p>
@@ -147,10 +147,10 @@
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="https://qiniusave.5cser.com/mdimage-20210528173409317.png"
-        data-srcset="https://qiniusave.5cser.com/mdimage-20210528173409317.png, https://qiniusave.5cser.com/mdimage-20210528173409317.png 1.5x, https://qiniusave.5cser.com/mdimage-20210528173409317.png 2x"
+        data-src="https://qiniusave.xint.top/mdimage-20210528173409317.png"
+        data-srcset="https://qiniusave.xint.top/mdimage-20210528173409317.png, https://qiniusave.xint.top/mdimage-20210528173409317.png 1.5x, https://qiniusave.xint.top/mdimage-20210528173409317.png 2x"
         data-sizes="auto"
-        alt="https://qiniusave.5cser.com/mdimage-20210528173409317.png"
+        alt="https://qiniusave.xint.top/mdimage-20210528173409317.png"
         title="image-20210528173409317" /></p>
 <p>直接将代码拖到jd-gui的窗口上，就能看到代码了。经过jd-gui反编译的代码非常清晰，甚至保留了符号名这样非常有利于分析程序代码。</p>
 <p>但是大多时候并不会很顺利，还会有加固的可能。(在windows上叫做加壳)</p>
@@ -162,10 +162,10 @@
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="https://qiniusave.5cser.com/mdimage-20210528174400384.png"
-        data-srcset="https://qiniusave.5cser.com/mdimage-20210528174400384.png, https://qiniusave.5cser.com/mdimage-20210528174400384.png 1.5x, https://qiniusave.5cser.com/mdimage-20210528174400384.png 2x"
+        data-src="https://qiniusave.xint.top/mdimage-20210528174400384.png"
+        data-srcset="https://qiniusave.xint.top/mdimage-20210528174400384.png, https://qiniusave.xint.top/mdimage-20210528174400384.png 1.5x, https://qiniusave.xint.top/mdimage-20210528174400384.png 2x"
         data-sizes="auto"
-        alt="https://qiniusave.5cser.com/mdimage-20210528174400384.png"
+        alt="https://qiniusave.xint.top/mdimage-20210528174400384.png"
         title="image-20210528174400384" /></p>
 <p>大概需要的函数就在这里了，上面一些类似乎并没有正常的反编译下来，不清楚是通过什么手段实现的。简单浏览代码之后，目光锁定到了下面这个函数</p>
 <div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java">  <span class="kd">public</span> <span class="kd">static</span> <span class="n">String</span> <span class="nf">getShowUrl</span><span class="o">(</span><span class="n">IllustsBean</span> <span class="n">paramIllustsBean</span><span class="o">,</span> <span class="kt">int</span> <span class="n">paramInt</span><span class="o">)</span> <span class="o">{</span>
@@ -214,10 +214,10 @@ adb shell			<span class="c1"># 进入安卓系统的shell</span>
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="https://qiniusave.5cser.com/mdimage-20210528161520012.png"
-        data-srcset="https://qiniusave.5cser.com/mdimage-20210528161520012.png, https://qiniusave.5cser.com/mdimage-20210528161520012.png 1.5x, https://qiniusave.5cser.com/mdimage-20210528161520012.png 2x"
+        data-src="https://qiniusave.xint.top/mdimage-20210528161520012.png"
+        data-srcset="https://qiniusave.xint.top/mdimage-20210528161520012.png, https://qiniusave.xint.top/mdimage-20210528161520012.png 1.5x, https://qiniusave.xint.top/mdimage-20210528161520012.png 2x"
         data-sizes="auto"
-        alt="https://qiniusave.5cser.com/mdimage-20210528161520012.png"
+        alt="https://qiniusave.xint.top/mdimage-20210528161520012.png"
         title="image-20210528161520012" /></p>
 <h4 id="链接frida">链接Frida</h4>
 <p>执行两个命令实现端口转发，也即是在PC端开始监听，对端口接收到的数据，原封不动的交给安卓系统里面运行的 <code>frida服务端</code></p>
@@ -229,10 +229,10 @@ adb forward tcp:27043 tcp:27043
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="https://qiniusave.5cser.com/mdimage-20210528161601553.png"
-        data-srcset="https://qiniusave.5cser.com/mdimage-20210528161601553.png, https://qiniusave.5cser.com/mdimage-20210528161601553.png 1.5x, https://qiniusave.5cser.com/mdimage-20210528161601553.png 2x"
+        data-src="https://qiniusave.xint.top/mdimage-20210528161601553.png"
+        data-srcset="https://qiniusave.xint.top/mdimage-20210528161601553.png, https://qiniusave.xint.top/mdimage-20210528161601553.png 1.5x, https://qiniusave.xint.top/mdimage-20210528161601553.png 2x"
         data-sizes="auto"
-        alt="https://qiniusave.5cser.com/mdimage-20210528161601553.png"
+        alt="https://qiniusave.xint.top/mdimage-20210528161601553.png"
         title="image-20210528161601553" /></p>
 <h2 id="编写脚本">编写脚本</h2>
 <p>首先贴上脚本再解释</p>
@@ -272,10 +272,10 @@ adb forward tcp:27043 tcp:27043
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="https://qiniusave.5cser.com/mdimage-20210528161452351.png"
-        data-srcset="https://qiniusave.5cser.com/mdimage-20210528161452351.png, https://qiniusave.5cser.com/mdimage-20210528161452351.png 1.5x, https://qiniusave.5cser.com/mdimage-20210528161452351.png 2x"
+        data-src="https://qiniusave.xint.top/mdimage-20210528161452351.png"
+        data-srcset="https://qiniusave.xint.top/mdimage-20210528161452351.png, https://qiniusave.xint.top/mdimage-20210528161452351.png 1.5x, https://qiniusave.xint.top/mdimage-20210528161452351.png 2x"
         data-sizes="auto"
-        alt="https://qiniusave.5cser.com/mdimage-20210528161452351.png"
+        alt="https://qiniusave.xint.top/mdimage-20210528161452351.png"
         title="image-20210528161452351" /></p>
 <p>当然，这个只是Frida的小Demo，未来如果需要这个很厉害的软件的时候，会继续学习它。</p>
 <h2 id="但是">但是！！！</h2>
@@ -313,7 +313,7 @@ adb forward tcp:27043 tcp:27043
             </noscript></div></article></div>
             </main><footer class="footer">
         <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.68.3">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
-                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank"></a></span></div>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank"></a></span></div>
         </div>
     </footer></div>
 
