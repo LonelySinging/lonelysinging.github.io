@@ -3,27 +3,13 @@
         <title>所有文章 - 星途 · 小镇</title>
         <link>/posts/</link>
         <description>所有文章 | 星途 · 小镇</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sun, 07 Nov 2021 17:17:15 &#43;0800</lastBuildDate><atom:link href="/posts/" rel="self" type="application/rss+xml" /><item>
-    <title>Docker的使用记录</title>
-    <link>/posts/2021/11/07/getstart_docker/</link>
-    <pubDate>Sun, 07 Nov 2021 17:17:15 &#43;0800</pubDate>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sun, 25 Sep 2022 22:46:22 &#43;0800</lastBuildDate><atom:link href="/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>又想要造轮子了</title>
+    <link>/posts/2022/09/25/remark/</link>
+    <pubDate>Sun, 25 Sep 2022 22:46:22 &#43;0800</pubDate>
     <author>作者</author>
-    <guid>/posts/2021/11/07/getstart_docker/</guid>
-    <description><![CDATA[开始 这是第一个尝试在Leanote上面编写文章，我觉得最重要的事情就是能够保证md文件是能够移植的，否则如果这个软件不靠谱的话，我还能把文章]]></description>
-</item><item>
-    <title>ffmpeg 使用记录</title>
-    <link>/posts/2021/10/11/ffmpeg_args/</link>
-    <pubDate>Mon, 11 Oct 2021 08:41:32 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>/posts/2021/10/11/ffmpeg_args/</guid>
-    <description><![CDATA[这周周末尝试把我硬盘上面的视频文件压缩了一下，但是效果并不理想。其中主要有两个原因， 视频本来就是h264的编码，再重新编码也没啥用，因为限制]]></description>
-</item><item>
-    <title>Kconnect使用sftp windows自定义协议</title>
-    <link>/posts/2021/09/14/register_sftp/</link>
-    <pubDate>Tue, 14 Sep 2021 08:29:14 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>/posts/2021/09/14/register_sftp/</guid>
-    <description><![CDATA[终于有时间写点东西了，上次写东西已经是三个月之前了。自从出现了觉得一个月写一篇文章也没关系的想法之后就已经完全忘记有这回事儿了。一直觉得没有]]></description>
+    <guid>/posts/2022/09/25/remark/</guid>
+    <description><![CDATA[一、碎碎念 又是很久没有写东西了，每次都会有些零零碎碎的想法或者点子，但是都不成体系，而平日里又没有把它们记下来的习惯，但是坐在电脑前面想要写]]></description>
 </item><item>
     <title>破解一个极难的软件</title>
     <link>/posts/2021/06/09/ck_mmzztt/</link>
@@ -73,5 +59,19 @@
     <author>作者</author>
     <guid>/posts/2021/05/07/typorasm/</guid>
     <description><![CDATA[开始 今天开始尝试使用 Typora 写markdown 然后复制到博客园，不过会有一个问题 那就是 typroa 插入的图片都是本地的，md文档复制到博客园之后，图片都失效]]></description>
+</item><item>
+    <title>协程学习过程</title>
+    <link>/posts/2021/04/24/xiec/</link>
+    <pubDate>Tue, 12 Jan 2021 21:07:42 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>/posts/2021/04/24/xiec/</guid>
+    <description><![CDATA[开始 之前一直在做那个rProxy的项目，后来发现，服务端不用协程或者异步编程这样的手段是不行的，最主要的问题就是对于每个http请求都对应一]]></description>
+</item><item>
+    <title>熊猫烧香病毒分析</title>
+    <link>/posts/2021/04/28/panda/</link>
+    <pubDate>Sun, 15 Mar 2020 22:14:22 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>/posts/2021/04/28/panda/</guid>
+    <description><![CDATA[概述 弄到了一个熊猫烧香的样本，Delphi程序，和前面的彩虹猫根本就不是一码事儿，这次只能完全看汇编代码了，不过伪代码可以帮忙分析循环条件什]]></description>
 </item></channel>
 </rss>
