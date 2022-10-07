@@ -3,9 +3,16 @@
         <title>星途 · 小镇</title>
         <link>/</link>
         <description>星途 · 小镇</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sun, 25 Sep 2022 22:46:22 &#43;0800</lastBuildDate>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sat, 08 Oct 2022 02:51:15 &#43;0800</lastBuildDate>
             <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>正是病痛让平常的生活变得珍贵</title>
+    <link>/posts/2022/10/08/remark02/</link>
+    <pubDate>Sat, 08 Oct 2022 02:51:15 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>/posts/2022/10/08/remark02/</guid>
+    <description><![CDATA[一、又是睡不着的时候 转眼之间，国庆七天假期就过去了。老实说，并不知道都做了些什么事情，明明在放假之前还是有一些安排的。但是实际开始放假之后，]]></description>
+</item><item>
     <title>又想要造轮子了</title>
     <link>/posts/2022/09/25/remark/</link>
     <pubDate>Sun, 25 Sep 2022 22:46:22 &#43;0800</pubDate>
@@ -68,12 +75,5 @@
     <author>作者</author>
     <guid>/posts/2021/04/24/xiec/</guid>
     <description><![CDATA[开始 之前一直在做那个rProxy的项目，后来发现，服务端不用协程或者异步编程这样的手段是不行的，最主要的问题就是对于每个http请求都对应一]]></description>
-</item><item>
-    <title>熊猫烧香病毒分析</title>
-    <link>/posts/2021/04/28/panda/</link>
-    <pubDate>Sun, 15 Mar 2020 22:14:22 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>/posts/2021/04/28/panda/</guid>
-    <description><![CDATA[概述 弄到了一个熊猫烧香的样本，Delphi程序，和前面的彩虹猫根本就不是一码事儿，这次只能完全看汇编代码了，不过伪代码可以帮忙分析循环条件什]]></description>
 </item></channel>
 </rss>
