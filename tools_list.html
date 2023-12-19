@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resizable Tab Example</title>
+    <style>
+        /* div {
+            border: 1px solid #000000;
+        } */
+
+        h3 { margin: 0rem; font-size: 1rem; }
+
+        .cate_list, li{ margin: 0rem; height: 2rem; line-height: 2rem;text-align: center;cursor: pointer;transition: background-color 0.3s ease-out;border-radius: 0.2rem;}
+        .cate_list, li:hover { background-color: #e2e2e2; }
+
+        table { margin: 0.3rem;border-collapse: collapse; width: 99%;}
+        table, table tr th, table tr td { border:1px solid #95d2ff; padding: 0.3rem; }
+        table tr td {font-size: 0.8rem;color: #333333}
+        .main {
+            display: flex;
+            margin: auto auto;
+            background-color: #FFFFFF;
+            /* border: 1px solid #505050; */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            padding: 0.3rem;
+            max-width: 70rem;
+            min-width: 55rem;
+        }
+
+        a {text-decoration: none;color: #3589c5;}
+        a:hover {color: #6ac1ff;}
+        a:active { color: gray;}
+
+    </style>
+</head>
+<body onload="init()" style="background-color: #f8fcff;">
+    <div class="main">
+        <div style="padding: 0rem;min-width: 9rem;" id="tabs">
+            <ul id="cate_list" style="list-style: none; padding: 3px;margin: 0px;text-align: center;">
+                <li>工具</li>
+                <li>浏览器插件</li>
+            </ul>
+        </div>
+        <div style="width: 100%;" id="main">
+            👈 点击分类
+        </div>
+    </div>
+
+    <script>
+        var all_data = undefined;
+        function data2card(name, info) {
+            console.log(info);
+            let url_str = "";
+            let download_str = "";
+            let img_str = `<svg t="1702872247309" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1642" width="4rem" height="4rem"><path d="M831.7 369.4H193.6L64 602v290.3h897.2V602L831.7 369.4zM626.6 604.6c0 62.9-51 113.9-114 113.9s-114-51-114-113.9H117.5l103.8-198h582.5l103.8 198h-281zM502.2 131h39.1v140.6h-39.1zM236.855 200.802l27.647-27.647 99.419 99.418-27.648 27.648zM667.547 272.637l99.418-99.419 27.648 27.648-99.418 99.418z" p-id="1643" fill="#515151"></path></svg>`;;
+            if (info.icon != "") {
+                img_str = `<img style="width: 4rem;" src="${info.icon}">`;
+            }
+            for (let v in info.url) {
+                download_str += `<span style="background-color: #ffcd47;border-radius: 0.2rem;padding: 0.1rem;color: #FFFFFF;">${v}:</span> <a target="_blank" href="${info.url[v]}">${info.url[v]}</a><br>`
+            }
+            let html_str = `
+                <table>
+                    <tr>
+                        <td rowspan="3" style="width: 4rem;">${img_str}</td>
+                        <td colspan="2">
+                            <h3>${name}</h3>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>简介: </td>
+                        <td>${info.introduce}</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 4rem;">相关链接: </td>
+                        <td>${download_str}</td>
+                    </tr>
+                </table>
+            `;
+            
+            return html_str;
+        }
+        function render_main(ele) {
+            let cate_name = ele.innerText;
+            let main_ele = document.getElementById("main");
+            let html_str = "";
+            for (v in all_data[cate_name]) {
+                html_str += data2card(v, all_data[cate_name][v]);
+            }
+            main_ele.innerHTML = html_str;
+        }
+        function render_cate() {
+            if (all_data == undefined)
+                return false;
+            let cate_list = document.getElementById("cate_list");
+            cate_list.innerHTML = ""
+            for (cate in all_data) {
+                console.log(cate);
+                cate_list.innerHTML += ("<li onclick='render_main(this)'>" + cate + "</li>")
+            }
+        }
+        function init() {
+            let xhr = new XMLHttpRequest();
+            xhr.open('GET', 'https://raw.githubusercontent.com/x1ntt/tools_list/main/data.json', true);
+            xhr.onreadystatechange = function() {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                all_data = JSON.parse(xhr.responseText);
+                render_cate();
+                console.log(all_data);
+            }
+            };
+            xhr.send();
+        }
+    </script>
+</body>
+</html>
