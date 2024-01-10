@@ -8,11 +8,11 @@
         <title>RAT病毒分析 - 星途 · 小镇</title><meta name="Description" content=""><meta property="og:title" content="RAT病毒分析" />
 <meta property="og:description" content="样本来源 概述 好久没有分析练习了 PEID 应该是C/C&#43;&#43;开发的，节表四个很正常 透明图标，大小136KB 139,264 字节 火绒剑 没有其他多余的操作,打开之后直接开" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="/posts/2021/04/24/rat/" />
+<meta property="og:url" content="/posts/2021/04/24/rat/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2019-08-02T20:37:11+08:00" />
 <meta property="article:modified_time" content="2019-08-02T20:37:11+08:00" />
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="RAT病毒分析"/>
+
+<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="RAT病毒分析"/>
 <meta name="twitter:description" content="样本来源 概述 好久没有分析练习了 PEID 应该是C/C&#43;&#43;开发的，节表四个很正常 透明图标，大小136KB 139,264 字节 火绒剑 没有其他多余的操作,打开之后直接开"/>
 <meta name="application-name" content="星途 · 小镇">
 <meta name="apple-mobile-web-app-title" content="星途 · 小镇"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
@@ -152,15 +152,15 @@
 <p>通过命令 <code>nmap -T4 -O -A -v 119.167.182.164</code> 检查服务器开启端口</p>
 </blockquote>
 <h3 id="端口">端口</h3>
-<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">Discovered open port 8080/tcp on 119.167.182.164
-Discovered open port 3389/tcp on 119.167.182.164
-Discovered open port 80/tcp on 119.167.182.164
-Discovered open port 9/tcp on 119.167.182.164
-Discovered open port 2002/tcp on 119.167.182.164
-Discovered open port 1433/tcp on 119.167.182.164
-Discovered open port 2107/tcp on 119.167.182.164
-Discovered open port 2009/tcp on 119.167.182.164
-</code></pre></div><blockquote>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">Discovered open port 8080/tcp on 119.167.182.164
+</span></span><span class="line"><span class="cl">Discovered open port 3389/tcp on 119.167.182.164
+</span></span><span class="line"><span class="cl">Discovered open port 80/tcp on 119.167.182.164
+</span></span><span class="line"><span class="cl">Discovered open port 9/tcp on 119.167.182.164
+</span></span><span class="line"><span class="cl">Discovered open port 2002/tcp on 119.167.182.164
+</span></span><span class="line"><span class="cl">Discovered open port 1433/tcp on 119.167.182.164
+</span></span><span class="line"><span class="cl">Discovered open port 2107/tcp on 119.167.182.164
+</span></span><span class="line"><span class="cl">Discovered open port 2009/tcp on 119.167.182.164
+</span></span></code></pre></div><blockquote>
 <p>看到开启了 8080 但是访问无效</p>
 <p>3389 可能是windows服务器</p>
 <p>80 访问也是无效</p>
@@ -196,7 +196,7 @@ Discovered open port 2009/tcp on 119.167.182.164
 <p>上了就遇到一个下马威，遇到不少问题</p>
 <ul>
 <li>C++编写的代码，异常处理一大堆</li>
-<li>sp-analysis failed&hellip;  解决方式<a href="https://www.cnblogs.com/cjdty/p/12671705.html">https://www.cnblogs.com/cjdty/p/12671705.html</a></li>
+<li>sp-analysis failed&hellip;  解决方式<a href="https://www.cnblogs.com/cjdty/p/12671705.html" target="_blank" rel="noopener noreffer">https://www.cnblogs.com/cjdty/p/12671705.html</a></li>
 </ul>
 </blockquote>
 </div><div class="post-footer" id="post-footer">
@@ -229,8 +229,8 @@ Discovered open port 2009/tcp on 119.167.182.164
                 Please enable JavaScript to view the comments powered by <a href="https://utteranc.es/">Utterances</a>.
             </noscript></div></article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.68.3">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
-                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank"></a></span></div>
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.121.1">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2024</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank"></a></span></div>
         </div>
     </footer></div>
 

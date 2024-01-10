@@ -8,11 +8,11 @@
         <title>破解一个极难的软件 - 星途 · 小镇</title><meta name="Description" content=""><meta property="og:title" content="破解一个极难的软件" />
 <meta property="og:description" content="芜湖 喜大普奔，终于是成功破解这个软件。说是破解但是实际上这是个免费软件，但是软件不提供下载功能。以前的老版本软件是有下载功能的，但是没有收藏" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="/posts/2021/06/09/ck_mmzztt/" />
+<meta property="og:url" content="/posts/2021/06/09/ck_mmzztt/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2021-06-09T22:01:49+08:00" />
 <meta property="article:modified_time" content="2021-06-09T22:01:49+08:00" />
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="破解一个极难的软件"/>
+
+<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="破解一个极难的软件"/>
 <meta name="twitter:description" content="芜湖 喜大普奔，终于是成功破解这个软件。说是破解但是实际上这是个免费软件，但是软件不提供下载功能。以前的老版本软件是有下载功能的，但是没有收藏"/>
 <meta name="application-name" content="星途 · 小镇">
 <meta name="apple-mobile-web-app-title" content="星途 · 小镇"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
@@ -213,10 +213,10 @@
 <h3 id="配置frida">配置<code>frida</code></h3>
 <p>这部分请看之前写的文章<a href="https://lonelysinging.github.io/posts/2021/05/28/frida_01/" target="_blank" rel="noopener noreffer">使用Frida完成android的hook - 星途 · 小镇 (lonelysinging.github.io)</a>或者看别的教程，此处不再赘述了</p>
 <p>使用<code>adb</code>连接虚拟机，并且设置端口转发</p>
-<div class="highlight"><pre class="chroma"><code class="language-Shell" data-lang="Shell">adb connect 127.0.0.1:62001
-adb forward tcp:27042 tcp:27042
-adb forward tcp:27043 tcp:27043
-</code></pre></div><p>夜神模拟器<code>adb</code>端口默认是<code>62001</code>，如果是<code>Android5</code>的那个，好像是<code>52001</code>这个不确定，需要自行查询一下。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Shell" data-lang="Shell"><span class="line"><span class="cl">adb connect 127.0.0.1:62001
+</span></span><span class="line"><span class="cl">adb forward tcp:27042 tcp:27042
+</span></span><span class="line"><span class="cl">adb forward tcp:27043 tcp:27043
+</span></span></code></pre></div><p>夜神模拟器<code>adb</code>端口默认是<code>62001</code>，如果是<code>Android5</code>的那个，好像是<code>52001</code>这个不确定，需要自行查询一下。</p>
 <p>执行<code>frida-ps -U</code>命令能够正确获得进程列表表示<code>frida</code>已经配置完成了。</p>
 <h3 id="安装objection">安装<code>objection</code></h3>
 <p>这步可以参考这个博客<a href="http://strivemario.work/archives/8eec80c3.html" target="_blank" rel="noopener noreffer">objection - 基于frida的命令行hook工具食用手册 | Mario (strivemario.work)</a>写的比较好。如果英文水平足够，当然是直接建议去官网比较稳妥。</p>
@@ -233,16 +233,16 @@ adb forward tcp:27043 tcp:27043
 <li>
 <p>列出所有activity</p>
 <p><code>android hooking list activities</code></p>
-<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="n">com</span><span class="o">.</span><span class="na">apicloud</span><span class="o">.</span><span class="na">tencentads</span><span class="o">.</span><span class="na">SplashActivity</span>
-<span class="n">com</span><span class="o">.</span><span class="na">qq</span><span class="o">.</span><span class="na">e</span><span class="o">.</span><span class="na">ads</span><span class="o">.</span><span class="na">ADActivity</span>
-<span class="n">com</span><span class="o">.</span><span class="na">qq</span><span class="o">.</span><span class="na">e</span><span class="o">.</span><span class="na">ads</span><span class="o">.</span><span class="na">LandscapeADActivity</span>
-<span class="n">com</span><span class="o">.</span><span class="na">qq</span><span class="o">.</span><span class="na">e</span><span class="o">.</span><span class="na">ads</span><span class="o">.</span><span class="na">PortraitADActivity</span>
-<span class="n">com</span><span class="o">.</span><span class="na">qq</span><span class="o">.</span><span class="na">e</span><span class="o">.</span><span class="na">ads</span><span class="o">.</span><span class="na">RewardvideoLandscapeADActivity</span>
-<span class="n">com</span><span class="o">.</span><span class="na">qq</span><span class="o">.</span><span class="na">e</span><span class="o">.</span><span class="na">ads</span><span class="o">.</span><span class="na">RewardvideoPortraitADActivity</span>
-<span class="c1">// 上面的似乎都是和广告相关的东西
-</span><span class="c1"></span><span class="n">com</span><span class="o">.</span><span class="na">uzmap</span><span class="o">.</span><span class="na">pkg</span><span class="o">.</span><span class="na">EntranceActivity</span>	<span class="c1">// 看起来是什么入口？
-</span><span class="c1"></span><span class="n">com</span><span class="o">.</span><span class="na">uzmap</span><span class="o">.</span><span class="na">pkg</span><span class="o">.</span><span class="na">LauncherUI</span>	<span class="c1">// 似乎是入口相关的
-</span></code></pre></div><p>这里看<code>com.uzmap</code>前缀可能有什么戏</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">com</span><span class="p">.</span><span class="na">apicloud</span><span class="p">.</span><span class="na">tencentads</span><span class="p">.</span><span class="na">SplashActivity</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">com</span><span class="p">.</span><span class="na">qq</span><span class="p">.</span><span class="na">e</span><span class="p">.</span><span class="na">ads</span><span class="p">.</span><span class="na">ADActivity</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">com</span><span class="p">.</span><span class="na">qq</span><span class="p">.</span><span class="na">e</span><span class="p">.</span><span class="na">ads</span><span class="p">.</span><span class="na">LandscapeADActivity</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">com</span><span class="p">.</span><span class="na">qq</span><span class="p">.</span><span class="na">e</span><span class="p">.</span><span class="na">ads</span><span class="p">.</span><span class="na">PortraitADActivity</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">com</span><span class="p">.</span><span class="na">qq</span><span class="p">.</span><span class="na">e</span><span class="p">.</span><span class="na">ads</span><span class="p">.</span><span class="na">RewardvideoLandscapeADActivity</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">com</span><span class="p">.</span><span class="na">qq</span><span class="p">.</span><span class="na">e</span><span class="p">.</span><span class="na">ads</span><span class="p">.</span><span class="na">RewardvideoPortraitADActivity</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">// 上面的似乎都是和广告相关的东西</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">com</span><span class="p">.</span><span class="na">uzmap</span><span class="p">.</span><span class="na">pkg</span><span class="p">.</span><span class="na">EntranceActivity</span><span class="w">	</span><span class="c1">// 看起来是什么入口？</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">com</span><span class="p">.</span><span class="na">uzmap</span><span class="p">.</span><span class="na">pkg</span><span class="p">.</span><span class="na">LauncherUI</span><span class="w">	</span><span class="c1">// 似乎是入口相关的</span><span class="w">
+</span></span></span></code></pre></div><p>这里看<code>com.uzmap</code>前缀可能有什么戏</p>
 </li>
 </ul>
 <p>见到上面的结果，就证明<code>frida</code>和<code>objection</code>都已经安装完成了</p>
@@ -321,15 +321,15 @@ adb forward tcp:27043 tcp:27043
         title="image-20210624220518576" /></p>
 <p>没什么好说的，基本上反编译工具已经把类名和函数名反编译过来了，所以基本上把大概代码浏览一遍，发现这样明显的类了，接下来主要是验证类和函数了。基本思路就是通过<code>objection</code>对整个类的所有函数都下<code>hook</code>，然后再操作软件，看看会调用到哪个函数。确定函数价值。</p>
 <p>例如通过以下命令操作</p>
-<div class="highlight"><pre class="chroma"><code class="language-Shell" data-lang="Shell"><span class="c1"># 列出类的所有函数</span>
-android hooking list class_methods com.uzmap.pkg.uzmodules.photoBrowserSu.PhotoBrowser
-
-<span class="c1"># hook方法，列出其参数和返回值，还有堆栈</span>
-android hooking watch class_method com.uzmap.pkg.uzmodules.photoBrowserSu.ImageBrowserAdapter.<span class="nv">$init</span> --dump-args --dump-backtrace --dump-return
-
-<span class="c1"># hook整个类的所有方法</span>
-android hooking watch class android.support.v4.view.PagerAdapter
-</code></pre></div><p>列出类的所有函数，对比和<code>jadx</code>的结果，确保找到的类和方法是正确的，别像我一样傻乎乎的对着一堆不存在的方法下<code>hook</code>。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Shell" data-lang="Shell"><span class="line"><span class="cl"><span class="c1"># 列出类的所有函数</span>
+</span></span><span class="line"><span class="cl">android hooking list class_methods com.uzmap.pkg.uzmodules.photoBrowserSu.PhotoBrowser
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># hook方法，列出其参数和返回值，还有堆栈</span>
+</span></span><span class="line"><span class="cl">android hooking watch class_method com.uzmap.pkg.uzmodules.photoBrowserSu.ImageBrowserAdapter.<span class="nv">$init</span> --dump-args --dump-backtrace --dump-return
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># hook整个类的所有方法</span>
+</span></span><span class="line"><span class="cl">android hooking watch class android.support.v4.view.PagerAdapter
+</span></span></code></pre></div><p>列出类的所有函数，对比和<code>jadx</code>的结果，确保找到的类和方法是正确的，别像我一样傻乎乎的对着一堆不存在的方法下<code>hook</code>。</p>
 <p><code>hook</code>方法的话，则能看到方法的返回值、参数、以及调用堆栈。前面两者肯定不用考虑非常重要，而对于堆栈，如果是想要分析软件类和方法的调用关系，则是非常好用的信息。能够帮你理清谁调用谁，通过这些信息，也能进一步推测反编译不出类名的类是干什么的。如果想要实现复杂的功能，可能确实需要明白目标软件是怎么工作的。</p>
 <p>而<code>hook</code>整个类的话，看不到方法的参数和返回值。但是能够帮忙确定类中哪个方法被调用了，也是非常重要的。能够一次性筛查出重要的类。</p>
 <h3 id="获取url列表">获取url列表</h3>
@@ -417,12 +417,12 @@ android hooking watch class android.support.v4.view.PagerAdapter
         title="image-20210624233935129" /></p>
 <p>通过分析布局文件，依旧是没找到对应的布局，也就找不到对应的类了。这样的话，只能通过别的方法了。考虑到动态的布局，最终也会是一个布局文件。所以，是否有办法把运行的界面布局<code>dump</code>出来呢？其实这个是最近使用<code>Autojs</code>软件的时候知道的功能。去百度了如何<code>dump</code>布局，果然通过<code>adb</code>是可以<code>dump</code>布局的。(实际上，<code>Android Studio</code>是有这样的功能的，但是一直失败，不清楚是为什么)</p>
 <p>下面两个命令需要进去<code>adb shell</code></p>
-<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">uiautomator dump /sdcard/ui.xml
-<span class="c1"># 获取顶层的布局</span>
-
-dumpsys window <span class="p">|</span> grep  mCurrentFocus
-<span class="c1"># 获取顶层的Activity</span>
-</code></pre></div><p>后者只有一开始发现的<code>com.uzmap.pkg.LauncherUI</code> 显然也是没什么用的。但是前者，其中发现了一些<code>id</code>，</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">uiautomator dump /sdcard/ui.xml
+</span></span><span class="line"><span class="cl"><span class="c1"># 获取顶层的布局</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">dumpsys window <span class="p">|</span> grep  mCurrentFocus
+</span></span><span class="line"><span class="cl"><span class="c1"># 获取顶层的Activity</span>
+</span></span></code></pre></div><p>后者只有一开始发现的<code>com.uzmap.pkg.LauncherUI</code> 显然也是没什么用的。但是前者，其中发现了一些<code>id</code>，</p>
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
@@ -466,248 +466,247 @@ dumpsys window <span class="p">|</span> grep  mCurrentFocus
 <p>还有，就是在手机上的<code>vmos</code>虚拟机，<code>xposed</code>的日志不能正常工作，所以我写了一个<code>writefile()</code>方法，用来做日志输出。</p>
 <p>除此之外，没有什么值得注意的了。</p>
 <h3 id="代码">代码</h3>
-<div class="highlight"><pre class="chroma"><code class="language-Java" data-lang="Java"><span class="kn">package</span> <span class="nn">com.example.startu.myapplication233</span><span class="o">;</span>
-
-<span class="kn">import</span> <span class="nn">android.app.Application</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">android.content.Context</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">android.os.Environment</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">android.view.View</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">android.widget.Toast</span><span class="o">;</span>
-
-<span class="kn">import</span> <span class="nn">java.io.File</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">java.io.FileOutputStream</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">java.io.UnsupportedEncodingException</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">java.lang.reflect.Field</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">java.lang.reflect.Modifier</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">java.security.MessageDigest</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">java.security.NoSuchAlgorithmException</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">java.util.ArrayList</span><span class="o">;</span>
-
-<span class="kn">import</span> <span class="nn">de.robv.android.xposed.IXposedHookLoadPackage</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">de.robv.android.xposed.XC_MethodHook</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">de.robv.android.xposed.XC_MethodReplacement</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">de.robv.android.xposed.XposedBridge</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">de.robv.android.xposed.XposedHelpers</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">de.robv.android.xposed.callbacks.XC_LoadPackage.LoadPackageParam</span><span class="o">;</span>
-
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">HookTest</span> <span class="kd">implements</span> <span class="n">IXposedHookLoadPackage</span> <span class="o">{</span>
-
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">writefile</span><span class="o">(</span><span class="n">String</span> <span class="n">str</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Throwable</span><span class="o">{</span>
-        <span class="n">String</span> <span class="n">sdCardDir</span> <span class="o">=</span><span class="n">Environment</span><span class="o">.</span><span class="na">getExternalStorageDirectory</span><span class="o">().</span><span class="na">getAbsolutePath</span><span class="o">();</span>
-        <span class="n">File</span> <span class="n">saveFile</span> <span class="o">=</span> <span class="k">new</span> <span class="n">File</span><span class="o">(</span><span class="n">sdCardDir</span><span class="o">,</span> <span class="s">&#34;aaaa.txt&#34;</span><span class="o">);</span>
-        <span class="n">FileOutputStream</span> <span class="n">outStream</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FileOutputStream</span><span class="o">(</span><span class="n">saveFile</span><span class="o">,</span><span class="kc">true</span><span class="o">);</span>
-        <span class="n">outStream</span><span class="o">.</span><span class="na">write</span><span class="o">((</span><span class="n">str</span><span class="o">+</span><span class="s">&#34;\n&#34;</span><span class="o">).</span><span class="na">getBytes</span><span class="o">());</span>
-        <span class="n">outStream</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
-    <span class="o">}</span>
-	<span class="c1">// 这地方没有去找软件里面的方法，觉得太麻烦了。所以直接去网络上找到代码复制过来了
-</span><span class="c1"></span>    <span class="kd">private</span> <span class="kd">static</span> <span class="n">String</span> <span class="nf">getMD5</span><span class="o">(</span><span class="n">String</span> <span class="n">info</span><span class="o">)</span> <span class="o">{</span>
-        <span class="k">try</span> <span class="o">{</span>
-            <span class="c1">//获取 MessageDigest 对象，参数为 MD5 字符串，表示这是一个 MD5 算法（其他还有 SHA1 算法等）：
-</span><span class="c1"></span>            <span class="n">MessageDigest</span> <span class="n">md5</span> <span class="o">=</span> <span class="n">MessageDigest</span><span class="o">.</span><span class="na">getInstance</span><span class="o">(</span><span class="s">&#34;MD5&#34;</span><span class="o">);</span>
-            <span class="c1">//update(byte[])方法，输入原数据
-</span><span class="c1"></span>            <span class="c1">//类似StringBuilder对象的append()方法，追加模式，属于一个累计更改的过程
-</span><span class="c1"></span>            <span class="n">md5</span><span class="o">.</span><span class="na">update</span><span class="o">(</span><span class="n">info</span><span class="o">.</span><span class="na">getBytes</span><span class="o">(</span><span class="s">&#34;UTF-8&#34;</span><span class="o">));</span>
-            <span class="c1">//digest()被调用后,MessageDigest对象就被重置，即不能连续再次调用该方法计算原数据的MD5值。可以手动调用reset()方法重置输入源。
-</span><span class="c1"></span>            <span class="c1">//digest()返回值16位长度的哈希值，由byte[]承接
-</span><span class="c1"></span>            <span class="kt">byte</span><span class="o">[]</span> <span class="n">md5Array</span> <span class="o">=</span> <span class="n">md5</span><span class="o">.</span><span class="na">digest</span><span class="o">();</span>
-            <span class="c1">//byte[]通常我们会转化为十六进制的32位长度的字符串来使用,本文会介绍三种常用的转换方法
-</span><span class="c1"></span>            <span class="k">return</span> <span class="n">bytesToHex1</span><span class="o">(</span><span class="n">md5Array</span><span class="o">);</span>
-        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">NoSuchAlgorithmException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
-            <span class="k">return</span> <span class="s">&#34;&#34;</span><span class="o">;</span>
-        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">UnsupportedEncodingException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
-            <span class="k">return</span> <span class="s">&#34;&#34;</span><span class="o">;</span>
-        <span class="o">}</span>
-    <span class="o">}</span>
-
-    <span class="kd">private</span> <span class="kd">static</span> <span class="n">String</span> <span class="nf">bytesToHex1</span><span class="o">(</span><span class="kt">byte</span><span class="o">[]</span> <span class="n">md5Array</span><span class="o">)</span> <span class="o">{</span>
-        <span class="n">StringBuilder</span> <span class="n">strBuilder</span> <span class="o">=</span> <span class="k">new</span> <span class="n">StringBuilder</span><span class="o">();</span>
-        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">md5Array</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
-            <span class="kt">int</span> <span class="n">temp</span> <span class="o">=</span> <span class="n">0xff</span> <span class="o">&amp;</span> <span class="n">md5Array</span><span class="o">[</span><span class="n">i</span><span class="o">];</span><span class="c1">//TODO:此处为什么添加 0xff &amp; ？
-</span><span class="c1"></span>            <span class="n">String</span> <span class="n">hexString</span> <span class="o">=</span> <span class="n">Integer</span><span class="o">.</span><span class="na">toHexString</span><span class="o">(</span><span class="n">temp</span><span class="o">);</span>
-            <span class="k">if</span> <span class="o">(</span><span class="n">hexString</span><span class="o">.</span><span class="na">length</span><span class="o">()</span> <span class="o">==</span> <span class="n">1</span><span class="o">)</span> <span class="o">{</span><span class="c1">//如果是十六进制的0f，默认只显示f，此时要补上0
-</span><span class="c1"></span>                <span class="n">strBuilder</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">&#34;0&#34;</span><span class="o">).</span><span class="na">append</span><span class="o">(</span><span class="n">hexString</span><span class="o">);</span>
-            <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
-                <span class="n">strBuilder</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="n">hexString</span><span class="o">);</span>
-            <span class="o">}</span>
-        <span class="o">}</span>
-        <span class="k">return</span> <span class="n">strBuilder</span><span class="o">.</span><span class="na">toString</span><span class="o">();</span>
-    <span class="o">}</span>
-
-   	<span class="c1">// 依旧不想使用软件里面的复制方法，直接复制网上的代码了。但是可能在Android11上面出现问题，具体看下面说明
-</span><span class="c1"></span>    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">copyfile</span><span class="o">(</span><span class="n">File</span> <span class="n">fromFile</span><span class="o">,</span> <span class="n">File</span> <span class="n">toFile</span><span class="o">,</span><span class="n">Boolean</span> <span class="n">rewrite</span> <span class="o">)</span> <span class="kd">throws</span> <span class="n">Throwable</span>
-    <span class="o">{</span>
-        <span class="k">if</span> <span class="o">(!</span><span class="n">fromFile</span><span class="o">.</span><span class="na">exists</span><span class="o">())</span> <span class="o">{</span>
-            <span class="k">return</span><span class="o">;</span>
-        <span class="o">}</span>
-        <span class="k">if</span> <span class="o">(!</span><span class="n">fromFile</span><span class="o">.</span><span class="na">isFile</span><span class="o">())</span> <span class="o">{</span>
-            <span class="k">return</span> <span class="o">;</span>
-        <span class="o">}</span>
-        <span class="k">if</span> <span class="o">(!</span><span class="n">fromFile</span><span class="o">.</span><span class="na">canRead</span><span class="o">())</span> <span class="o">{</span>
-            <span class="k">return</span> <span class="o">;</span>
-        <span class="o">}</span>
-        <span class="k">if</span> <span class="o">(!</span><span class="n">toFile</span><span class="o">.</span><span class="na">getParentFile</span><span class="o">().</span><span class="na">exists</span><span class="o">())</span> <span class="o">{</span>
-            <span class="n">toFile</span><span class="o">.</span><span class="na">getParentFile</span><span class="o">().</span><span class="na">mkdirs</span><span class="o">();</span>
-        <span class="o">}</span>
-        <span class="k">if</span> <span class="o">(</span><span class="n">toFile</span><span class="o">.</span><span class="na">exists</span><span class="o">()</span> <span class="o">&amp;&amp;</span> <span class="n">rewrite</span><span class="o">)</span> <span class="o">{</span>
-            <span class="n">toFile</span><span class="o">.</span><span class="na">delete</span><span class="o">();</span>
-        <span class="o">}</span>
-
-        <span class="k">try</span> <span class="o">{</span>
-            <span class="n">java</span><span class="o">.</span><span class="na">io</span><span class="o">.</span><span class="na">FileInputStream</span> <span class="n">fosfrom</span> <span class="o">=</span> <span class="k">new</span> <span class="n">java</span><span class="o">.</span><span class="na">io</span><span class="o">.</span><span class="na">FileInputStream</span><span class="o">(</span><span class="n">fromFile</span><span class="o">);</span>
-            <span class="n">java</span><span class="o">.</span><span class="na">io</span><span class="o">.</span><span class="na">FileOutputStream</span> <span class="n">fosto</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FileOutputStream</span><span class="o">(</span><span class="n">toFile</span><span class="o">);</span>
-            <span class="kt">byte</span> <span class="n">bt</span><span class="o">[]</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">byte</span><span class="o">[</span><span class="n">1024</span><span class="o">];</span>
-            <span class="kt">int</span> <span class="n">c</span><span class="o">;</span>
-            <span class="k">while</span> <span class="o">((</span><span class="n">c</span> <span class="o">=</span> <span class="n">fosfrom</span><span class="o">.</span><span class="na">read</span><span class="o">(</span><span class="n">bt</span><span class="o">))</span> <span class="o">&gt;</span> <span class="n">0</span><span class="o">)</span> <span class="o">{</span>
-                <span class="n">fosto</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">bt</span><span class="o">,</span> <span class="n">0</span><span class="o">,</span> <span class="n">c</span><span class="o">);</span> <span class="c1">//将内容写到新文件当中
-</span><span class="c1"></span>            <span class="o">}</span>
-            <span class="n">fosfrom</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
-            <span class="n">fosto</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
-
-        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">Exception</span> <span class="n">ex</span><span class="o">)</span> <span class="o">{</span>
-            <span class="n">writefile</span><span class="o">(</span><span class="n">ex</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
-        <span class="o">}</span>
-    <span class="o">}</span>
-
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">handleLoadPackage</span><span class="o">(</span><span class="kd">final</span> <span class="n">LoadPackageParam</span> <span class="n">loadPackageParam</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Throwable</span> <span class="o">{</span>
-        <span class="n">XposedBridge</span><span class="o">.</span><span class="na">log</span><span class="o">(</span><span class="s">&#34;Loaded app: &#34;</span> <span class="o">+</span> <span class="n">loadPackageParam</span><span class="o">.</span><span class="na">packageName</span><span class="o">);</span>
-        <span class="c1">// writefile(&#34;启动包: &#34;+loadPackageParam.packageName);
-</span><span class="c1"></span>        <span class="k">if</span> <span class="o">(</span><span class="n">loadPackageParam</span><span class="o">.</span><span class="na">packageName</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">&#34;com.mmzztt.app&#34;</span><span class="o">))</span> <span class="o">{</span>
-            <span class="n">writefile</span><span class="o">(</span><span class="s">&#34;发现目标: &#34;</span><span class="o">+</span><span class="n">loadPackageParam</span><span class="o">.</span><span class="na">packageName</span><span class="o">);</span>
-            <span class="n">Class</span><span class="o">&lt;?&gt;</span> <span class="n">clazz</span> <span class="o">=</span> <span class="n">XposedHelpers</span><span class="o">.</span><span class="na">findClass</span><span class="o">(</span><span class="s">&#34;com.stub.StubApp&#34;</span><span class="o">,</span> <span class="n">loadPackageParam</span><span class="o">.</span><span class="na">classLoader</span><span class="o">);</span>
-            <span class="c1">// Class clazz = loadPackageParam.classLoader.loadClass(&#34;ceui.lisa.download.IllustDownload&#34;);
-</span><span class="c1"></span>            <span class="n">XposedHelpers</span><span class="o">.</span><span class="na">findAndHookMethod</span><span class="o">(</span><span class="n">clazz</span><span class="o">,</span> <span class="s">&#34;interface7&#34;</span><span class="o">,</span><span class="n">Application</span><span class="o">.</span><span class="na">class</span><span class="o">,</span><span class="n">Context</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="k">new</span> <span class="n">XC_MethodHook</span><span class="o">()</span> <span class="o">{</span>
-                <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">beforeHookedMethod</span><span class="o">(</span><span class="n">XC_MethodHook</span><span class="o">.</span><span class="na">MethodHookParam</span> <span class="n">param</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Throwable</span> <span class="o">{</span>
-                    <span class="kd">super</span><span class="o">.</span><span class="na">beforeHookedMethod</span><span class="o">(</span><span class="n">param</span><span class="o">);</span>
-                    <span class="n">writefile</span><span class="o">(</span><span class="s">&#34;进入函数: &#34;</span><span class="o">);</span>
-                    <span class="n">Context</span> <span class="n">context</span> <span class="o">=</span> <span class="o">(</span><span class="n">Context</span><span class="o">)</span> <span class="n">param</span><span class="o">.</span><span class="na">args</span><span class="o">[</span><span class="n">1</span><span class="o">];</span>
-                    <span class="c1">//获取classloader，之后hook加固后的就使用这个classloader
-</span><span class="c1"></span>                    <span class="n">ClassLoader</span> <span class="n">realClassLoader</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="na">getClassLoader</span><span class="o">();</span>
-                    <span class="n">hookCheckoutXposed</span><span class="o">(</span><span class="n">realClassLoader</span><span class="o">,</span><span class="n">loadPackageParam</span><span class="o">);</span>
-                    <span class="n">writefile</span><span class="o">(</span><span class="s">&#34;hook结束&#34;</span><span class="o">);</span>
-                <span class="o">}</span>
-
-                <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">afterHookedMethod</span><span class="o">(</span><span class="n">MethodHookParam</span> <span class="n">param</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Throwable</span> <span class="o">{</span>
-                    <span class="c1">// param.setResult(&#34;你已被劫持&#34;);
-</span><span class="c1"></span>                    <span class="c1">// writefile(&#34;新的图片:&#34;);
-</span><span class="c1"></span>                <span class="o">}</span>
-            <span class="o">});</span>
-        <span class="o">}</span>
-    <span class="o">}</span>
-
-    <span class="kd">private</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">mImagePaths</span><span class="o">;</span>
-    <span class="kd">private</span> <span class="kt">int</span> <span class="n">pos</span><span class="o">;</span>
-    <span class="kd">private</span>  <span class="n">String</span> <span class="n">cache_files</span><span class="o">=</span><span class="s">&#34;/sdcard/Android/data/com.mmzztt.app/cache/UIPhotoViewer/&#34;</span><span class="o">;</span>
-    <span class="kd">private</span> <span class="n">String</span> <span class="n">mmttzz_files</span> <span class="o">=</span> <span class="s">&#34;/sdcard/mmzztt/&#34;</span><span class="o">;</span>
-    <span class="kd">private</span> <span class="kt">boolean</span> <span class="n">is_copy</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
-    <span class="n">Context</span> <span class="n">context</span><span class="o">;</span>
-
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">hookCheckoutXposed</span><span class="o">(</span><span class="n">ClassLoader</span> <span class="n">classLoader</span><span class="o">,</span><span class="kd">final</span> <span class="n">LoadPackageParam</span> <span class="n">loadPackageParam</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Throwable</span> <span class="o">{</span>
-        <span class="n">writefile</span><span class="o">(</span><span class="s">&#34;进入hook函数&#34;</span><span class="o">);</span>
-
-        <span class="n">Class</span> <span class="n">Context_c</span> <span class="o">=</span> <span class="n">loadPackageParam</span><span class="o">.</span><span class="na">classLoader</span><span class="o">.</span><span class="na">loadClass</span><span class="o">(</span><span class="s">&#34;android.content.Context&#34;</span><span class="o">);</span>
-
-        <span class="c1">// 获取 Context
-</span><span class="c1"></span>        <span class="n">XposedHelpers</span><span class="o">.</span><span class="na">findAndHookMethod</span><span class="o">(</span><span class="s">&#34;com.uzmap.pkg.uzcore.uzmodule.UZModule&#34;</span><span class="o">,</span> <span class="n">classLoader</span><span class="o">,</span> <span class="s">&#34;initPlatform&#34;</span><span class="o">,</span> <span class="n">Context_c</span><span class="o">,</span> <span class="k">new</span> <span class="n">XC_MethodHook</span><span class="o">()</span> <span class="o">{</span>
-            <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">beforeHookedMethod</span><span class="o">(</span><span class="n">MethodHookParam</span> <span class="n">param</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Throwable</span> <span class="o">{</span>
-                <span class="k">if</span><span class="o">(</span><span class="n">param</span><span class="o">.</span><span class="na">args</span><span class="o">[</span><span class="n">0</span><span class="o">]</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
-                    <span class="n">context</span> <span class="o">=</span> <span class="o">(</span><span class="n">Context</span><span class="o">)</span><span class="n">param</span><span class="o">.</span><span class="na">args</span><span class="o">[</span><span class="n">0</span><span class="o">];</span>
-                    <span class="n">cache_files</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="na">getExternalCacheDir</span><span class="o">().</span><span class="na">getAbsolutePath</span><span class="o">()</span> <span class="o">+</span> <span class="s">&#34;/UIPhotoViewer/&#34;</span><span class="o">;</span>
-                    <span class="n">writefile</span><span class="o">(</span><span class="s">&#34;cache_files: &#34;</span><span class="o">+</span><span class="n">cache_files</span><span class="o">);</span>
-                <span class="o">}</span>
-            <span class="o">}</span>
-        <span class="o">});</span>
-
-        <span class="n">XposedHelpers</span><span class="o">.</span><span class="na">findAndHookMethod</span><span class="o">(</span><span class="s">&#34;android.support.v4.view.PagerAdapter&#34;</span><span class="o">,</span> <span class="n">classLoader</span><span class="o">,</span> <span class="s">&#34;setPrimaryItem&#34;</span><span class="o">,</span> <span class="n">View</span><span class="o">.</span><span class="na">class</span><span class="o">,</span><span class="kt">int</span><span class="o">.</span><span class="na">class</span><span class="o">,</span><span class="n">Object</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="k">new</span> <span class="n">XC_MethodHook</span><span class="o">()</span> <span class="o">{</span>
-            <span class="nd">@Override</span>
-            <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">afterHookedMethod</span><span class="o">(</span><span class="n">MethodHookParam</span> <span class="n">param</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Throwable</span> <span class="o">{</span>
-                <span class="k">if</span><span class="o">(</span><span class="n">param</span><span class="o">.</span><span class="na">args</span><span class="o">[</span><span class="n">1</span><span class="o">]</span> <span class="o">==</span> <span class="kc">null</span><span class="o">){</span>
-                    <span class="n">pos</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span>
-                <span class="o">}</span><span class="k">else</span><span class="o">{</span>
-                    <span class="n">pos</span> <span class="o">=</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span><span class="n">param</span><span class="o">.</span><span class="na">args</span><span class="o">[</span><span class="n">1</span><span class="o">];</span>
-                <span class="o">}</span>
-                <span class="n">is_copy</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
-
-            <span class="o">}</span>
-        <span class="o">});</span>
-
-        <span class="n">XposedHelpers</span><span class="o">.</span><span class="na">findAndHookMethod</span><span class="o">(</span><span class="s">&#34;com.uzmap.pkg.uzmodules.photoBrowserSu.view.largeImage.LargeImageView&#34;</span><span class="o">,</span> <span class="n">classLoader</span><span class="o">,</span> <span class="s">&#34;smoothScale&#34;</span><span class="o">,</span> <span class="kt">float</span><span class="o">.</span><span class="na">class</span><span class="o">,</span><span class="kt">int</span><span class="o">.</span><span class="na">class</span><span class="o">,</span><span class="kt">int</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="k">new</span> <span class="n">XC_MethodHook</span><span class="o">()</span> <span class="o">{</span>
-            <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">afterHookedMethod</span><span class="o">(</span><span class="n">MethodHookParam</span> <span class="n">param</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Throwable</span> <span class="o">{</span>
-                <span class="n">writefile</span><span class="o">(</span><span class="s">&#34;双击了&#34;</span><span class="o">);</span>
-
-                <span class="n">String</span> <span class="n">url</span> <span class="o">=</span> <span class="n">mImagePaths</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">pos</span><span class="o">);</span>
-                <span class="k">if</span><span class="o">(</span><span class="n">url</span> <span class="o">==</span> <span class="kc">null</span><span class="o">){</span>
-                    <span class="n">Toast</span><span class="o">.</span><span class="na">makeText</span><span class="o">(</span><span class="n">context</span><span class="o">,</span><span class="s">&#34;获取图片url失败&#34;</span><span class="o">,</span><span class="n">Toast</span><span class="o">.</span><span class="na">LENGTH_SHORT</span><span class="o">).</span><span class="na">show</span><span class="o">();</span>
-                    <span class="k">return</span> <span class="o">;</span>
-                <span class="o">}</span>
-                <span class="n">String</span> <span class="n">md5_string</span> <span class="o">=</span> <span class="n">getMD5</span><span class="o">(</span><span class="n">url</span><span class="o">);</span>
-                <span class="n">String</span> <span class="n">md5_name</span> <span class="o">=</span> <span class="n">md5_string</span><span class="o">+</span><span class="s">&#34;.jpg&#34;</span><span class="o">;</span>
-                <span class="n">String</span> <span class="n">file_name</span> <span class="o">=</span> <span class="n">md5_name</span><span class="o">;</span>
-
-                <span class="n">writefile</span><span class="o">(</span><span class="s">&#34;定位&#34;</span><span class="o">+</span><span class="n">pos</span><span class="o">+</span><span class="s">&#34;, 内容: &#34;</span> <span class="o">+</span> <span class="n">url</span> <span class="o">+</span> <span class="s">&#34;, md5: &#34;</span><span class="o">+</span><span class="n">md5_string</span><span class="o">);</span>
-
-                <span class="n">String</span><span class="o">[]</span> <span class="n">l_list</span> <span class="o">=</span> <span class="n">url</span><span class="o">.</span><span class="na">split</span><span class="o">(</span><span class="s">&#34;/&#34;</span><span class="o">);</span>
-                <span class="k">if</span><span class="o">(</span><span class="n">l_list</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">){</span>
-                    <span class="n">file_name</span> <span class="o">=</span> <span class="n">l_list</span><span class="o">[</span><span class="n">l_list</span><span class="o">.</span><span class="na">length</span><span class="o">-</span><span class="n">1</span><span class="o">];</span>
-                <span class="o">}</span>
-                <span class="n">writefile</span><span class="o">(</span><span class="s">&#34;file_name: &#34;</span><span class="o">+</span><span class="n">file_name</span><span class="o">+</span><span class="s">&#34;, l_list.length: &#34;</span><span class="o">+</span><span class="n">l_list</span><span class="o">.</span><span class="na">length</span><span class="o">);</span>
-                <span class="k">if</span><span class="o">(!</span><span class="n">is_copy</span><span class="o">)</span> <span class="o">{</span>
-                    <span class="n">copyfile</span><span class="o">(</span><span class="k">new</span> <span class="n">File</span><span class="o">(</span><span class="n">cache_files</span> <span class="o">+</span> <span class="n">md5_string</span><span class="o">),</span> <span class="k">new</span> <span class="n">File</span><span class="o">(</span><span class="n">mmttzz_files</span> <span class="o">+</span> <span class="n">file_name</span><span class="o">),</span> <span class="kc">true</span><span class="o">);</span>
-                    <span class="n">Toast</span><span class="o">.</span><span class="na">makeText</span><span class="o">(</span><span class="n">context</span><span class="o">,</span><span class="s">&#34;保存图片&#34;</span><span class="o">+</span><span class="n">file_name</span><span class="o">,</span><span class="n">Toast</span><span class="o">.</span><span class="na">LENGTH_SHORT</span><span class="o">).</span><span class="na">show</span><span class="o">();</span>
-                    <span class="n">is_copy</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
-                <span class="o">}</span>
-            <span class="o">}</span>
-        <span class="o">});</span>
-
-        <span class="n">Class</span> <span class="n">UZModuleContext_c</span> <span class="o">=</span> <span class="n">loadPackageParam</span><span class="o">.</span><span class="na">classLoader</span><span class="o">.</span><span class="na">loadClass</span><span class="o">(</span><span class="s">&#34;com.uzmap.pkg.uzcore.uzmodule.UZModuleContext&#34;</span><span class="o">);</span>
-        <span class="n">XposedHelpers</span><span class="o">.</span><span class="na">findAndHookMethod</span><span class="o">(</span><span class="s">&#34;com.apicloud.dialogBox.DialogBox&#34;</span><span class="o">,</span> <span class="n">classLoader</span><span class="o">,</span> <span class="s">&#34;jsmethod_alert&#34;</span><span class="o">,</span><span class="n">UZModuleContext_c</span><span class="o">,</span> <span class="k">new</span> <span class="n">XC_MethodReplacement</span><span class="o">()</span> <span class="o">{</span>
-            <span class="nd">@Override</span>
-            <span class="kd">protected</span> <span class="n">Object</span> <span class="nf">replaceHookedMethod</span><span class="o">(</span><span class="n">MethodHookParam</span> <span class="n">param</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Throwable</span> <span class="o">{</span>
-                <span class="n">writefile</span><span class="o">(</span><span class="s">&#34;禁止一个 alert弹窗&#34;</span><span class="o">);</span>
-                <span class="n">Toast</span><span class="o">.</span><span class="na">makeText</span><span class="o">(</span><span class="n">context</span><span class="o">,</span><span class="s">&#34;你是真的想更新嘛？&#34;</span><span class="o">,</span><span class="n">Toast</span><span class="o">.</span><span class="na">LENGTH_SHORT</span><span class="o">).</span><span class="na">show</span><span class="o">();</span>
-                <span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
-            <span class="o">}</span>
-        <span class="o">});</span>
-
-        <span class="n">Class</span> <span class="n">ImageLoader_c</span> <span class="o">=</span> <span class="n">loadPackageParam</span><span class="o">.</span><span class="na">classLoader</span><span class="o">.</span><span class="na">loadClass</span><span class="o">(</span><span class="s">&#34;com.uzmap.pkg.uzmodules.photoBrowserSu.ImageLoader&#34;</span><span class="o">);</span>
-        <span class="n">Class</span> <span class="n">ImageBrowserAdapter_c</span> <span class="o">=</span> <span class="n">loadPackageParam</span><span class="o">.</span><span class="na">classLoader</span><span class="o">.</span><span class="na">loadClass</span><span class="o">(</span><span class="s">&#34;com.uzmap.pkg.uzmodules.photoBrowserSu.ImageBrowserAdapter&#34;</span><span class="o">);</span>
-
-        <span class="n">XposedHelpers</span><span class="o">.</span><span class="na">findAndHookConstructor</span><span class="o">(</span><span class="n">ImageBrowserAdapter_c</span><span class="o">,</span> <span class="n">Context_c</span><span class="o">,</span><span class="n">UZModuleContext_c</span><span class="o">,</span><span class="n">ArrayList</span><span class="o">.</span><span class="na">class</span><span class="o">,</span><span class="n">ImageLoader_c</span><span class="o">,</span><span class="n">String</span><span class="o">.</span><span class="na">class</span><span class="o">,</span>  <span class="k">new</span> <span class="n">XC_MethodHook</span><span class="o">()</span> <span class="o">{</span>
-            <span class="nd">@Override</span>
-            <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">beforeHookedMethod</span><span class="o">(</span><span class="n">MethodHookParam</span> <span class="n">param</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Throwable</span> <span class="o">{</span>
-                <span class="n">writefile</span><span class="o">(</span><span class="s">&#34;进入 ImageBrowserAdapter 的构造函数了&#34;</span><span class="o">);</span>
-                <span class="k">try</span> <span class="o">{</span>
-                    <span class="n">mImagePaths</span> <span class="o">=</span> <span class="o">(</span><span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;)</span> <span class="n">param</span><span class="o">.</span><span class="na">args</span><span class="o">[</span><span class="n">2</span><span class="o">];</span>
-<span class="c1">//                    for(int i=0;i&lt;mImagePaths.size();i++){
-</span><span class="c1">//                        writefile(mImagePaths.get(i));
-</span><span class="c1">//                    }
-</span><span class="c1"></span>                    <span class="n">writefile</span><span class="o">(</span><span class="s">&#34;数组长度: &#34;</span> <span class="o">+</span> <span class="n">mImagePaths</span><span class="o">.</span><span class="na">size</span><span class="o">());</span>
-                <span class="o">}</span><span class="k">catch</span> <span class="o">(</span><span class="n">Exception</span> <span class="n">e</span><span class="o">){</span>
-                    <span class="n">writefile</span><span class="o">(</span><span class="n">e</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
-                <span class="o">}</span>
-            <span class="o">}</span>
-        <span class="o">});</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-
-</code></pre></div><h3 id="弹出toast">弹出toast</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Java" data-lang="Java"><span class="line"><span class="cl"><span class="kn">package</span><span class="w"> </span><span class="nn">com.example.startu.myapplication233</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">android.app.Application</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">android.content.Context</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">android.os.Environment</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">android.view.View</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">android.widget.Toast</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">java.io.File</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">java.io.FileOutputStream</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">java.io.UnsupportedEncodingException</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">java.lang.reflect.Field</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">java.lang.reflect.Modifier</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">java.security.MessageDigest</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">java.security.NoSuchAlgorithmException</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.ArrayList</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">de.robv.android.xposed.IXposedHookLoadPackage</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">de.robv.android.xposed.XC_MethodHook</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">de.robv.android.xposed.XC_MethodReplacement</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">de.robv.android.xposed.XposedBridge</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">de.robv.android.xposed.XposedHelpers</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">de.robv.android.xposed.callbacks.XC_LoadPackage.LoadPackageParam</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">HookTest</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">IXposedHookLoadPackage</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">writefile</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">str</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">Throwable</span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">sdCardDir</span><span class="w"> </span><span class="o">=</span><span class="n">Environment</span><span class="p">.</span><span class="na">getExternalStorageDirectory</span><span class="p">().</span><span class="na">getAbsolutePath</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">File</span><span class="w"> </span><span class="n">saveFile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">File</span><span class="p">(</span><span class="n">sdCardDir</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;aaaa.txt&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">FileOutputStream</span><span class="w"> </span><span class="n">outStream</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">FileOutputStream</span><span class="p">(</span><span class="n">saveFile</span><span class="p">,</span><span class="kc">true</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">outStream</span><span class="p">.</span><span class="na">write</span><span class="p">((</span><span class="n">str</span><span class="o">+</span><span class="s">&#34;\n&#34;</span><span class="p">).</span><span class="na">getBytes</span><span class="p">());</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">outStream</span><span class="p">.</span><span class="na">close</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="c1">// 这地方没有去找软件里面的方法，觉得太麻烦了。所以直接去网络上找到代码复制过来了</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getMD5</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">info</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="c1">//获取 MessageDigest 对象，参数为 MD5 字符串，表示这是一个 MD5 算法（其他还有 SHA1 算法等）：</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">MessageDigest</span><span class="w"> </span><span class="n">md5</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MessageDigest</span><span class="p">.</span><span class="na">getInstance</span><span class="p">(</span><span class="s">&#34;MD5&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="c1">//update(byte[])方法，输入原数据</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="c1">//类似StringBuilder对象的append()方法，追加模式，属于一个累计更改的过程</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">md5</span><span class="p">.</span><span class="na">update</span><span class="p">(</span><span class="n">info</span><span class="p">.</span><span class="na">getBytes</span><span class="p">(</span><span class="s">&#34;UTF-8&#34;</span><span class="p">));</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="c1">//digest()被调用后,MessageDigest对象就被重置，即不能连续再次调用该方法计算原数据的MD5值。可以手动调用reset()方法重置输入源。</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="c1">//digest()返回值16位长度的哈希值，由byte[]承接</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="kt">byte</span><span class="o">[]</span><span class="w"> </span><span class="n">md5Array</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">md5</span><span class="p">.</span><span class="na">digest</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="c1">//byte[]通常我们会转化为十六进制的32位长度的字符串来使用,本文会介绍三种常用的转换方法</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">bytesToHex1</span><span class="p">(</span><span class="n">md5Array</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">NoSuchAlgorithmException</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="s">&#34;&#34;</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">UnsupportedEncodingException</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="s">&#34;&#34;</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">bytesToHex1</span><span class="p">(</span><span class="kt">byte</span><span class="o">[]</span><span class="w"> </span><span class="n">md5Array</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">StringBuilder</span><span class="w"> </span><span class="n">strBuilder</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">StringBuilder</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">md5Array</span><span class="p">.</span><span class="na">length</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="kt">int</span><span class="w"> </span><span class="n">temp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">0xff</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">md5Array</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="p">;</span><span class="c1">//TODO:此处为什么添加 0xff &amp; ？</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">String</span><span class="w"> </span><span class="n">hexString</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Integer</span><span class="p">.</span><span class="na">toHexString</span><span class="p">(</span><span class="n">temp</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">hexString</span><span class="p">.</span><span class="na">length</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="c1">//如果是十六进制的0f，默认只显示f，此时要补上0</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="n">strBuilder</span><span class="p">.</span><span class="na">append</span><span class="p">(</span><span class="s">&#34;0&#34;</span><span class="p">).</span><span class="na">append</span><span class="p">(</span><span class="n">hexString</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="n">strBuilder</span><span class="p">.</span><span class="na">append</span><span class="p">(</span><span class="n">hexString</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">strBuilder</span><span class="p">.</span><span class="na">toString</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   	</span><span class="c1">// 依旧不想使用软件里面的复制方法，直接复制网上的代码了。但是可能在Android11上面出现问题，具体看下面说明</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">copyfile</span><span class="p">(</span><span class="n">File</span><span class="w"> </span><span class="n">fromFile</span><span class="p">,</span><span class="w"> </span><span class="n">File</span><span class="w"> </span><span class="n">toFile</span><span class="p">,</span><span class="n">Boolean</span><span class="w"> </span><span class="n">rewrite</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">Throwable</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">fromFile</span><span class="p">.</span><span class="na">exists</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">return</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">fromFile</span><span class="p">.</span><span class="na">isFile</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">fromFile</span><span class="p">.</span><span class="na">canRead</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">toFile</span><span class="p">.</span><span class="na">getParentFile</span><span class="p">().</span><span class="na">exists</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">toFile</span><span class="p">.</span><span class="na">getParentFile</span><span class="p">().</span><span class="na">mkdirs</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">toFile</span><span class="p">.</span><span class="na">exists</span><span class="p">()</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">rewrite</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">toFile</span><span class="p">.</span><span class="na">delete</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">java</span><span class="p">.</span><span class="na">io</span><span class="p">.</span><span class="na">FileInputStream</span><span class="w"> </span><span class="n">fosfrom</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">java</span><span class="p">.</span><span class="na">io</span><span class="p">.</span><span class="na">FileInputStream</span><span class="p">(</span><span class="n">fromFile</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">java</span><span class="p">.</span><span class="na">io</span><span class="p">.</span><span class="na">FileOutputStream</span><span class="w"> </span><span class="n">fosto</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">FileOutputStream</span><span class="p">(</span><span class="n">toFile</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="kt">byte</span><span class="w"> </span><span class="n">bt</span><span class="o">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">byte</span><span class="o">[</span><span class="n">1024</span><span class="o">]</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="kt">int</span><span class="w"> </span><span class="n">c</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">while</span><span class="w"> </span><span class="p">((</span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fosfrom</span><span class="p">.</span><span class="na">read</span><span class="p">(</span><span class="n">bt</span><span class="p">))</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="n">fosto</span><span class="p">.</span><span class="na">write</span><span class="p">(</span><span class="n">bt</span><span class="p">,</span><span class="w"> </span><span class="n">0</span><span class="p">,</span><span class="w"> </span><span class="n">c</span><span class="p">);</span><span class="w"> </span><span class="c1">//将内容写到新文件当中</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">fosfrom</span><span class="p">.</span><span class="na">close</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">fosto</span><span class="p">.</span><span class="na">close</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">Exception</span><span class="w"> </span><span class="n">ex</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">writefile</span><span class="p">(</span><span class="n">ex</span><span class="p">.</span><span class="na">toString</span><span class="p">());</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">handleLoadPackage</span><span class="p">(</span><span class="kd">final</span><span class="w"> </span><span class="n">LoadPackageParam</span><span class="w"> </span><span class="n">loadPackageParam</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">Throwable</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">XposedBridge</span><span class="p">.</span><span class="na">log</span><span class="p">(</span><span class="s">&#34;Loaded app: &#34;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">loadPackageParam</span><span class="p">.</span><span class="na">packageName</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">// writefile(&#34;启动包: &#34;+loadPackageParam.packageName);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">loadPackageParam</span><span class="p">.</span><span class="na">packageName</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="s">&#34;com.mmzztt.app&#34;</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">writefile</span><span class="p">(</span><span class="s">&#34;发现目标: &#34;</span><span class="o">+</span><span class="n">loadPackageParam</span><span class="p">.</span><span class="na">packageName</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">Class</span><span class="o">&lt;?&gt;</span><span class="w"> </span><span class="n">clazz</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">XposedHelpers</span><span class="p">.</span><span class="na">findClass</span><span class="p">(</span><span class="s">&#34;com.stub.StubApp&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">loadPackageParam</span><span class="p">.</span><span class="na">classLoader</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="c1">// Class clazz = loadPackageParam.classLoader.loadClass(&#34;ceui.lisa.download.IllustDownload&#34;);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">XposedHelpers</span><span class="p">.</span><span class="na">findAndHookMethod</span><span class="p">(</span><span class="n">clazz</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;interface7&#34;</span><span class="p">,</span><span class="n">Application</span><span class="p">.</span><span class="na">class</span><span class="p">,</span><span class="n">Context</span><span class="p">.</span><span class="na">class</span><span class="p">,</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">XC_MethodHook</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="kd">protected</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">beforeHookedMethod</span><span class="p">(</span><span class="n">XC_MethodHook</span><span class="p">.</span><span class="na">MethodHookParam</span><span class="w"> </span><span class="n">param</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">Throwable</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                    </span><span class="kd">super</span><span class="p">.</span><span class="na">beforeHookedMethod</span><span class="p">(</span><span class="n">param</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                    </span><span class="n">writefile</span><span class="p">(</span><span class="s">&#34;进入函数: &#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                    </span><span class="n">Context</span><span class="w"> </span><span class="n">context</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">Context</span><span class="p">)</span><span class="w"> </span><span class="n">param</span><span class="p">.</span><span class="na">args</span><span class="o">[</span><span class="n">1</span><span class="o">]</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                    </span><span class="c1">//获取classloader，之后hook加固后的就使用这个classloader</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                    </span><span class="n">ClassLoader</span><span class="w"> </span><span class="n">realClassLoader</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">context</span><span class="p">.</span><span class="na">getClassLoader</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                    </span><span class="n">hookCheckoutXposed</span><span class="p">(</span><span class="n">realClassLoader</span><span class="p">,</span><span class="n">loadPackageParam</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                    </span><span class="n">writefile</span><span class="p">(</span><span class="s">&#34;hook结束&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="kd">protected</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">afterHookedMethod</span><span class="p">(</span><span class="n">MethodHookParam</span><span class="w"> </span><span class="n">param</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">Throwable</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                    </span><span class="c1">// param.setResult(&#34;你已被劫持&#34;);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                    </span><span class="c1">// writefile(&#34;新的图片:&#34;);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="p">});</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">mImagePaths</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">pos</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w">  </span><span class="n">String</span><span class="w"> </span><span class="n">cache_files</span><span class="o">=</span><span class="s">&#34;/sdcard/Android/data/com.mmzztt.app/cache/UIPhotoViewer/&#34;</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">mmttzz_files</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#34;/sdcard/mmzztt/&#34;</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="n">is_copy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">Context</span><span class="w"> </span><span class="n">context</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">hookCheckoutXposed</span><span class="p">(</span><span class="n">ClassLoader</span><span class="w"> </span><span class="n">classLoader</span><span class="p">,</span><span class="kd">final</span><span class="w"> </span><span class="n">LoadPackageParam</span><span class="w"> </span><span class="n">loadPackageParam</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">Throwable</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">writefile</span><span class="p">(</span><span class="s">&#34;进入hook函数&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">Class</span><span class="w"> </span><span class="n">Context_c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">loadPackageParam</span><span class="p">.</span><span class="na">classLoader</span><span class="p">.</span><span class="na">loadClass</span><span class="p">(</span><span class="s">&#34;android.content.Context&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">// 获取 Context</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">XposedHelpers</span><span class="p">.</span><span class="na">findAndHookMethod</span><span class="p">(</span><span class="s">&#34;com.uzmap.pkg.uzcore.uzmodule.UZModule&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">classLoader</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;initPlatform&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">Context_c</span><span class="p">,</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">XC_MethodHook</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="kd">protected</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">beforeHookedMethod</span><span class="p">(</span><span class="n">MethodHookParam</span><span class="w"> </span><span class="n">param</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">Throwable</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="k">if</span><span class="p">(</span><span class="n">param</span><span class="p">.</span><span class="na">args</span><span class="o">[</span><span class="n">0</span><span class="o">]</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                    </span><span class="n">context</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">Context</span><span class="p">)</span><span class="n">param</span><span class="p">.</span><span class="na">args</span><span class="o">[</span><span class="n">0</span><span class="o">]</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                    </span><span class="n">cache_files</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">context</span><span class="p">.</span><span class="na">getExternalCacheDir</span><span class="p">().</span><span class="na">getAbsolutePath</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&#34;/UIPhotoViewer/&#34;</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                    </span><span class="n">writefile</span><span class="p">(</span><span class="s">&#34;cache_files: &#34;</span><span class="o">+</span><span class="n">cache_files</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">});</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">XposedHelpers</span><span class="p">.</span><span class="na">findAndHookMethod</span><span class="p">(</span><span class="s">&#34;android.support.v4.view.PagerAdapter&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">classLoader</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;setPrimaryItem&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">View</span><span class="p">.</span><span class="na">class</span><span class="p">,</span><span class="kt">int</span><span class="p">.</span><span class="na">class</span><span class="p">,</span><span class="n">Object</span><span class="p">.</span><span class="na">class</span><span class="p">,</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">XC_MethodHook</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nd">@Override</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="kd">protected</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">afterHookedMethod</span><span class="p">(</span><span class="n">MethodHookParam</span><span class="w"> </span><span class="n">param</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">Throwable</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="k">if</span><span class="p">(</span><span class="n">param</span><span class="p">.</span><span class="na">args</span><span class="o">[</span><span class="n">1</span><span class="o">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="p">){</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                    </span><span class="n">pos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">0</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="p">}</span><span class="k">else</span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                    </span><span class="n">pos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">param</span><span class="p">.</span><span class="na">args</span><span class="o">[</span><span class="n">1</span><span class="o">]</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="n">is_copy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">});</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">XposedHelpers</span><span class="p">.</span><span class="na">findAndHookMethod</span><span class="p">(</span><span class="s">&#34;com.uzmap.pkg.uzmodules.photoBrowserSu.view.largeImage.LargeImageView&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">classLoader</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;smoothScale&#34;</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="p">.</span><span class="na">class</span><span class="p">,</span><span class="kt">int</span><span class="p">.</span><span class="na">class</span><span class="p">,</span><span class="kt">int</span><span class="p">.</span><span class="na">class</span><span class="p">,</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">XC_MethodHook</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="kd">protected</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">afterHookedMethod</span><span class="p">(</span><span class="n">MethodHookParam</span><span class="w"> </span><span class="n">param</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">Throwable</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="n">writefile</span><span class="p">(</span><span class="s">&#34;双击了&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="n">String</span><span class="w"> </span><span class="n">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mImagePaths</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">pos</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="k">if</span><span class="p">(</span><span class="n">url</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="p">){</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                    </span><span class="n">Toast</span><span class="p">.</span><span class="na">makeText</span><span class="p">(</span><span class="n">context</span><span class="p">,</span><span class="s">&#34;获取图片url失败&#34;</span><span class="p">,</span><span class="n">Toast</span><span class="p">.</span><span class="na">LENGTH_SHORT</span><span class="p">).</span><span class="na">show</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                    </span><span class="k">return</span><span class="w"> </span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="n">String</span><span class="w"> </span><span class="n">md5_string</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">getMD5</span><span class="p">(</span><span class="n">url</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="n">String</span><span class="w"> </span><span class="n">md5_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">md5_string</span><span class="o">+</span><span class="s">&#34;.jpg&#34;</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="n">String</span><span class="w"> </span><span class="n">file_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">md5_name</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="n">writefile</span><span class="p">(</span><span class="s">&#34;定位&#34;</span><span class="o">+</span><span class="n">pos</span><span class="o">+</span><span class="s">&#34;, 内容: &#34;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">url</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&#34;, md5: &#34;</span><span class="o">+</span><span class="n">md5_string</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">l_list</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">url</span><span class="p">.</span><span class="na">split</span><span class="p">(</span><span class="s">&#34;/&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="k">if</span><span class="p">(</span><span class="n">l_list</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="p">){</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                    </span><span class="n">file_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">l_list</span><span class="o">[</span><span class="n">l_list</span><span class="p">.</span><span class="na">length</span><span class="o">-</span><span class="n">1</span><span class="o">]</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="n">writefile</span><span class="p">(</span><span class="s">&#34;file_name: &#34;</span><span class="o">+</span><span class="n">file_name</span><span class="o">+</span><span class="s">&#34;, l_list.length: &#34;</span><span class="o">+</span><span class="n">l_list</span><span class="p">.</span><span class="na">length</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">is_copy</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                    </span><span class="n">copyfile</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">File</span><span class="p">(</span><span class="n">cache_files</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">md5_string</span><span class="p">),</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">File</span><span class="p">(</span><span class="n">mmttzz_files</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">file_name</span><span class="p">),</span><span class="w"> </span><span class="kc">true</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                    </span><span class="n">Toast</span><span class="p">.</span><span class="na">makeText</span><span class="p">(</span><span class="n">context</span><span class="p">,</span><span class="s">&#34;保存图片&#34;</span><span class="o">+</span><span class="n">file_name</span><span class="p">,</span><span class="n">Toast</span><span class="p">.</span><span class="na">LENGTH_SHORT</span><span class="p">).</span><span class="na">show</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                    </span><span class="n">is_copy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">});</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">Class</span><span class="w"> </span><span class="n">UZModuleContext_c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">loadPackageParam</span><span class="p">.</span><span class="na">classLoader</span><span class="p">.</span><span class="na">loadClass</span><span class="p">(</span><span class="s">&#34;com.uzmap.pkg.uzcore.uzmodule.UZModuleContext&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">XposedHelpers</span><span class="p">.</span><span class="na">findAndHookMethod</span><span class="p">(</span><span class="s">&#34;com.apicloud.dialogBox.DialogBox&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">classLoader</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;jsmethod_alert&#34;</span><span class="p">,</span><span class="n">UZModuleContext_c</span><span class="p">,</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">XC_MethodReplacement</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nd">@Override</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="kd">protected</span><span class="w"> </span><span class="n">Object</span><span class="w"> </span><span class="nf">replaceHookedMethod</span><span class="p">(</span><span class="n">MethodHookParam</span><span class="w"> </span><span class="n">param</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">Throwable</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="n">writefile</span><span class="p">(</span><span class="s">&#34;禁止一个 alert弹窗&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="n">Toast</span><span class="p">.</span><span class="na">makeText</span><span class="p">(</span><span class="n">context</span><span class="p">,</span><span class="s">&#34;你是真的想更新嘛？&#34;</span><span class="p">,</span><span class="n">Toast</span><span class="p">.</span><span class="na">LENGTH_SHORT</span><span class="p">).</span><span class="na">show</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">});</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">Class</span><span class="w"> </span><span class="n">ImageLoader_c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">loadPackageParam</span><span class="p">.</span><span class="na">classLoader</span><span class="p">.</span><span class="na">loadClass</span><span class="p">(</span><span class="s">&#34;com.uzmap.pkg.uzmodules.photoBrowserSu.ImageLoader&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">Class</span><span class="w"> </span><span class="n">ImageBrowserAdapter_c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">loadPackageParam</span><span class="p">.</span><span class="na">classLoader</span><span class="p">.</span><span class="na">loadClass</span><span class="p">(</span><span class="s">&#34;com.uzmap.pkg.uzmodules.photoBrowserSu.ImageBrowserAdapter&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">XposedHelpers</span><span class="p">.</span><span class="na">findAndHookConstructor</span><span class="p">(</span><span class="n">ImageBrowserAdapter_c</span><span class="p">,</span><span class="w"> </span><span class="n">Context_c</span><span class="p">,</span><span class="n">UZModuleContext_c</span><span class="p">,</span><span class="n">ArrayList</span><span class="p">.</span><span class="na">class</span><span class="p">,</span><span class="n">ImageLoader_c</span><span class="p">,</span><span class="n">String</span><span class="p">.</span><span class="na">class</span><span class="p">,</span><span class="w">  </span><span class="k">new</span><span class="w"> </span><span class="n">XC_MethodHook</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nd">@Override</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="kd">protected</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">beforeHookedMethod</span><span class="p">(</span><span class="n">MethodHookParam</span><span class="w"> </span><span class="n">param</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">Throwable</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="n">writefile</span><span class="p">(</span><span class="s">&#34;进入 ImageBrowserAdapter 的构造函数了&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="k">try</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                    </span><span class="n">mImagePaths</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="p">)</span><span class="w"> </span><span class="n">param</span><span class="p">.</span><span class="na">args</span><span class="o">[</span><span class="n">2</span><span class="o">]</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//                    for(int i=0;i&lt;mImagePaths.size();i++){</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//                        writefile(mImagePaths.get(i));</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//                    }</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                    </span><span class="n">writefile</span><span class="p">(</span><span class="s">&#34;数组长度: &#34;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">mImagePaths</span><span class="p">.</span><span class="na">size</span><span class="p">());</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="p">}</span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">Exception</span><span class="w"> </span><span class="n">e</span><span class="p">){</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                    </span><span class="n">writefile</span><span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="na">toString</span><span class="p">());</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">});</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><h3 id="弹出toast">弹出toast</h3>
 <p>这部分需要获取目标软件的<code>Context</code>，这个需要分析代码，一般来说，没有加固的代码，在入口类中就能找到。但是如果是加固之后的，可能需要找加固方案的代码了。具体看上面的代码，找到什么方法参数是<code>Context</code>的就能获取到，当然是不是任意一个<code>Context</code>都行我就不清楚了。</p>
 <h3 id="关于复制文件">关于复制文件</h3>
 <p>手机更新<code>Android 11</code>之后，对应用就不能随意访问<code>Adnroid/data/</code>目录了，所以上面的代码可能会复制文件失败，因为模块并不是目标软件，所以可能会有权限问题，当然只是猜测。遇到这种情况，可以试试<code>hook</code>目标软件自己的复制文件方法。或者拿到<code>url</code>自己下载，或者直接拿到输出流写到自己的目录。</p>
 <h2 id="操作过程中可能需要的操作">操作过程中可能需要的操作</h2>
 <h3 id="启用adb网络调试">启用ADB网络调试</h3>
-<div class="highlight"><pre class="chroma"><code class="language-Shell" data-lang="Shell">TCP/IP方式：
-setprop service.adb.tcp.port <span class="m">5555</span>
-stop adbd
-start adbd
- 
-usb方式：
-setprop service.adb.tcp.port -1
-stop adbd
-start adbd
-</code></pre></div><p>from:<a href="https://blog.csdn.net/shawnkong/article/details/8923933" target="_blank" rel="noopener noreffer">(2条消息) Android 网络调试 adb tcpip 开启方法_Shawn Kong的专栏-CSDN博客</a></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Shell" data-lang="Shell"><span class="line"><span class="cl">TCP/IP方式：
+</span></span><span class="line"><span class="cl">setprop service.adb.tcp.port <span class="m">5555</span>
+</span></span><span class="line"><span class="cl">stop adbd
+</span></span><span class="line"><span class="cl">start adbd
+</span></span><span class="line"><span class="cl"> 
+</span></span><span class="line"><span class="cl">usb方式：
+</span></span><span class="line"><span class="cl">setprop service.adb.tcp.port -1
+</span></span><span class="line"><span class="cl">stop adbd
+</span></span><span class="line"><span class="cl">start adbd
+</span></span></code></pre></div><p>from:<a href="https://blog.csdn.net/shawnkong/article/details/8923933" target="_blank" rel="noopener noreffer">(2条消息) Android 网络调试 adb tcpip 开启方法_Shawn Kong的专栏-CSDN博客</a></p>
 <h3 id="禁用-selinux">禁用 SELinux</h3>
-<div class="highlight"><pre class="chroma"><code class="language-Shell" data-lang="Shell">setenforce <span class="m">0</span>
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Shell" data-lang="Shell"><span class="line"><span class="cl">setenforce <span class="m">0</span>
+</span></span></code></pre></div><ul>
 <li>级别0：表示Permissive模式。</li>
 <li>级别1：表示Enforcing模式。</li>
 <li>至于disabled模式和其他模式的切换只能修改配置文件,命令不起作用。其次,修改完成之后,必须重启系统才能够生效。</li>
@@ -715,30 +714,30 @@ start adbd
 <p>from: <a href="https://www.jianshu.com/p/27b69ba08aac" target="_blank" rel="noopener noreffer">Android查看SELinux状态及关闭SELinux - 简书 (jianshu.com)</a></p>
 <h3 id="apktool">apktool</h3>
 <h4 id="解包">解包</h4>
-<div class="highlight"><pre class="chroma"><code class="language-Shell" data-lang="Shell">apktool.jar d Shaft_3.1.5.apk -o Sha
-</code></pre></div><p>打包</p>
-<div class="highlight"><pre class="chroma"><code class="language-Shell" data-lang="Shell">apktool.bat b <span class="o">[</span>资源文件夹<span class="o">]</span> <span class="o">[</span>打包生成的apk文件<span class="o">]</span> 
-</code></pre></div><p>from:<a href="https://blog.csdn.net/qq_27292113/article/details/79931268" target="_blank" rel="noopener noreffer">(2条消息) 使用ApkTool_一起进步的博客-CSDN博客_apktool</a></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Shell" data-lang="Shell"><span class="line"><span class="cl">apktool.jar d Shaft_3.1.5.apk -o Sha
+</span></span></code></pre></div><p>打包</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Shell" data-lang="Shell"><span class="line"><span class="cl">apktool.bat b <span class="o">[</span>资源文件夹<span class="o">]</span> <span class="o">[</span>打包生成的apk文件<span class="o">]</span> 
+</span></span></code></pre></div><p>from:<a href="https://blog.csdn.net/qq_27292113/article/details/79931268" target="_blank" rel="noopener noreffer">(2条消息) 使用ApkTool_一起进步的博客-CSDN博客_apktool</a></p>
 <h3 id="busybox">BusyBox</h3>
 <p><a href="https://github.com/meefik/busybox" target="_blank" rel="noopener noreffer">meefik/busybox: BusyBox for Android (github.com)</a></p>
 <h3 id="添加库">添加库</h3>
-<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="n">repositories</span> <span class="o">{</span>
-    <span class="n">jcenter</span><span class="o">()</span>
-<span class="o">}</span>
-
-<span class="n">compileOnly</span> <span class="err">&#39;</span><span class="n">de</span><span class="o">.</span><span class="na">robv</span><span class="o">.</span><span class="na">android</span><span class="o">.</span><span class="na">xposed</span><span class="o">:</span><span class="n">api</span><span class="o">:</span><span class="n">82</span><span class="err">&#39;</span>
-<span class="n">compileOnly</span> <span class="err">&#39;</span><span class="n">de</span><span class="o">.</span><span class="na">robv</span><span class="o">.</span><span class="na">android</span><span class="o">.</span><span class="na">xposed</span><span class="o">:</span><span class="n">api</span><span class="o">:</span><span class="n">82</span><span class="o">:</span><span class="n">sources</span><span class="err">&#39;</span>
-</code></pre></div><h3 id="新项目需要添加的">新项目需要添加的</h3>
-<div class="highlight"><pre class="chroma"><code class="language-xml" data-lang="xml">        <span class="nt">&lt;meta-data</span>
-            <span class="na">android:name=</span><span class="s">&#34;xposedmodule&#34;</span>
-            <span class="na">android:value=</span><span class="s">&#34;true&#34;</span> <span class="nt">/&gt;</span>
-        <span class="nt">&lt;meta-data</span>
-            <span class="na">android:name=</span><span class="s">&#34;xposeddescription&#34;</span>
-            <span class="na">android:value=</span><span class="s">&#34;模块描述&#34;</span> <span class="nt">/&gt;</span>
-        <span class="nt">&lt;meta-data</span>
-            <span class="na">android:name=</span><span class="s">&#34;xposedminversion&#34;</span>
-            <span class="na">android:value=</span><span class="s">&#34;54&#34;</span> <span class="nt">/&gt;</span>
-</code></pre></div><h3 id="旧版本下载地址">旧版本下载地址</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">repositories</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">jcenter</span><span class="p">()</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">compileOnly</span><span class="w"> </span><span class="err">&#39;</span><span class="n">de</span><span class="p">.</span><span class="na">robv</span><span class="p">.</span><span class="na">android</span><span class="p">.</span><span class="na">xposed</span><span class="p">:</span><span class="n">api</span><span class="p">:</span><span class="n">82</span><span class="err">&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">compileOnly</span><span class="w"> </span><span class="err">&#39;</span><span class="n">de</span><span class="p">.</span><span class="na">robv</span><span class="p">.</span><span class="na">android</span><span class="p">.</span><span class="na">xposed</span><span class="p">:</span><span class="n">api</span><span class="p">:</span><span class="n">82</span><span class="p">:</span><span class="n">sources</span><span class="err">&#39;</span><span class="w">
+</span></span></span></code></pre></div><h3 id="新项目需要添加的">新项目需要添加的</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl">        <span class="nt">&lt;meta-data</span>
+</span></span><span class="line"><span class="cl">            <span class="na">android:name=</span><span class="s">&#34;xposedmodule&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="na">android:value=</span><span class="s">&#34;true&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;meta-data</span>
+</span></span><span class="line"><span class="cl">            <span class="na">android:name=</span><span class="s">&#34;xposeddescription&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="na">android:value=</span><span class="s">&#34;模块描述&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;meta-data</span>
+</span></span><span class="line"><span class="cl">            <span class="na">android:name=</span><span class="s">&#34;xposedminversion&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="na">android:value=</span><span class="s">&#34;54&#34;</span> <span class="nt">/&gt;</span>
+</span></span></code></pre></div><h3 id="旧版本下载地址">旧版本下载地址</h3>
 <p><a href="https://developer.android.google.cn/studio/archive" target="_blank" rel="noopener noreffer">Android Studio 下载文件归档  | Android 开发者  | Android Developers (google.cn)</a></p>
 <p>3.2.1版本</p>
 <h3 id="遇到的问题">遇到的问题</h3>
@@ -871,8 +870,8 @@ start adbd
                 Please enable JavaScript to view the comments powered by <a href="https://utteranc.es/">Utterances</a>.
             </noscript></div></article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.68.3">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
-                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank"></a></span></div>
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.121.1">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2024</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank"></a></span></div>
         </div>
     </footer></div>
 

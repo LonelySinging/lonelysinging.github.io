@@ -8,11 +8,11 @@
         <title>linux的登录脚本记录 - 星途 · 小镇</title><meta name="Description" content=""><meta property="og:title" content="linux的登录脚本记录" />
 <meta property="og:description" content="通过在Linux的启动脚本中添加一些指令，可以实现一些简单的功能，此处记录一下 未来换设备的话能直接使用 打开core文件生成开关 ulimit -c unlimited 这样在程" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="/posts/2021/05/27/linux_profile/" />
+<meta property="og:url" content="/posts/2021/05/27/linux_profile/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2021-05-27T17:52:22+08:00" />
 <meta property="article:modified_time" content="2021-05-27T17:52:22+08:00" />
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="linux的登录脚本记录"/>
+
+<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="linux的登录脚本记录"/>
 <meta name="twitter:description" content="通过在Linux的启动脚本中添加一些指令，可以实现一些简单的功能，此处记录一下 未来换设备的话能直接使用 打开core文件生成开关 ulimit -c unlimited 这样在程"/>
 <meta name="application-name" content="星途 · 小镇">
 <meta name="apple-mobile-web-app-title" content="星途 · 小镇"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
@@ -120,8 +120,8 @@
 <p>通过在<code>Linux</code>的启动脚本中添加一些指令，可以实现一些简单的功能，此处记录一下 未来换设备的话能直接使用</p>
 </blockquote>
 <h2 id="打开core文件生成开关">打开core文件生成开关</h2>
-<div class="highlight"><pre class="chroma"><code class="language-Shell" data-lang="Shell"><span class="nb">ulimit</span> -c unlimited
-</code></pre></div><p>这样在程序崩溃之后能够得到<code>core</code>文件，以便通过<code>gdb</code>调试</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Shell" data-lang="Shell"><span class="line"><span class="cl"><span class="nb">ulimit</span> -c unlimited
+</span></span></code></pre></div><p>这样在程序崩溃之后能够得到<code>core</code>文件，以便通过<code>gdb</code>调试</p>
 <h2 id="回收站的实现">回收站的实现</h2>
 <p>在<code>windows</code>上面直接删除文件会把文件放到回收站中，以此对手残的用户进行保护</p>
 <p>但是<code>linux</code>上面就没有，大概<code>linux</code>的设计哲学是认为用户足够聪明吧(毕竟能使用<code>linux</code>的大概都不是什么电脑小白) 但是每次<code>rm</code>掉重要东西之后，还是会心脏骤停。</p>
@@ -129,41 +129,41 @@
 <p>首先先找个位置创建回收站的文件夹，我会直接选在<code>home/.Recycle</code></p>
 <p>使用命令 <code>mkdir .Recycle</code> 创建一个文件夹出来</p>
 <h3 id="删除">删除</h3>
-<div class="highlight"><pre class="chroma"><code class="language-Shell" data-lang="Shell"><span class="nb">alias</span> <span class="nv">rrm</span><span class="o">=</span><span class="s2">&#34;mkdir -q ~/.Recycle &amp;&amp; mv -f -t ~/.Recycle&#34;</span>
-</code></pre></div><p>不直接重载<code>rm</code>的原因是因为有时候别人的脚本中出现了<code>rm</code> 并且带了参数，但是<code>rm</code>和<code>mv</code>的参数并不是一模一样的，这时候就可能出错。所以使用<code>rrm</code>作为删除</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Shell" data-lang="Shell"><span class="line"><span class="cl"><span class="nb">alias</span> <span class="nv">rrm</span><span class="o">=</span><span class="s2">&#34;mkdir -q ~/.Recycle &amp;&amp; mv -f -t ~/.Recycle&#34;</span>
+</span></span></code></pre></div><p>不直接重载<code>rm</code>的原因是因为有时候别人的脚本中出现了<code>rm</code> 并且带了参数，但是<code>rm</code>和<code>mv</code>的参数并不是一模一样的，这时候就可能出错。所以使用<code>rrm</code>作为删除</p>
 <p><code>mkdir -q</code>中的<code>-q</code>参数是告诉<code>mkdir</code>如果那个位置已经有这个文件了，也不会出现错误。这样只需要复制上面的命令粘贴运行就好了。</p>
 <h3 id="查看回收站文件">查看回收站文件</h3>
-<div class="highlight"><pre class="chroma"><code class="language-Shell" data-lang="Shell"><span class="nb">alias</span> <span class="nv">rrl</span><span class="o">=</span><span class="s2">&#34;ls -la ~/.Recycle&#34;</span>
-</code></pre></div><h3 id="清理回收站">清理回收站</h3>
-<div class="highlight"><pre class="chroma"><code class="language-Shell" data-lang="Shell"><span class="nb">alias</span> <span class="nv">rrc</span><span class="o">=</span><span class="s2">&#34;rm -rf ~/.Recycle/* ~/.Recycle/.*&#34;</span>
-</code></pre></div><p>因为通过<code>rm -rf ~/.Recycle</code> 并不能删除掉<code>.</code>开头的文件，所以需要使用后者专门用来删除，但是会出现找不到<code>. ..</code>的问题，通过重定向错误输出应该可以隐藏这个提示。但是也有可能会忽略别的有用的信息。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Shell" data-lang="Shell"><span class="line"><span class="cl"><span class="nb">alias</span> <span class="nv">rrl</span><span class="o">=</span><span class="s2">&#34;ls -la ~/.Recycle&#34;</span>
+</span></span></code></pre></div><h3 id="清理回收站">清理回收站</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Shell" data-lang="Shell"><span class="line"><span class="cl"><span class="nb">alias</span> <span class="nv">rrc</span><span class="o">=</span><span class="s2">&#34;rm -rf ~/.Recycle/* ~/.Recycle/.*&#34;</span>
+</span></span></code></pre></div><p>因为通过<code>rm -rf ~/.Recycle</code> 并不能删除掉<code>.</code>开头的文件，所以需要使用后者专门用来删除，但是会出现找不到<code>. ..</code>的问题，通过重定向错误输出应该可以隐藏这个提示。但是也有可能会忽略别的有用的信息。</p>
 <h3 id="统计回收站占用空间">统计回收站占用空间</h3>
-<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">alias</span> <span class="nv">rri</span><span class="o">=</span><span class="s2">&#34;du -sh ~/.Recycle&#34;</span>
-</code></pre></div><p>如此以来，就能实现一个简单的回收站，但凡起作用一次，都是一件值得庆幸的事情。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="nb">alias</span> <span class="nv">rri</span><span class="o">=</span><span class="s2">&#34;du -sh ~/.Recycle&#34;</span>
+</span></span></code></pre></div><p>如此以来，就能实现一个简单的回收站，但凡起作用一次，都是一件值得庆幸的事情。</p>
 <p>尽管如此，在使用<code>rm</code> 之前，还是思考一下比较好。</p>
 <h2 id="ls命令重载">ls命令重载</h2>
-<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">alias</span> <span class="nv">ls</span><span class="o">=</span><span class="s2">&#34;ls --color&#34;</span>
-</code></pre></div><p>这个一般安装好系统就会有，如果没有<code>--color</code>参数，文件夹就没有颜色</p>
-<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">alias</span> <span class="nv">ll</span><span class="o">=</span><span class="s2">&#34;ls -lh&#34;</span>
-</code></pre></div><p>以更科学的方式显示文件大小，并且查看详情信息，还是非常好用的命令，同样的，一些发行版默认就有这个</p>
-<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">alias</span> <span class="nv">la</span><span class="o">=</span><span class="s2">&#34;ls -lha&#34;</span>
-</code></pre></div><p>就是比上一条多了显示隐藏文件的功能</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="nb">alias</span> <span class="nv">ls</span><span class="o">=</span><span class="s2">&#34;ls --color&#34;</span>
+</span></span></code></pre></div><p>这个一般安装好系统就会有，如果没有<code>--color</code>参数，文件夹就没有颜色</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="nb">alias</span> <span class="nv">ll</span><span class="o">=</span><span class="s2">&#34;ls -lh&#34;</span>
+</span></span></code></pre></div><p>以更科学的方式显示文件大小，并且查看详情信息，还是非常好用的命令，同样的，一些发行版默认就有这个</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="nb">alias</span> <span class="nv">la</span><span class="o">=</span><span class="s2">&#34;ls -lha&#34;</span>
+</span></span></code></pre></div><p>就是比上一条多了显示隐藏文件的功能</p>
 <h2 id="超级目录切换">超级目录切换</h2>
 <p>最近修改一个项目，是<code>java</code>的，代码文件足足在六层文件夹包裹之下，每次打开一个新的终端，都会很麻烦，所以，想了一个办法。</p>
 <h3 id="保存路径">保存路径</h3>
-<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">alias</span> <span class="nv">cdc</span><span class="o">=</span><span class="s2">&#34;pwd &gt; ~/.cdc&#34;</span>
-</code></pre></div><p>执行之后，会在<code>home</code>目录下创建一个隐藏文件，保存当前的工作路径</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="nb">alias</span> <span class="nv">cdc</span><span class="o">=</span><span class="s2">&#34;pwd &gt; ~/.cdc&#34;</span>
+</span></span></code></pre></div><p>执行之后，会在<code>home</code>目录下创建一个隐藏文件，保存当前的工作路径</p>
 <h3 id="读取路径">读取路径</h3>
-<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">alias</span> <span class="nv">cdd</span><span class="o">=</span><span class="s2">&#34;cd \`cat ~/.cdc\`&#34;</span>
-</code></pre></div><p>这个困扰了我好一会儿，最开始的版本是</p>
-<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">alias</span> <span class="nv">cdd</span><span class="o">=</span><span class="s2">&#34;cd `cat ~/.cdc`&#34;</span>
-</code></pre></div><p>但是发现不管<code>cdc</code>保存了什么命令，<code>cdd</code>都只能切换到一个固定的目录，直到无意间执行了<code>alias</code>之后，发现建立的别名是这样的</p>
-<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">alias</span> <span class="nv">cdd</span><span class="o">=</span><span class="s2">&#34;cd /home/st/&#34;</span>
-</code></pre></div><p>也就是说，在执行<code>alias</code>的时候，就已经把``里面的东西解释执行了</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="nb">alias</span> <span class="nv">cdd</span><span class="o">=</span><span class="s2">&#34;cd \`cat ~/.cdc\`&#34;</span>
+</span></span></code></pre></div><p>这个困扰了我好一会儿，最开始的版本是</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="nb">alias</span> <span class="nv">cdd</span><span class="o">=</span><span class="s2">&#34;cd `cat ~/.cdc`&#34;</span>
+</span></span></code></pre></div><p>但是发现不管<code>cdc</code>保存了什么命令，<code>cdd</code>都只能切换到一个固定的目录，直到无意间执行了<code>alias</code>之后，发现建立的别名是这样的</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="nb">alias</span> <span class="nv">cdd</span><span class="o">=</span><span class="s2">&#34;cd /home/st/&#34;</span>
+</span></span></code></pre></div><p>也就是说，在执行<code>alias</code>的时候，就已经把``里面的东西解释执行了</p>
 <h2 id="仅查看自己的进程">仅查看自己的进程</h2>
 <p>公司的服务器上面，并没有<code>root</code>权限，通过<code>ps aux</code> 看到很多进程，但是都不能操作，反而会影响找到有用的进程，所以会考虑只显示自己的进程</p>
-<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">alias</span> <span class="nv">psu</span><span class="o">=</span><span class="s2">&#34;ps aux | grep \&#34;^`id -u` \&#34;&#34;</span>
-</code></pre></div><p>这样，之后执行<code>psu</code>就只会显示自己的进程了</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="nb">alias</span> <span class="nv">psu</span><span class="o">=</span><span class="s2">&#34;ps aux | grep \&#34;^`id -u` \&#34;&#34;</span>
+</span></span></code></pre></div><p>这样，之后执行<code>psu</code>就只会显示自己的进程了</p>
 <ul>
 <li><code>ps aux</code>会显示所有的进程，交给<code>grep</code>过滤</li>
 <li><code>id -u</code>将会获取到自己的用户<code>uid</code></li>
@@ -174,8 +174,8 @@
 <p><code>du -h --max-depth=0 *</code>可以弥补<code>ps</code>没有不能直接看到所有文件夹占用大小的问题</p>
 <p>另外，通过<code>du -sh ~</code> 可以看到自己的<code>home</code>目录占用了多少空间</p>
 <h2 id="ps1">PS1</h2>
-<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">export</span> <span class="nv">PS1</span><span class="o">=</span><span class="s2">&#34;\[\e[31;1m\][\u@\[\e[32;1m\]\h \[\e[32;1m\]\W]\$ \[\e[0m\]&#34;</span>
-</code></pre></div><p><img
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">PS1</span><span class="o">=</span><span class="s2">&#34;\[\e[31;1m\][\u@\[\e[32;1m\]\h \[\e[32;1m\]\W]\$ \[\e[0m\]&#34;</span>
+</span></span></code></pre></div><p><img
         class="lazyload"
         src="/svg/loading.min.svg"
         data-src="https://qiniusave.xint.top/mdimage-20210629125123739.png"
@@ -214,8 +214,8 @@
                 Please enable JavaScript to view the comments powered by <a href="https://utteranc.es/">Utterances</a>.
             </noscript></div></article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.68.3">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
-                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank"></a></span></div>
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.121.1">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2024</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank"></a></span></div>
         </div>
     </footer></div>
 
