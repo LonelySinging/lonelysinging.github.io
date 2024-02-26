@@ -3,7 +3,14 @@
         <title>所有文章 - 星途 · 小镇</title>
         <link>/posts/</link>
         <description>所有文章 | 星途 · 小镇</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Tue, 02 Jan 2024 01:40:43 &#43;0800</lastBuildDate><atom:link href="/posts/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Mon, 26 Feb 2024 23:19:17 &#43;0800</lastBuildDate><atom:link href="/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>其实并不想奔跑</title>
+    <link>/posts/2024/02/26/%E5%85%B6%E5%AE%9E%E5%B9%B6%E4%B8%8D%E6%83%B3%E5%A5%94%E8%B7%91/</link>
+    <pubDate>Mon, 26 Feb 2024 23:19:17 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>/posts/2024/02/26/%E5%85%B6%E5%AE%9E%E5%B9%B6%E4%B8%8D%E6%83%B3%E5%A5%94%E8%B7%91/</guid>
+    <description><![CDATA[时常会觉得很疲惫，并且没有力气做想做的事情。 大学的时候，去心理咨询室咨询得到的结果是有些轻度抑郁，我问咨询师，我这样未来会有什么问题吗？咨询]]></description>
+</item><item>
     <title>与理想的自己渐行渐远</title>
     <link>/posts/2024/01/02/ssn/</link>
     <pubDate>Tue, 02 Jan 2024 01:40:43 &#43;0800</pubDate>
@@ -66,12 +73,5 @@
     <author>作者</author>
     <guid>/posts/2021/05/23/tools/</guid>
     <description><![CDATA[有很多有用的工具，经常需要的时候忘记名字是什么了。所以特意写一个清单。 软件 scrcpy 使用 scrcpy 可以实现电脑手机同屏，MIUI+出来之前的备选项。当然，还]]></description>
-</item><item>
-    <title>我为什么要写博客，以及搭建过程</title>
-    <link>/posts/2021/05/07/hugo/</link>
-    <pubDate>Fri, 07 May 2021 06:30:46 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>/posts/2021/05/07/hugo/</guid>
-    <description><![CDATA[开始 现在在博客园已经写了大概一百多个博客文章了，也是写了很久的文章。但是一直觉得博客不是自己的，只是在一个平台上面写文章。所以一直想要自己搭]]></description>
 </item></channel>
 </rss>
